@@ -34,11 +34,11 @@ include('php/server.php')
 
 			<div class="collapse navbar-collapse" id="myNavbar">
 
-				<?php if (isset($_SESSION['success']))
-				 {
-					 echo "<ul class='nav navbar-nav'>
+				<?php if (isset($_SESSION['success']))	{ ?>
+					<ul class='nav navbar-nav'>
+
 	 				<li class='active'><a href='#'>Home</a></li>
-	 				<li><a href='#'>logout</a></li>
+	 				<li><a href='php/logout.php'>logout</a></li>
 	 				<li><a href='#'>Contact Us</a></li>
 	 				<li><a href='#'></a></li>
 	 				<li class='dropdown'>
@@ -50,29 +50,25 @@ include('php/server.php')
 	 					</ul>
 	 				</li>
 
-	 			  </ul>";
-					unset($_SESSION['success']);
-				 }
-				 else {
-					 echo "
-						<ul class='nav navbar-nav'>
-						<li class='active'><a href='#'>Home</a></li>
-						<li><a href='#'>Registe</a></li>
-						<li><a href='#'>Contact Us</a></li>
-						<li><a href='#'></a></li>
-						<li class='dropdown'>
-							<a class='dropdown-toggle' data-toggle='dropdown' href='#'>Get in touch
-							<span class='caret'></span></a>
-							<ul class='dropdown-menu'>
-							  <li><a href='#'>Book a Visit</a></li>
-							  <li><a href='#'>Email Us</a></li>
-							</ul>
-						</li>
+	 			  </ul>
 
-					  </ul>";
-					 unset($_SESSION['success']);
-				 }
-				?>
+				 <?php } else {?>
+					 <ul class='nav navbar-nav'>
+					 <li class='active'><a href='#'>Home</a></li>
+					 <li><a href='#'>Register</a></li>
+				 	 <li><a href='#'>Contact Us</a></li>
+				 	 <li><a href='#'></a></li>
+					 <li class='dropdown'>
+						 <a class='dropdown-toggle' data-toggle='dropdown' href='#'>Get in touch
+						 <span class='caret'></span></a>
+						 <ul class='dropdown-menu'>
+							 <li><a href='#'>Book a Visit</a></li>
+							 <li><a href='#'>Email Us</a></li>
+						 </ul>
+					 </li>
+
+					 </ul>
+				 <?php } ?>
 
 				<!-- <div class="collapse navbar-collapse" id="myNavbar"> -->
 				<!-- <ul class="nav navbar-nav">

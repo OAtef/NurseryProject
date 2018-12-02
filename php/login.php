@@ -1,3 +1,6 @@
+useless now but will might be used in backup
+
+
 <?php include('server.php') ?>
 <!DOCTYPE html>
 <html>
@@ -14,11 +17,11 @@
 <button id = "loginBtn" style="width:auto;">Login</button>
 
 <div id="id01" class="modal">
-  
+
   <form class="modal-content animate" method="post" action="login.php">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      
+
     </div>
 
     <div class="container">
