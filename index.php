@@ -1,3 +1,4 @@
+<?php include('server.php') ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -8,6 +9,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" type="text/css" href="css/welcomepage.css">
+		<link rel="stylesheet" type="text/css" href="css/login.css">
 		<!-- Javascript -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -44,11 +46,31 @@
 
 			  </ul>
 			  <ul class="nav navbar-nav navbar-right">
-				<li><a href="php\login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				<li><a id="loginBtn"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 			  </ul>
 			</div>
 		  </div>
 		</nav>
+
+		<div id="id01" class="modal">
+
+			<form class="modal-content animate" method="post" action="index.php">
+				<div class="container">
+					<?php include('errors.php') ?>
+						<div class="input-group">
+							<label for="email">email</label>
+							<input type="text" placeholder="Enter Username" name="email" required>
+						</div>
+						<div class="input-group">
+							<label for="password">Password</label>
+							<input type="password" placeholder="Enter Password" name="password" required>
+						</div>
+						<div class="input-group">
+							<button type="submit" class="btn" name="login_user">Login</button>
+						</div>
+				</div>
+			</form>
+		</div>
 
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
 			<!-- Indicators -->
@@ -331,5 +353,6 @@
 				</ul>
 			</div>
 		</footer>
+		<script type="text/javascript" src="js\login.js"></script>
 	</body>
 </html>
