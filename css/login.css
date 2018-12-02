@@ -1,8 +1,17 @@
 body {font-family: Arial, Helvetica, sans-serif;}
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
-    width: 100%;
+input[type=text]{
+    width: 150%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+input[type=password] {
+    width: 133.5%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -31,14 +40,6 @@ button:hover {
     padding: 10px 18px;
     background-color: #f44336;
 }
-
-/* Center the image and position the close button */
-.imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-    position: relative;
-}
-
 
 .container {
     padding: 16px;
@@ -70,22 +71,6 @@ span.psw {
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
     width: 400px; /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button (x) */
-.close {
-    position: absolute;
-    right: 25px;
-    top: 0;
-    color: #000;
-    font-size: 35px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: red;
-    cursor: pointer;
 }
 
 /* Add Zoom Animation */
