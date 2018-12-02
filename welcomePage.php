@@ -1,4 +1,4 @@
-<?php include('server.php') ?>
+<?php include('php/server.php') ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -56,7 +56,7 @@
 
 			<form class="modal-content animate" method="post" action="index.php">
 				<div class="container">
-					<?php include('errors.php') ?>
+					<?php include('php/errors.php') ?>
 						<div class="input-group">
 							<label for="email">email</label>
 							<input type="text" placeholder="Enter Username" name="email" required>
