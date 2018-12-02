@@ -54,7 +54,7 @@
 
 		<div id="id01" class="modal">
 
-			<form class="modal-content animate" method="post" action="index.php">
+			<form class="modal-content animate" method="post" action="welcomePage.php">
 				<div class="container">
 					<?php include('php/errors.php') ?>
 						<div class="input-group">
