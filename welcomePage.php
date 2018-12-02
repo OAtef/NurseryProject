@@ -1,4 +1,5 @@
 <?php
+
 include('php/server.php')
 ?>
 <html lang="en">
@@ -29,13 +30,56 @@ include('php/server.php')
 			  <a class="navbar-brand" href="#">Logo</a>
 			</div>
 
+
+
 			<div class="collapse navbar-collapse" id="myNavbar">
-			  <ul class="nav navbar-nav">
+
+				<?php if (isset($_SESSION['success']))
+				 {
+					 echo "<ul class='nav navbar-nav'>
+	 				<li class='active'><a href='#'>Home</a></li>
+	 				<li><a href='#'>logout</a></li>
+	 				<li><a href='#'>Contact Us</a></li>
+	 				<li><a href='#'></a></li>
+	 				<li class='dropdown'>
+	 					<a class='dropdown-toggle' data-toggle='dropdown' href='#'>Get in touch
+	 					<span class='caret'></span></a>
+	 					<ul class='dropdown-menu'>
+	 					  <li><a href='#'>Book a Visit</a></li>
+	 					  <li><a href='#'>Email Us</a></li>
+	 					</ul>
+	 				</li>
+
+	 			  </ul>";
+					unset($_SESSION['success']);
+				 }
+				 else {
+					 echo "
+						<ul class='nav navbar-nav'>
+						<li class='active'><a href='#'>Home</a></li>
+						<li><a href='#'>Registe</a></li>
+						<li><a href='#'>Contact Us</a></li>
+						<li><a href='#'></a></li>
+						<li class='dropdown'>
+							<a class='dropdown-toggle' data-toggle='dropdown' href='#'>Get in touch
+							<span class='caret'></span></a>
+							<ul class='dropdown-menu'>
+							  <li><a href='#'>Book a Visit</a></li>
+							  <li><a href='#'>Email Us</a></li>
+							</ul>
+						</li>
+
+					  </ul>";
+					 unset($_SESSION['success']);
+				 }
+				?>
+
+				<!-- <div class="collapse navbar-collapse" id="myNavbar"> -->
+				<!-- <ul class="nav navbar-nav">
 				<li class="active"><a href="#">Home</a></li>
 				<li><a href="#">Register</a></li>
 				<li><a href="#">Contact Us</a></li>
 				<li><a href="#"></a></li>
-
 				<li class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Get in touch
 					<span class="caret"></span></a>
@@ -45,7 +89,7 @@ include('php/server.php')
 					</ul>
 				</li>
 
-			  </ul>
+			  </ul> -->
 			  <ul class="nav navbar-nav navbar-right">
 				<li><a id="loginBtn"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 			  </ul>
@@ -55,7 +99,7 @@ include('php/server.php')
 
 		<div id="id01" class="modal">
 
-			<form class="modal-content animate" method="post" action="">
+			<form class="modal-content animate" method="post" action="welcomepage.php">
 				<div class="container">
 					<?php include('php/errors.php') ?>
 						<div class="input-group">
