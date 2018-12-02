@@ -1,5 +1,6 @@
-<?php include('php/server.php') ?>
-<!DOCTYPE html>
+<?php
+include('php/server.php')
+?>
 <html lang="en">
 	<head>
 		<title>Nursery</title>
@@ -54,7 +55,7 @@
 
 		<div id="id01" class="modal">
 
-			<form class="modal-content animate" method="post" action="welcomePage.php">
+			<form class="modal-content animate" method="post" action="">
 				<div class="container">
 					<?php include('php/errors.php') ?>
 						<div class="input-group">
