@@ -1,7 +1,7 @@
 body {
-	position: relative; 
+	position: relative;
 }
-	
+
 /* Navbar */
 
 .navbar {	/* Remove the navbar's default margin-bottom and rounded borders */
@@ -16,9 +16,13 @@ footer {	/* Add a gray background color and some padding to the footer */
   padding: 25px;
   color: white;
 }
-    
+
 .container {
 	padding: 80px 120px;
+}
+
+.well{
+	width: 350px;
 }
 
 .person {
@@ -31,7 +35,7 @@ footer {	/* Add a gray background color and some padding to the footer */
 .person:hover {
 	border-color: #f1f1f1;
 }
-	
+
 /* Flipping Cards */
 
 .flip-card {
@@ -65,53 +69,51 @@ footer {	/* Add a gray background color and some padding to the footer */
 .flip-card-front {
   background-color: #bbb;
   color: black;
-  z-index: 2;
 }
 
 .flip-card-back {
   background-color: #800000;
   color: white;
   transform: rotateY(180deg);
-  z-index: 1;
 }
 
 	#section2 {
 		padding-top:50px;
-		height:500px;color: #fff; 
+		height:500px;color: #fff;
 		background-color: #673ab7;
 	}
 	#section3 {
 		padding-top:50px;
 		height:400px;
-		color: #fff; 
+		color: #fff;
 		background-color: #ff9800;
 	}
     #section41 {
 		padding-top:50px;
 		height:500px;
-		color: #fff; 
+		color: #fff;
 		background-color: #00bcd4;
 	}
 	#section42 {
 		padding-top:50px;
 		height:500px;
-		color: #fff; 
+		color: #fff;
 		background-color: #009688;
 	}
 
 	#sectionwhite {
 		padding-top:50px;
 		height:500px;
-		color: #fff; 
+		color: #fff;
 		background-color: white;
 	}
 	#section1 {
 		padding-top:50px;
 		height:500px;
-		color: #fff; 
+		color: #fff;
 		background-color: #1E88E5;
 	}
-	
+
   .carousel-inner img {
       width: 100%; /* Set width to 100% */
       margin: auto;
@@ -121,6 +123,6 @@ footer {	/* Add a gray background color and some padding to the footer */
   /* Hide the carousel text when the screen is less than 600 pixels wide */
   @media (max-width: 600px) {
     .carousel-caption {
-      display: none; 
+      display: none;
     }
   }
