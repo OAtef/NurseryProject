@@ -1,5 +1,6 @@
-<?php include('php/server.php') ?>
-<!DOCTYPE html>
+<?php
+include('php/server.php')
+?>
 <html lang="en">
 	<head>
 		<title>Nursery</title>
@@ -31,7 +32,7 @@
 			<div class="collapse navbar-collapse" id="myNavbar">
 			  <ul class="nav navbar-nav">
 				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#">Register</a></li>
+				<li><a href="/NurseryProject/signUp.html">Register</a></li>
 				<li><a href="#">Contact Us</a></li>
 				<li><a href="#"></a></li>
 
@@ -54,7 +55,7 @@
 
 		<div id="id01" class="modal">
 
-			<form class="modal-content animate" method="post" action="index.php">
+			<form class="modal-content animate" method="post" action="">
 				<div class="container">
 					<?php include('php/errors.php') ?>
 						<div class="input-group">
