@@ -1,5 +1,5 @@
 <?php
 session_start();
 session_destroy();
-header("Location: ../welcomepage.php");
+header("Location: ../welcomePage.php");
 ?>

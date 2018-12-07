@@ -1,7 +1,4 @@
-<?php
-
-include('php/server.php')
-?>
+<?php include('php/server.php') ?>
 <html lang="en">
 	<head>
 		<title>Nursery</title>
@@ -9,9 +6,9 @@ include('php/server.php')
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- style -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" type="text/css" href="css/welcomepage.css">
-		<link rel="stylesheet" type="text/css" href="css/login.css">
+		<link rel="stylesheet" type="text/css" href="css/modal.css">
 		<!-- Javascript -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -22,93 +19,127 @@ include('php/server.php')
 		<nav class="navbar navbar-inverse">
 		  <div class="container-fluid">
 			<div class="navbar-header">
-			  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			  </button>
+			  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"></button>
 			  <a class="navbar-brand" href="#">Logo</a>
 			</div>
-
-
 
 			<div class="collapse navbar-collapse" id="myNavbar">
 
 				<?php if (isset($_SESSION['success']))	{ ?>
 					<ul class='nav navbar-nav'>
-
-	 				<li class='active'><a href='#'>Home</a></li>
-	 				<li><a href='php/logout.php'>logout</a></li>
-	 				<li><a href='#'>Contact Us</a></li>
-	 				<li><a href='#'></a></li>
-	 				<li class='dropdown'>
-	 					<a class='dropdown-toggle' data-toggle='dropdown' href='#'>Get in touch
-	 					<span class='caret'></span></a>
-	 					<ul class='dropdown-menu'>
-	 					  <li><a href='#'>Book a Visit</a></li>
-	 					  <li><a href='#'>Email Us</a></li>
-	 					</ul>
-	 				</li>
-
-	 			  </ul>
+						<li class='dropdown'>
+							<a class='dropdown-toggle' data-toggle='dropdown' href='#'>Get in touch
+								<span class='caret'></span></a>
+								<ul class='dropdown-menu'>
+									<li><a href='#'>Book a Visit</a></li>
+									<li><a href='#'>Email Us</a></li>
+								</ul>
+						</li>
+						<li><a href='#'>About Us</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+					 <li><a href='#' class="glyphicon glyphicon-user"> UserName</a></li>
+					 <li><a href='php/logout.php' class="glyphicon glyphicon-log-out"> Logout</a></li>
+				 </ul>
 
 				 <?php } else {?>
 					 <ul class='nav navbar-nav'>
-					 <li class='active'><a href='#'>Home</a></li>
-					 <li><a href='#'>Register</a></li>
-				 	 <li><a href='#'>Contact Us</a></li>
-				 	 <li><a href='#'></a></li>
-					 <li class='dropdown'>
-						 <a class='dropdown-toggle' data-toggle='dropdown' href='#'>Get in touch
-						 <span class='caret'></span></a>
-						 <ul class='dropdown-menu'>
-							 <li><a href='#'>Book a Visit</a></li>
-							 <li><a href='#'>Email Us</a></li>
-						 </ul>
-					 </li>
-
+						 <li class='dropdown'>
+							 <a class='dropdown-toggle' data-toggle='dropdown' href='#'>Get in touch
+								 <span class='caret'></span></a>
+								 <ul class='dropdown-menu'>
+									 <li><a href='#'>Book a Visit</a></li>
+									 <li><a href='#'>Email Us</a></li>
+								 </ul>
+						 </li>
+						 <li><a href='#'>About Us</a></li>
+					 </ul>
+					 <ul class="nav navbar-nav navbar-right">
+						 <li><a id="loginBtn"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+						 <li><a id="signupBtn"><span class="glyphicon glyphicon-log-in"></span> Signup</a></li>
 					 </ul>
 				 <?php } ?>
-
-				<!-- <div class="collapse navbar-collapse" id="myNavbar"> -->
-				<!-- <ul class="nav navbar-nav">
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#">Register</a></li>
-				<li><a href="#">Contact Us</a></li>
-				<li><a href="#"></a></li>
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Get in touch
-					<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-					  <li><a href="#">Book a Visit</a></li>
-					  <li><a href="#">Email Us</a></li>
-					</ul>
-				</li>
-
-			  </ul> -->
-			  <ul class="nav navbar-nav navbar-right">
-				<li><a id="loginBtn"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-			  </ul>
 			</div>
 		  </div>
 		</nav>
 
+
 		<div id="id01" class="modal">
 
-			<form class="modal-content animate" method="post" action="welcomepage.php">
+			<form class="modal-content animate" method="post">
+				<div class="imgcontainer">
+					<span id="closebtn1" class="close" title="Close Modal">&times;</span>
+				</div>
 				<div class="container">
 					<?php include('php/errors.php') ?>
-						<div class="input-group">
-							<label for="email">email</label>
-							<input type="text" placeholder="Enter Username" name="email" required>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><b>Email:</b></span>
 						</div>
-						<div class="input-group">
-							<label for="password">Password</label>
-							<input type="password" placeholder="Enter Password" name="password" required>
+						<input type="text" placeholder="Enter Email" name="email" required>
+					</div>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><b>Password:</b></span>
 						</div>
-						<div class="input-group">
-							<button type="submit" class="btn" name="login_user">Login</button>
+						<input type="password" placeholder="Enter Password" name="password" required>
+					</div>
+					<input class="btn btn-primary" type="submit" value="Login" name="login_user">
+				</div>
+			</form>
+		</div>
+
+		<div id="id02" class="modal">
+
+			<form class="modal-content animate" method="post">
+				<div class="imgcontainer">
+					<span id="closebtn2" class="close" title="Close Modal">&times;</span>
+				</div>
+				<div class="container">
+					<?php include('php/errors.php') ?>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><b>First Name:</b></span>
 						</div>
+						<input type="text" placeholder="Enter First Name" name="firstname" required>
+					</div>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><b>Last Name:</b></span>
+						</div>
+						<input type="text" placeholder="Enter Last Name" name="lastname"required>
+					</div>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><b>Mobile Number:</b></span>
+						</div>
+						<input type="text" placeholder="Enter Mobile Number" name="mobileNumber"required>
+					</div>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><b>Email:</b></span>
+						</div>
+						<input type="text" placeholder="Enter Email" name="email"required>
+					</div>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><b>Password:</b></span>
+						</div>
+						<input type="password" placeholder="Enter Password" name="password1"required>
+					</div>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><b>Repeat Password:</b></span>
+						</div>
+						<input type="password" placeholder="Re-enter Password" name="password2"required>
+					</div>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><b>National ID:</b></span>
+						</div>
+						<input type="text" placeholder="Enter National ID" name="nationalID"required>
+					</div>
+					<input class="btn btn-primary" type="submit" value="Signup" name="signup_user">
 				</div>
 			</form>
 		</div>
@@ -358,8 +389,6 @@ include('php/server.php')
 				<img src="img\nursery-images-9.jpg" alt="" width="480" height="350" />
 			</div>
 		</div>
-
-		<!-- <div class="col-sm-8" style="background-image:'images.jfif';"></div> -->
 
 		<!-- Footer -->
 		<footer class="container-fluid text-center" >
