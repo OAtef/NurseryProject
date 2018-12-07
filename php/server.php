@@ -49,13 +49,19 @@ if (isset($_POST['signup_user'])) {
     if (count($errors) == 0) {
         //$password = md5($password_1);//encrypt the password before saving in the database
 
-        $query = "INSERT INTO users (first_name, last_name, mobile_number, email, password, nationalID)
-        VALUES('$firstname', '$lastname', '$mobileNum', '$email', '$password_1', '$natinalID')";
-        mysqli_query($db, $query);
-        $_SESSION['email'] = $email;
-        $_SESSION['password'] = $password_1;
-        $_SESSION['success'] = "You are now logged in";
-        header('location: welcomePage.php');
+        $signupquery = "INSERT INTO users (firstname, lastname, mobilenumber, email, password)
+        VALUES('$firstname', '$lastname', '$mobileNum', '$email', '$password_1')";
+        $result = mysqli_query($db, $signupquery);
+        if ($result) {
+          $_SESSION['email'] = $email;
+          $_SESSION['password'] = $password_1;
+          $_SESSION['success'] = "You are now logged in";
+          header('location: welcomePage.php');
+        }
+        else {
+          echo "Error";
+        }
+
     }
 }
 
@@ -72,8 +78,8 @@ if (isset($_POST['login_user'])) {
     }
 
     if (count($errors) == 0) {
-        $query = "SELECT * FROM users WHERE email='$email' AND password='$password'";
-        $results = mysqli_query($db, $query);
+        $signinquery = "SELECT * FROM users WHERE email='$email' AND password='$password'";
+        $results = mysqli_query($db, $signinquery);
         if (mysqli_num_rows($results) == 1) {
           $_SESSION['email'] = $email;
           $_SESSION['password'] = $password;
