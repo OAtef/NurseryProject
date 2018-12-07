@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 28, 2018 at 07:38 PM
+-- Generation Time: Dec 07, 2018 at 02:03 PM
 -- Server version: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -306,14 +306,23 @@ CREATE TABLE IF NOT EXISTS `teachesm` (
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
-  `ID` int(11) NOT NULL,
-  `first name` varchar(30) NOT NULL,
-  `last name` varchar(30) NOT NULL,
-  `mobile number` int(11) NOT NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(30) NOT NULL,
+  `lastname` varchar(30) NOT NULL,
+  `mobilenumber` int(11) NOT NULL,
   `email` varchar(30) NOT NULL,
   `password` varchar(30) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`ID`, `firstname`, `lastname`, `mobilenumber`, `email`, `password`) VALUES
+(1, 'omar', 'atef', 11, 'oatef', '123'),
+(2, 'omar', 'atef', 123, 'omar', '123'),
+(3, 'omar', 'atef', 1233, 'omaratef', '123');
 
 --
 -- Constraints for dumped tables
