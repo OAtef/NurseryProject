@@ -47,10 +47,10 @@ if (isset($_POST['signup_user'])) {
 
     // Finally, register user if there are no errors in the form
     if (count($errors) == 0) {
-        //$password = md5($password_1);//encrypt the password before saving in the database
+        //$password = md5($password_1); //encrypt the password before saving in the database
 
-        $signupquery = "INSERT INTO users (firstname, lastname, mobilenumber, email, password)
-        VALUES('$firstname', '$lastname', '$mobileNum', '$email', '$password_1')";
+        $signupquery = "INSERT INTO users (firstname, lastname, mobilenumber, email, password, nationalID, type)
+        VALUES('$firstname', '$lastname', '$mobileNum', '$email', '$password_1', '$natinalID', '1')";
         $result = mysqli_query($db, $signupquery);
         if ($result) {
           $_SESSION['email'] = $email;
@@ -59,15 +59,14 @@ if (isset($_POST['signup_user'])) {
           header('location: welcomePage.php');
         }
         else {
-          echo "Error";
+            array_push($errors, "error");
         }
-
     }
 }
 
 // LOGIN USER
 if (isset($_POST['login_user'])) {
-    $email = mysqli_real_escape_string($db, $_POST['email']); // ??
+    $email = mysqli_real_escape_string($db, $_POST['email']); 
     $password = mysqli_real_escape_string($db, $_POST['password']);
 
     if (empty($email)) {
@@ -81,10 +80,35 @@ if (isset($_POST['login_user'])) {
         $signinquery = "SELECT * FROM users WHERE email='$email' AND password='$password'";
         $results = mysqli_query($db, $signinquery);
         if (mysqli_num_rows($results) == 1) {
-          $_SESSION['email'] = $email;
-          $_SESSION['password'] = $password;
-          $_SESSION['success'] = "You are now logged in";
-          header('location: welcomePage.php');
+        
+            $type = mysqli_query($db, "SELECT type FROM users WHERE users.email='$email'");
+            $result = mysqli_fetch_array($type);
+
+            if($result['type'] == 1){ // parent
+                $query = mysqli_query($db,"SELECT * FROM users INNER JOIN children on users.ID = children.parentID WHERE users.email='$email'");
+                $result = mysqli_fetch_array($type);
+                $_SESSION['email'] = $email;
+                $_SESSION['password'] = $password;
+                $_SESSION['FName'] = $result['firstname'];
+                $_SESSION['LName'] = $result['lastname'];
+                $_SESSION['MobNum'] = $result['mobilenumber'];
+                $_SESSION['nationalID'] = $result['nationalID'];
+                $_SESSION['childID'] = $result['child_id'];
+                $_SESSION['childFName'] = $result['first_name'];
+                $_SESSION['childLName'] = $result['last_name'];
+                $_SESSION['childGender'] = $result['Gender'];
+                $_SESSION['bdate'] = $result['Bdate'];
+                $_SESSION['EduYear'] = $result['EduYear'];
+            }
+            else if($result['type'] == 2){ // nurse manager
+
+            }
+            else{
+                array_push($errors, "the type asked for is not identified");
+            }
+
+            $_SESSION['success'] = "You are now logged in";
+            header('location: welcomePage.php');
         }else {
             array_push($errors, "Wrong email/password combination");
         }
