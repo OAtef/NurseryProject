@@ -182,7 +182,12 @@
 		</div>
 
 
-		<div id="section2" class="container-fluid">
+		<div id="section1" class="tab">
+			<button class="tablinks" id="btn1" onclick="openCity(event, 'section21')">Nutrition</button>
+			<button class="tablinks" id="btn2" onclick="openCity(event, 'section22')">Activites</button>
+		</div>
+
+		<div id="section21" class="container-fluid tabcontent">
 			<div class="container text-center">
 				<h3>NUTRITION</h3>
 				<p><em>"We Care"</em></p>
@@ -239,6 +244,68 @@
 							<li>Melon  Pots</li>
 						</ul>
 				  </div>
+				</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="section22" class="container-fluid tabcontent">
+			<div class="container text-center">
+				<h3>ACTIVITES</h3>
+				<p><em>"We Care"</em></p>
+				<p>Our excellent nutritionally balanced menu is changed regularly to encourage a varied diet and is approved by Action for Children.
+				Here is an example of a typical menu.</p>
+				<br>
+				<div class="row">
+					<div class="col-sm-4">
+						<p class="text-center"><strong>Breakfast</strong></p><br>
+						<a href="#demo" data-toggle="collapse">
+						<img src="img\breakfast.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+						</a>
+						<div id="demo" class="collapse">
+						<p>Low Sugar / Wholewheat Cereals with Milk Porridge</p>
+						<p>Wholemeal Bread/Toast/English Muffins Seasonal Fresh Fruit</p>
+						<p>Whole Milk or Water</p>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<p class="text-center" ><strong>Lunch</strong></p><br>
+						<a href="#demo2" data-toggle="collapse">
+						<img src="img\Lunch.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+						</a>
+						<div id="demo2" class="collapse">
+							<ul style="list-style-type:none">
+								<li>Vegetarian Moussaka with Garlic Bread</li>
+								<li>Homemade Ocean Fish Pie with Mixed Vegetables</li>
+								<li>Winter Vegetable Pie with Broccoli </li>
+								<li>Beef,Vegetable &amp; Bean Casserole with Couscous</li>
+								<li>Roast Quorn with Yorkshire Pudding  Seasonal Vegetables and Vegetarian Gravy</li>
+								<li>Apple &amp; Chicken Curry with Rice</li>
+								<li>Lentil Curry &amp; Rice</li>
+								<li>Rosemary Lamb &amp; Vegetable Hot Pot</li>
+								<li>Quorn Hot Pot with Winter Vegetables</li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-4">
+					<p class="text-center"><strong>Dinner</strong></p><br>
+					<a href="#demo3" data-toggle="collapse">
+					<img src="img\Dinner.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+					</a>
+					<div id="demo3" class="collapse">
+						<ul style="list-style-type:none">
+							<li>Chicken or Quorn Ratatouille &amp; Couscous</li>
+							<li>Winter Fruit Smoothie</li>
+							<li>Salmon &amp; Chive Filled Potato Boats</li>
+							<li>Apricot Biscuits</li>
+							<li>Chicken or Quorn Ratatouille &amp; Couscous</li>
+							<li>Fruit Shortbread</li>
+							<li>Salmon &amp; Chive Filled Potato Boats</li>
+							<li>Mandarin Sponge Fingers </li>
+							<li>Chicken or Quorn Ratatouille &amp; Couscous</li>
+							<li>Melon  Pots</li>
+						</ul>
+					</div>
 				</div>
 				</div>
 			</div>
@@ -424,5 +491,6 @@
 			</div>
 		</footer>
 		<script type="text/javascript" src="js\login.js"></script>
+		<script type="text/javascript" src="js\welcomepage.js"></script>
 	</body>
 </html>

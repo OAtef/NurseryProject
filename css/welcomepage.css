@@ -3,6 +3,51 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    background-color: #ffffff;
+    text-align: center;
+    border-bottom: 3px solid rgb(251, 251, 251);
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+    line-height: 1rem;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+	border-top: 3px solid rgb(251, 251, 251);
+	border-left: 3px solid rgb(251, 251, 251);
+	border-right: 3px solid rgb(251, 251, 251);
+	/* background-color: rgb(163, 61, 14);  */
+
+  color: #ffffff;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-bottom: 3px solid #ccc;
+    border-top: none;
+}
+
 /* Navbar */
 
 .navbar {	/* Remove the navbar's default margin-bottom and rounded borders */
@@ -74,9 +119,16 @@ footer {	/* Add a gray background color and some padding to the footer */
   backface-visibility: hidden;
 }
 
-#section2 {
+#section1 {
+	padding-top:20px;
+	color: #fff;
+	background-color: #673ab7;
+}
+
+#section21, #section22{
 	padding-top:50px;
-	height:500px;color: #fff;
+	height:500px;
+	color: #fff;
 	background-color: #673ab7;
 }
 #section3 {
@@ -103,12 +155,7 @@ footer {	/* Add a gray background color and some padding to the footer */
 	color: #fff;
 	background-color: white;
 }
-#section1 {
-	padding-top:50px;
-	height:500px;
-	color: #fff;
-	background-color: #1E88E5;
-}
+
 
 .carousel-inner img {
 	width: 100%; /* Set width to 100% */
