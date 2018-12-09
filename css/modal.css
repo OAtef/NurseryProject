@@ -1,3 +1,15 @@
+.swal2-modal {
+  min-height: 350px;
+  min-width: 300px;
+  font-size: 14px !important;
+}
+
+.swal2-popup {
+  min-height: 50px;
+  min-width: 250px;
+  font-size: 16px !important;
+}
+
 .btn{
   background-color: #4CAF50;
   padding: 10px 0px;
@@ -10,7 +22,7 @@
   margin: 10px 0px;
 }
 
-input[type = text], input[type = password]{
+input[type = text], input[type = password], input[type = email]{
   width: 360px;
   padding: 8px 5px;
   margin: 8px 0;
@@ -34,10 +46,11 @@ span.psw {
 
 /* The Modal (background) */
 .modal {
+    width: auto;
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    overflow: auto; /* Enable scroll if needed */
+    overflow-y: auto;
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     padding-top: 60px;
 }
@@ -45,7 +58,7 @@ span.psw {
 /* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
-    margin: 4% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    margin: 4% auto 15%; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
     width: 30%; /* Could be more or less, depending on screen size */
 

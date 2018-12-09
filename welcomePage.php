@@ -1,4 +1,6 @@
-<?php include('php/server.php') ?>
+<?php
+include('php/server.php');
+?>
 <html lang="en">
 	<head>
 		<title>Nursery</title>
@@ -7,14 +9,17 @@
 		<!-- style -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 		<link rel="stylesheet" type="text/css" href="css/welcomepage.css">
 		<link rel="stylesheet" type="text/css" href="css/modal.css">
 		<!-- Javascript -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="js/sweetalert2/sweetalert2.all.min.js"></script>
 
 	</head>
 	<body>
+
 		<!-- Navbar -->
 		<nav class="navbar navbar-inverse">
 		  <div class="container-fluid">
@@ -63,7 +68,6 @@
 		  </div>
 		</nav>
 
-
 		<div id="id01" class="modal">
 
 			<form class="modal-content animate" method="post">
@@ -71,12 +75,11 @@
 					<span id="closebtn1" class="close" title="Close Modal">&times;</span>
 				</div>
 				<div class="container">
-					<?php include('php/errors.php') ?>
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><b>Email:</b></span>
 						</div>
-						<input type="text" placeholder="Enter Email" name="email" required>
+						<input type="email" placeholder="Enter Email" name="email" required>
 					</div>
 					<div class="input-group">
 						<div class="input-group-prepend">
@@ -85,9 +88,17 @@
 						<input type="password" placeholder="Enter Password" name="password" required>
 					</div>
 					<input class="btn btn-primary" type="submit" value="Login" name="login_user">
+					<!-- <button class="btn btn-primary" name="login_user">Login</button> -->
 				</div>
 			</form>
 		</div>
+
+		<?php include('php/errors.php');
+					if (isset($logedInScript)) {
+						echo $logedInScript;
+					}
+		?>
+
 
 		<div id="id02" class="modal">
 
@@ -96,7 +107,6 @@
 					<span id="closebtn2" class="close" title="Close Modal">&times;</span>
 				</div>
 				<div class="container">
-					<?php include('php/errors.php') ?>
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><b>First Name:</b></span>
@@ -119,19 +129,19 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><b>Email:</b></span>
 						</div>
-						<input type="text" placeholder="Enter Email" name="email"required>
+						<input type="email" placeholder="Enter Email" name="email"required>
 					</div>
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><b>Password:</b></span>
 						</div>
-						<input type="password" placeholder="Enter Password" name="password1"required>
+						<input id="password" type="password" placeholder="Enter Password" name="password1"required>
 					</div>
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><b>Repeat Password:</b></span>
 						</div>
-						<input type="password" placeholder="Re-enter Password" name="password2"required>
+						<input id="confirmPassword" type="password" placeholder="Re-enter Password" name="password2"required>
 					</div>
 					<div class="input-group">
 						<div class="input-group-prepend">
@@ -143,6 +153,12 @@
 				</div>
 			</form>
 		</div>
+
+		<?php include('php/errors.php');
+					if (isset($signUpScript)) {
+						echo $signUpScript;
+					}
+		?>
 
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
 			<!-- Indicators -->

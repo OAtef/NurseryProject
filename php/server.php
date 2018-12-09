@@ -56,7 +56,14 @@ if (isset($_POST['signup_user'])) {
           $_SESSION['email'] = $email;
           $_SESSION['password'] = $password_1;
           $_SESSION['success'] = "You are now logged in";
-          header('location: welcomePage.php');
+          $signUpScript = "<script>Swal({
+                                    type: 'success',
+                                    title: 'Signed Up successfully',
+                                    toast: true,
+                                    position: 'top-right',
+                                    showConfirmButton: false,
+                                    timer: 3000
+                                  })</script>";
         }
         else {
             array_push($errors, "error");
@@ -66,7 +73,7 @@ if (isset($_POST['signup_user'])) {
 
 // LOGIN USER
 if (isset($_POST['login_user'])) {
-    $email = mysqli_real_escape_string($db, $_POST['email']); 
+    $email = mysqli_real_escape_string($db, $_POST['email']);
     $password = mysqli_real_escape_string($db, $_POST['password']);
 
     if (empty($email)) {
@@ -80,7 +87,7 @@ if (isset($_POST['login_user'])) {
         $signinquery = "SELECT * FROM users WHERE email='$email' AND password='$password'";
         $results = mysqli_query($db, $signinquery);
         if (mysqli_num_rows($results) == 1) {
-        
+
             $type = mysqli_query($db, "SELECT type FROM users WHERE users.email='$email'");
             $result = mysqli_fetch_array($type);
 
@@ -108,9 +115,20 @@ if (isset($_POST['login_user'])) {
             }
 
             $_SESSION['success'] = "You are now logged in";
-            header('location: welcomePage.php');
+            $logedInScript = "<script>Swal({
+                                      type: 'success',
+                                      title: 'Signed in successfully',
+                                      toast: true,
+                                      position: 'top-right',
+                                      showConfirmButton: false,
+                                      timer: 3000
+                                    })</script>";
         }else {
-            array_push($errors, "Wrong email/password combination");
+            array_push($errors, "<script>Swal({
+                                      type: 'error',
+                                      title: 'Oops...',
+                                      text: 'Wrong email or password!',
+                                    })</script>");
         }
     }
   }

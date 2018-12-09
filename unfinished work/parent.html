@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="parent.css">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="dobpicker.js"></script>
+
+<head>
+    <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+    </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a id="Pic-btn"><span class=""></span> Pic</a></li>
+
+        <li class='dropdown'>
+             <a class='dropdown-toggle' data-toggle='dropdown' href='#'>Name
+             <span class='caret'></span></a>
+             <ul class='dropdown-menu'>
+               <li><a href='#'>Logout</a></li>
+             </ul>
+           </li>
+        </ul>
+
+
+  </div>
+</nav>
+
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#"  onclick="ShowHideColl()" id="test">View Msg</a>
+  <a href="#"  onclick="ShowHideMsg()" >Send Msg</a>
+  <a href="#">Edit profile</a>
+  <a href="#">Add Child</a>
+  <a href="#">Interview Status</a>
+</div>
+
+
+</head>
+<body>
+
+ <div class="container showingtest" id="coll1" style="display: none">
+
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Collapsible Group 1</a>
+        </h4>
+      </div>
+      <div id="collapse1"class="panel-collapse collapse ">
+        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+      </div>
+    </div>
+</div>
+</div>
+
+ <div class="container" id="msg" style="display: none">
+        <div class="row">
+    <div class="col-md-6 col-md-offset-3" id="form_container">
+        <h2>Contact Us</h2>
+        <p>
+           Please send your message below. We will get back to you at the earliest!
+        </p>
+        <form role="form" method="post" id="reused_form">
+
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <label for="message">
+                        Message:</label>
+                    <textarea class="form-control" type="textarea" name="message" id="message" maxlength="6000" rows="7"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 form-group">
+                    <label for="name">
+                        Your Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label for="email">
+                        Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <button type="submit" class="btn btn-lg btn-default pull-right" >Send &rarr;</button>
+                </div>
+            </div>
+
+        </form> -->
+        </div>
+    </div>
+  </div>
+
+
+
+ <!-- Profile -->
+
+  <div class="container showingtest">
+  <div class="row">
+    <div class="col-md-3 ">
+
+    </div>
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Your Profile</h4>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <form>
+                              <div class="form-group row">
+                                <label for="username" class="col-4 col-form-label">User Name*</label>
+                                <div class="col-8">
+                                  <input id="username" name="username" placeholder="Username" class="form-control here" required="required" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="name" class="col-4 col-form-label">First Name</label>
+                                <div class="col-8">
+                                  <input id="name" name="name" placeholder="First Name" class="form-control here" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="lastname" class="col-4 col-form-label">Last Name</label>
+                                <div class="col-8">
+                                  <input id="lastname" name="lastname" placeholder="Last Name" class="form-control here" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="text" class="col-4 col-form-label">National ID*</label>
+                                <div class="col-8">
+                                  <input id="text" name="text" placeholder="National ID" class="form-control here" required="required" type="text">
+                                </div>
+                              </div>
+
+                              <div class="form-group row">
+                                <label for="email" class="col-4 col-form-label">Email*</label>
+                                <div class="col-8">
+                                  <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="website" class="col-4 col-form-label">Mobile Number</label>
+                                <div class="col-8">
+                                  <input id="website" name="website" placeholder="Mobile Number" class="form-control here" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="publicinfo" class="col-4 col-form-label">Public Info</label>
+                                <div class="col-8">
+                                  <textarea id="publicinfo" name="publicinfo" cols="40" rows="4" class="form-control"></textarea>
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="newpass" class="col-4 col-form-label">New Password</label>
+                                <div class="col-8">
+                                  <input id="newpass" name="newpass" placeholder="New Password" class="form-control here" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <div class="offset-4 col-8">
+                                  <button name="submit" type="submit" class="btn btn-primary">Update My Profile</button>
+                                </div>
+                              </div>
+                            </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container showingtest">
+  <div class="row">
+    <div class="col-md-3 ">
+
+    </div>
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Your Child</h4>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <form>
+                              <div class="form-group row">
+                                <label for="username" class="col-4 col-form-label">Parent User Name*</label>
+                                <div class="col-8">
+                                  <input id="username" name="username" placeholder="Username" class="form-control here" required="required" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="name" class="col-4 col-form-label">Child First Name</label>
+                                <div class="col-8">
+                                  <input id="name" name="name" placeholder="First Name" class="form-control here" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="lastname" class="col-4 col-form-label">Child Last Name</label>
+                                <div class="col-8">
+                                  <input id="lastname" name="lastname" placeholder="Last Name" class="form-control here" type="text">
+                                </div>
+                              </div>
+
+
+                              <div class="form-group row">
+                                <label for="text" class="col-4 col-form-label">Child Birthdate</label>
+                                <div class="col-8">
+                                <select id="dobday"></select>
+                                <select id="dobmonth"></select>
+                                <select id="dobyear"></select>
+
+
+                                </div>
+                              </div>
+
+                              <div class="form-group row">
+                                <label for="Category" class="col-4 col-form-label">Category Number</label>
+                                <div class="col-8">
+                                <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Category
+                                <span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                <li><a href="#">C1</a></li>
+                                <li><a href="#">C2</a></li>
+                                <li><a href="#">C3</a></li>
+                                </ul>
+                                </div>
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label  class="col-4 col-form-label">Invoice Number</label>
+                                <div class="col-8">
+                                  <input id="Invoice" name="Invoice" placeholder="Invoice Number" class="form-control here" type="text">
+                                </div>
+                              </div>
+
+
+                              <div class="form-group row">
+                                <div class="offset-4 col-8">
+                                  <button name="submit" type="submit" class="btn btn-primary">Confirm</button>
+                                </div>
+                              </div>
+                            </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+</body>
+
+
+<script>
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.body.style.marginLeft= "250px";
+    // var x = document.getElementById("showingtest");
+    // for (var i = 0; i < x.length; i++) {
+    //   x.style.marginRight = "250px";
+    // }
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+   document.body.style.marginLeft= "0";
+}
+
+// function ShowHideColl() {
+//     var x = document.getElementById("coll1");
+//     if (x.style.display == "none") {
+//         x.style.display = "block";
+//     } else {
+//         x.style.display = "none";
+//     }
+// }
+//
+// function ShowHideMsg() {
+//     var y = document.getElementById("msg");
+//     if (y.style.display == "none") {
+//         y.style.display = "block";
+//     } else {
+//         y.style.display = "none";
+//     }
+// }
+
+$("#test").click(function(){
+  $(".showingtest").hide();
+  $("#coll1").show();
+});
+
+
+$(document).ready(function() {
+        $.dobPicker({
+          daySelector: '#dobday', /* Required */
+          monthSelector: '#dobmonth', /* Required */
+          yearSelector: '#dobyear', /* Required */
+          dayDefault: 'Day', /* Optional */
+          monthDefault: 'Month', /* Optional */
+          yearDefault: 'Year', /* Optional */
+          minimumAge: 2, /* Optional */
+          maximumAge: 7 /* Optional */
+        });
+      });
+
+</script>
+
+
+</html>
