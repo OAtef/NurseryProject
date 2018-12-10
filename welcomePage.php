@@ -43,7 +43,7 @@ include('php/server.php');
 						<li><a href='#'>About Us</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-					 <li><a href='#' class="glyphicon glyphicon-user"> UserName</a></li>
+					 <li><a href='php/parent.html' class="glyphicon glyphicon-user"> UserName</a></li>
 					 <li><a href='php/logout.php' class="glyphicon glyphicon-log-out"> Logout</a></li>
 				 </ul>
 
