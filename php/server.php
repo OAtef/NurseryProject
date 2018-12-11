@@ -78,6 +78,7 @@ if (isset($_POST['login_user'])) {
 
     if (empty($email)) {
         array_push($errors, "email is required");
+        
     }
     if (empty($password)) {
         array_push($errors, "Password is required");

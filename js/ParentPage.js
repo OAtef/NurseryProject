@@ -67,7 +67,7 @@ function EditProfile() {
 	// document.ProfilePage.neigherhoodName.disabled=false;
 	// document.ProfilePage.StreetName.disabled=false;
 	// document.ProfilePage.buildno.disabled=false;
-	document.ProfilePage.update.style.display='block';
+	document.ProfilePage.submit.style.display='block';
 
 }
 
