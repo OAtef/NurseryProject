@@ -1,12 +1,12 @@
 <?php
+include('db.php');
+
 session_start();
 
 // initializing variables
-$email    = "";
+$email  = "";
 $errors = array();
-
-// connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'Nursery-Database');
+$userType = 0;
 
 // REGISTER USER
 if (isset($_POST['signup_user'])) {
@@ -91,24 +91,17 @@ if (isset($_POST['login_user'])) {
             $type = mysqli_query($db, "SELECT type FROM users WHERE users.email='$email'");
             $result = mysqli_fetch_array($type);
 
-            if($result['type'] == 1){ // parent
-                $query = mysqli_query($db,"SELECT * FROM users INNER JOIN children on users.ID = children.parentID WHERE users.email='$email'");
-                $result = mysqli_fetch_array($type);
-                $_SESSION['email'] = $email;
-                $_SESSION['password'] = $password;
-                $_SESSION['FName'] = $result['firstname'];
-                $_SESSION['LName'] = $result['lastname'];
-                $_SESSION['MobNum'] = $result['mobilenumber'];
-                $_SESSION['nationalID'] = $result['nationalID'];
-                $_SESSION['childID'] = $result['child_id'];
-                $_SESSION['childFName'] = $result['first_name'];
-                $_SESSION['childLName'] = $result['last_name'];
-                $_SESSION['childGender'] = $result['Gender'];
-                $_SESSION['bdate'] = $result['Bdate'];
-                $_SESSION['EduYear'] = $result['EduYear'];
-            }
-            else if($result['type'] == 2){ // nurse manager
+            $_SESSION['email'] = $email;
+            $_SESSION['password'] = $password;
 
+            if($result['type'] == 1){ // parent
+              $_SESSION['userType'] = 1;
+            }
+            else if($result['type'] == 2){ // Nurse Manager
+              $_SESSION['userType'] = 2;
+            }
+            else if($result['type'] == 3){ // CEO Manager
+              $_SESSION['userType'] = 3;
             }
             else{
                 array_push($errors, "the type asked for is not identified");

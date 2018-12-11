@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html>
  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -6,27 +6,21 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/parent.css">
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="js/dobpicker.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/parent.css">
 
 <head>
- 
+
    <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span></a>
+      <a class="navbar-brand" href="#"><span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span></a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
+      <li class="active"><a href="../welcomePage.php">Home</a></li>
     </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a id="Pic-btn"><span class=""></span> Pic</a></li>
-        
+
         <li class='dropdown'>
              <a class='dropdown-toggle' data-toggle='dropdown' href='#'>Name
              <span class='caret'></span></a>
@@ -35,11 +29,9 @@
              </ul>
            </li>
         </ul>
-      
-    
+
   </div>
 </nav>
-
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -47,16 +39,16 @@
   <a href="#"  id="vm">View Msg</a>
   <a href="#"  id="sm">Send Msg</a>
   <a href="#"  id="ch"> Child</a>
-  <a href="#"  id="is">Interview Status</a>
-</div>
 
+</div>
 
 </head>
 <body>
-  <div id="main">
+
+<div id="main">
 
 <div class="container HideAll" id="Vmsg" style="display: none">
-  
+
   <div class="panel-group" id="accordion">
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -81,7 +73,14 @@
            Please send your message below. We will get back to you at the earliest!
         </p>
         <form role="form" method="post" id="reused_form">
-            
+
+        <div class="row">
+                <div class="col-sm-12 form-group">
+                    <label for="email">
+                        Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <label for="message">
@@ -90,43 +89,22 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-6 form-group">
-                    <label for="name">
-                        Your Name:</label>
-                    <input type="text" class="form-control" id="name" name="name" required>
-                </div>
-                <div class="col-sm-6 form-group">
-                    <label for="email">
-                        Email:</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
-                </div>
-            </div>
-            
-                        
-            <div class="row">
                 <div class="col-sm-12 form-group">
                     <button type="submit" class="btn btn-lg btn-default pull-right" >Send &rarr;</button>
                 </div>
             </div>
 
         </form>
-       </div>          
+       </div>
     </div>
   </div>
 
-
-
-<!------ Profile ---------->
+<!-- Profile -->
 
 <div class="container HideAll" id="Profile">
   <div class="row">
 
-
     <div class="col-md-3 ">
-        
-
-   
-
       <div class="text-center">
         <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
         <h6>Upload a different photo...</h6>
@@ -134,12 +112,7 @@
       </div>
 
 
-
-
-
     </div>
-
-
 
     <div class="col-md-9">
         <div class="card">
@@ -155,58 +128,87 @@
                         <hr>
                     </div>
                 </div>
+
                 <div class="row" >
                     <div class="col-md-12">
                         <form name="ProfilePage">
                               <div class="form-group row">
-                                <label for="username" class="col-4 col-form-label" >User Name*</label> 
+                                <label for="firstname" class="col-4 col-form-label">First Name</label>
                                 <div class="col-8">
-                                  <input id="username" name="username" placeholder="Username" class="form-control here" required="required" type="text" disabled>
+                                  <input id="firstname" name="fname" placeholder="First Name" class="form-control here" type="text" required="required" disabled>
                                 </div>
                               </div>
                               <div class="form-group row">
-                                <label for="name" class="col-4 col-form-label">First Name</label> 
-                                <div class="col-8">
-                                  <input id="name" name="fname" placeholder="First Name" class="form-control here" type="text" required="required" disabled>
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="lastname" class="col-4 col-form-label">Last Name</label> 
+                                <label for="lastname" class="col-4 col-form-label">Last Name</label>
                                 <div class="col-8">
                                   <input id="lastname" name="lastname" placeholder="Last Name" class="form-control here" type="text" required="required" disabled>
                                 </div>
                               </div>
                               <div class="form-group row">
-                                <label for="text" class="col-4 col-form-label">National ID*</label> 
+                                <label for="nationalid" class="col-4 col-form-label">National ID</label>
                                 <div class="col-8">
-                                  <input id="text" name="Nid" placeholder="National ID" class="form-control here" required="required" type="text" disabled>
+                                  <input id="nationalid" name="Nid" placeholder="National ID" class="form-control here" required="required" type="text" disabled>
                                 </div>
                               </div>
-                         
+
                               <div class="form-group row">
-                                <label for="email" class="col-4 col-form-label">Email*</label> 
+                                <label for="parentemail" class="col-4 col-form-label">Email</label>
                                 <div class="col-8">
-                                  <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text" disabled>
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="mobile" class="col-4 col-form-label">Mobile Number</label> 
-                                <div class="col-8">
-                                  <input id="mobile" name="mobile" placeholder="Mobile Number" class="form-control here" type="text" required="required" disabled>
+                                  <input id="parentemail" name="email" placeholder="Email" class="form-control here" required="required" type="text" disabled>
                                 </div>
                               </div>
                               <div class="form-group row">
-                                <label for="publicinfo" class="col-4 col-form-label">Public Info</label> 
+                                <label for="mobilenumber" class="col-4 col-form-label">Mobile Number</label>
+                                <div class="col-8">
+                                  <input id="mobilenumber" name="mobile" placeholder="Mobile Number" class="form-control here" type="text" required="required" disabled>
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="publicinfo" class="col-4 col-form-label">Public Info</label>
                                 <div class="col-8">
                                   <textarea id="publicinfo" name="publicinfo" cols="40" rows="4" class="form-control" disabled></textarea>
                                 </div>
                               </div>
                               <div class="form-group row">
-                                <label for="newpass" class="col-4 col-form-label"> Password</label> 
+                                <label for="oldpass" class="col-4 col-form-label"> old Password</label>
+                                <div class="col-8">
+                                  <input id="oldpass" name="oldpass" placeholder="old Password" class="form-control here" type="text" required="required" disabled>
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="newpass" class="col-4 col-form-label"> New Password</label>
                                 <div class="col-8">
                                   <input id="newpass" name="newpass" placeholder="New Password" class="form-control here" type="text" required="required" disabled>
                                 </div>
-                              </div> 
+                              </div>
+
+                            <hr>
+                            <h4>Adress Information: </h4>
+                            <hr>
+                            <div class="form-group row">
+                                <label for="city" class="col-4 col-form-label">City</label>
+                                <div class="col-8">
+                                  <input id="city" name="city" placeholder="Your City" class="form-control here" type="text" required="required" disabled>
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="neigherhoodName" class="col-4 col-form-label">Neigherhood Name </label>
+                                <div class="col-8">
+                                  <input id="neigherhoodName " name="neigherhoodName " placeholder="Your City" class="form-control here" type="text" required="required" disabled>
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="StreetName" class="col-4 col-form-label">Street Name</label>
+                                <div class="col-8">
+                                  <input id="StreetName" name="StreetName" placeholder="Street Name" class="form-control here" type="text" required="required" disabled>
+                                </div>
+                              </div>
+                            <div class="form-group row">
+                                <label for="buildno" class="col-4 col-form-label">Building Number</label>
+                                <div class="col-8">
+                                  <input id="buildno" name="buildno" placeholder="Building Number" class="form-control here" type="text" required="required" disabled>
+                                </div>
+                              </div>
                               <div class="form-group row">
                                 <div class="offset-4 col-8">
                                   <button id="update"name="submit" type="submit" class="btn btn-primary" style="display: none">Update My Profile</button>
@@ -215,7 +217,7 @@
                             </form>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -226,53 +228,53 @@
 <div class="container HideAll" id="ChildProfile" style="display: none">
   <div class="row">
     <div class="col-md-3 ">
-        
+
     </div>
     <div class="col-md-9">
         <div class="card">
             <div class="card-body">
-                <div class="row">   
+                <div class="row">
                  <h4>Your Child</h4>
                  <button name="edit" id="edit" class="btn btn-primary" onclick="EditChild()">Edit Profile</button>
-                  <button name="add" id="add" class="btn btn-primary" onclick="AddChild()">Add New Child</button>                        
+                  <button name="add" id="add" class="btn btn-primary" onclick="AddChild()">Add New Child</button>
                         <hr>
-                 
+
                 </div>
                 <div class="row">
 
                     <div class="col-md-12">
                         <form name="childform">
-                              
+
                               <div class="form-group row">
-                                <label for="name" class="col-4 col-form-label">Child First Name</label> 
+                                <label for="name" class="col-4 col-form-label">Child First Name</label>
                                 <div class="col-8">
                                   <input id="name" name="fname" placeholder="First Name" class="form-control here" type="text" disabled>
                                 </div>
                               </div>
                               <div class="form-group row">
-                                <label for="lastname" class="col-4 col-form-label">Child Last Name</label> 
+                                <label for="lastname" class="col-4 col-form-label">Child Last Name</label>
                                 <div class="col-8">
                                   <input id="lastname" name="lastname" placeholder="Last Name" class="form-control here" type="text" disabled>
                                 </div>
                               </div>
-                             
+
 
                               <div class="form-group row">
-                                <label for="text" class="col-4 col-form-label">Child Birthdate</label> 
+                                <label for="text" class="col-4 col-form-label">Child Birthdate</label>
                                 <div class="col-8">
                                 <select id="dobday" disabled></select>
                                 <select id="dobmonth" disabled></select>
                                 <select id="dobyear" disabled></select>
-                                
-                                 
+
+
                                 </div>
                               </div>
-                         
+
                               <div class="form-group row">
-                                <label for="Category" class="col-4 col-form-label">Category Number</label> 
+                                <label for="Category" class="col-4 col-form-label">Category Number</label>
                                 <div class="col-8">
                                 <div class="dropdown">
-                                <button class="btn btn-primary dropdown-toggle" id="cat" type="button" data-toggle="dropdown" disabled>Category 
+                                <button class="btn btn-primary dropdown-toggle" id="cat" type="button" data-toggle="dropdown" disabled>Category
                                 <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
                                 <li><a href="#">C1</a></li>
@@ -283,13 +285,13 @@
                                 </div>
                               </div>
                               <div class="form-group row">
-                                <label  class="col-4 col-form-label">Invoice Number</label> 
+                                <label  class="col-4 col-form-label">Invoice Number</label>
                                 <div class="col-8">
                                   <input id="Invoice" name="Invoice" placeholder="Invoice Number" class="form-control here" type="text" disabled>
                                 </div>
                               </div>
-                              
-                              
+
+
                               <div class="form-group row">
                                 <div class="offset-4 col-8">
                                   <button id="confirm1" name="confirm" type="submit" class="btn btn-primary" style="display: none" >Confirm </button>
@@ -298,7 +300,7 @@
                             </form>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -306,126 +308,7 @@
 </div>
 </div>
 
+<script src="../js/ParentPage.js"></script>
+
 </body>
-
-
-
-
-<script>
-
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "150px";
-}
-
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft= "0";
-}
-
-
-
-$("#pf").click(function(){
-  $(".HideAll").hide();
-  $("#Profile").show();
-});
-
-$("#vm").click(function(){
-  $(".HideAll").hide();
-  $("#Vmsg").show();
-});
-
-$("#sm").click(function(){
-  $(".HideAll").hide();
-  $("#Smsg").show();
-});
-
-$("#ch").click(function(){
-  $(".HideAll").hide();
-  $("#ChildProfile").show();
-});
-
-$("#is").click(function(){
-  $(".HideAll").hide();
- // $("#Profile").show();
-});
-
-function EditProfile() {
-    document.ProfilePage.username.disabled=false;
-     document.ProfilePage.fname.disabled=false;
-      document.ProfilePage.lastname.disabled=false;
-       document.ProfilePage.Nid.disabled=false;
-       document.ProfilePage.email.disabled=false;
-        document.ProfilePage.mobile.disabled=false;
-         document.ProfilePage.publicinfo.disabled=false;
-         document.ProfilePage.newpass.disabled=false;
-         document.ProfilePage.update.style.display='block';
-      
-}
-
-function EditChild() {
-    
-     document.childform.fname.disabled=false;
-      document.childform.lastname.disabled=false;
-       document.childform.dobday.disabled=false;
-        document.childform.dobmonth.disabled=false;
-         document.childform.dobyear.disabled=false;
-          document.childform.Invoice.disabled=false;
-           document.childform.cat.disabled=false;
-            document.childform.confirm.style.display='block';
-      
-}
-
-function AddChild() {
-    
-     document.childform.fname.disabled=false;
-      document.childform.lastname.disabled=false;
-       document.childform.dobday.disabled=false;
-        document.childform.dobmonth.disabled=false;
-         document.childform.dobyear.disabled=false;
-          document.childform.Invoice.disabled=false;
-           document.childform.cat.disabled=false;
-            document.childform.confirm.style.display='block';
-             document.getElementById("confirm1").innnerHTML="Add New Child";
-      
-}
-
-
-$(document).ready(function() {
-
-    
-    var readURL = function(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('.avatar').attr('src', e.target.result);
-            }
-    
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-    
-
-    $(".file-upload").on('change', function(){
-        readURL(this);
-    });
-});
-
-$(document).ready(function() {
-        $.dobPicker({
-          daySelector: '#dobday', /* Required */
-          monthSelector: '#dobmonth', /* Required */
-          yearSelector: '#dobyear', /* Required */
-          dayDefault: 'Day', /* Optional */
-          monthDefault: 'Month', /* Optional */
-          yearDefault: 'Year', /* Optional */
-          minimumAge: 2, /* Optional */
-          maximumAge: 7 /* Optional */
-        });
-      });
-
-</script>
-     
-
 </html>

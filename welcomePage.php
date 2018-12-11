@@ -9,7 +9,6 @@ include('php/server.php');
 		<!-- style -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 		<link rel="stylesheet" type="text/css" href="css/welcomepage.css">
 		<link rel="stylesheet" type="text/css" href="css/modal.css">
 		<!-- Javascript -->
@@ -43,7 +42,17 @@ include('php/server.php');
 						<li><a href='#'>About Us</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-					 <li><a href='php/parent.html' class="glyphicon glyphicon-user"> UserName</a></li>
+						<?php
+									if (isset($_SESSION['userType']) && $_SESSION['userType'] == 1) {
+										echo "<li><a href='php/parent.php' class='glyphicon glyphicon-user'> UserName</a></li>";
+									}
+									elseif (isset($_SESSION['userType']) && $_SESSION['userType'] == 2) {
+										echo "<li><a href='php/Manager.php' class='glyphicon glyphicon-user'> UserName</a></li>";
+									}
+									elseif (isset($_SESSION['userType']) && $_SESSION['userType'] == 3) {
+										echo "<li><a href='php/CEO.php' class='glyphicon glyphicon-user'> UserName</a></li>";
+									}
+						?>
 					 <li><a href='php/logout.php' class="glyphicon glyphicon-log-out"> Logout</a></li>
 				 </ul>
 

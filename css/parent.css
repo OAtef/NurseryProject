@@ -2,9 +2,15 @@ body {
     font-family: "Lato", sans-serif;
     /*background: linear-gradient(red, white);*/
     background: url(img/ParentBackground.jpg);
-   
+}
 
+.panel-group{
+  margin: 0px 100px;
+}
 
+#Profile{
+  width: auto;
+  margin: 0px 80px;
 }
 
 .sidenav {
@@ -48,8 +54,7 @@ body {
 
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;
-            align-self:  
+            align-self:
   }
   .sidenav a {font-size: 18px;}
 }
-
