@@ -1,18 +1,13 @@
 <?php
 include('db.php');
-
 session_start();
 
-
-
 $email = $_SESSION['email'];
-$password = $_SESSION['password'];
 
-$query = "SELECT * FROM users WHERE email='$email' AND password='$password'";
+$query = "SELECT * from users inner join parent on users.ID = parent.userID inner join address on parent.addressID = address.addressID WHERE users.email='$email'";
 $result = mysqli_query($db, $query);
 
 $json = array();
-
 while($array = mysqli_fetch_assoc($result)){
 
     $json[] = $array;

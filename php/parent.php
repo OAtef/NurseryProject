@@ -9,7 +9,6 @@ include('SendMsg.php');
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="../css/parent.css">
-
 <head>
 
    <nav class="navbar navbar-inverse">
@@ -116,8 +115,10 @@ include('SendMsg.php');
     <div class="col-md-3 ">
       <div class="text-center">
         <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
-        <h6>Upload a different photo...</h6>
-        <input type="file" class="text-center center-block file-upload">
+        <div id="uploadImg" style="display: none">
+          <h6>Upload a different photo...</h6>
+          <input type="file" class="text-center center-block file-upload" >
+        </div>
       </div>
 
 
@@ -151,6 +152,18 @@ include('SendMsg.php');
                                 <label for="lastname" class="col-4 col-form-label">Last Name</label>
                                 <div class="col-8">
                                   <input id="lastname" name="lastname" placeholder="Last Name" class="form-control here" type="text" required="required" disabled>
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="relativeRelation" class="col-4 col-form-label">Relative Relation</label>
+                                <div class="col-8">
+                                  <input id="relativeRelation" name="relativeRelation" placeholder="Relative Relation" class="form-control here" required="required" type="text" disabled>
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="Parentgender" class="col-4 col-form-label">Relative Relation</label>
+                                <div class="col-8">
+                                  <input id="Parentgender" name="gender" placeholder="Gender" class="form-control here" required="required" type="text" disabled>
                                 </div>
                               </div>
                               <div class="form-group row">
@@ -203,7 +216,7 @@ include('SendMsg.php');
                               <div class="form-group row">
                                 <label for="neigherhoodName" class="col-4 col-form-label">Neigherhood Name </label>
                                 <div class="col-8">
-                                  <input id="neigherhoodName " name="neigherhoodName " placeholder="Your City" class="form-control here" type="text" required="required" disabled>
+                                  <input id="neigherhoodName" name="neigherhoodName" placeholder="Your Neigherhood Name" class="form-control here" type="text" required="required" disabled>
                                 </div>
                               </div>
                               <div class="form-group row">
@@ -220,7 +233,7 @@ include('SendMsg.php');
                               </div>
                               <div class="form-group row">
                                 <div class="offset-4 col-8">
-                                  <button id="update"name="submit" type="submit" class="btn btn-primary" style="display: none">Update My Profile</button>
+                                  <button id="update" name="submit" type="submit" class="btn btn-primary" style="display: none">Update My Profile</button>
                                 </div>
                               </div>
                             </form>
@@ -237,7 +250,6 @@ include('SendMsg.php');
 <div class="container HideAll" id="ChildProfile" style="display: none">
   <div class="row">
     <div class="col-md-3 ">
-
     </div>
     <div class="col-md-9">
         <div class="card">
@@ -318,6 +330,7 @@ include('SendMsg.php');
 </div>
 
 <script src="../js/ParentPage.js"></script>
+<script src="../js/dobpicker.js"></script>
 
 </body>
 </html>
