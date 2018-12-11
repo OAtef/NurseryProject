@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 07, 2018 at 08:08 PM
+-- Generation Time: Dec 10, 2018 at 10:00 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -29,13 +29,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `address` (
-  `parent id` int(11) NOT NULL,
+  `addressID` int(11) NOT NULL,
   `buildingNo` int(11) NOT NULL,
   `StreetName` varchar(30) NOT NULL,
   `city` varchar(30) NOT NULL,
-  `DepartmentNo` int(11) NOT NULL,
   `neigherhoodName` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `address`
+--
+
+INSERT INTO `address` (`addressID`, `buildingNo`, `StreetName`, `city`, `neigherhoodName`) VALUES
+(1, 1, 'josephTeto', 'cairo', 'sheraton');
 
 -- --------------------------------------------------------
 
@@ -55,10 +61,10 @@ CREATE TABLE `appliers` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `carTaker`
+-- Table structure for table `cartaker`
 --
 
-CREATE TABLE `carTaker` (
+CREATE TABLE `cartaker` (
   `carTaker_id` int(11) NOT NULL,
   `first_name` varchar(30) NOT NULL,
   `last_name` varchar(30) NOT NULL,
@@ -68,10 +74,10 @@ CREATE TABLE `carTaker` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `carTaker`
+-- Dumping data for table `cartaker`
 --
 
-INSERT INTO `carTaker` (`carTaker_id`, `first_name`, `last_name`, `mobile_no`, `carNo`, `role`) VALUES
+INSERT INTO `cartaker` (`carTaker_id`, `first_name`, `last_name`, `mobile_no`, `carNo`, `role`) VALUES
 (1, 'habiba', 'hegazy', 1023456789, '8975', 'mother');
 
 -- --------------------------------------------------------
@@ -98,10 +104,10 @@ INSERT INTO `category` (`categoryName`, `categoryNo`, `scheduleCode`, `startingA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ceoManager`
+-- Table structure for table `ceomanager`
 --
 
-CREATE TABLE `ceoManager` (
+CREATE TABLE `ceomanager` (
   `userID` int(11) NOT NULL,
   `officeDays` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -127,13 +133,6 @@ CREATE TABLE `children` (
   `interviewdate` date NOT NULL,
   `EduYear` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `children`
---
-
-INSERT INTO `children` (`child_id`, `first_name`, `last_name`, `Gender`, `Bdate`, `invoiceNo`, `categoryNo`, `carTakerID`, `parentID`, `nurseID`, `accepted`, `interviewdate`, `EduYear`) VALUES
-(1, 'yousef', 'methat', 'male', '2018-12-03', 1, 1, 1, 2, 0, 0, '2018-12-01', 2018);
 
 -- --------------------------------------------------------
 
@@ -198,10 +197,10 @@ INSERT INTO `invoice` (`invoiceNo`, `payment_type`, `invoiceDate`, `discount`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nurseManager`
+-- Table structure for table `nursemanager`
 --
 
-CREATE TABLE `nurseManager` (
+CREATE TABLE `nursemanager` (
   `userID` int(11) NOT NULL,
   `workingHours` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -214,6 +213,7 @@ CREATE TABLE `nurseManager` (
 
 CREATE TABLE `parent` (
   `userID` int(11) NOT NULL,
+  `addressID` int(11) NOT NULL,
   `relativeRelation` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -221,8 +221,8 @@ CREATE TABLE `parent` (
 -- Dumping data for table `parent`
 --
 
-INSERT INTO `parent` (`userID`, `relativeRelation`) VALUES
-(2, 'mother');
+INSERT INTO `parent` (`userID`, `addressID`, `relativeRelation`) VALUES
+(2, 1, 'mother');
 
 -- --------------------------------------------------------
 
@@ -333,25 +333,25 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID`, `firstname`, `lastname`, `mobilenumber`, `email`, `password`, `nationalID`, `type`) VALUES
-(1, 'omar', 'atef', 11, 'oatef', '123', 0, 0),
+(1, 'omar', 'atef', 11, 'oatef', '123', 0, 1),
 (2, 'habiba', 'hegazy', 123, 'habiba@gmail.com', '123', 0, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `userType`
+-- Table structure for table `usertype`
 --
 
-CREATE TABLE `userType` (
+CREATE TABLE `usertype` (
   `typeID` int(11) NOT NULL,
   `type` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `userType`
+-- Dumping data for table `usertype`
 --
 
-INSERT INTO `userType` (`typeID`, `type`) VALUES
+INSERT INTO `usertype` (`typeID`, `type`) VALUES
 (1, 'parent'),
 (2, 'nurse_manager');
 
@@ -363,8 +363,7 @@ INSERT INTO `userType` (`typeID`, `type`) VALUES
 -- Indexes for table `address`
 --
 ALTER TABLE `address`
-  ADD PRIMARY KEY (`DepartmentNo`,`buildingNo`,`StreetName`),
-  ADD UNIQUE KEY `parent id` (`parent id`);
+  ADD PRIMARY KEY (`addressID`);
 
 --
 -- Indexes for table `appliers`
@@ -373,9 +372,9 @@ ALTER TABLE `appliers`
   ADD PRIMARY KEY (`appling_id`);
 
 --
--- Indexes for table `carTaker`
+-- Indexes for table `cartaker`
 --
-ALTER TABLE `carTaker`
+ALTER TABLE `cartaker`
   ADD PRIMARY KEY (`carTaker_id`);
 
 --
@@ -386,9 +385,9 @@ ALTER TABLE `category`
   ADD KEY `scheduleCode` (`scheduleCode`);
 
 --
--- Indexes for table `ceoManager`
+-- Indexes for table `ceomanager`
 --
-ALTER TABLE `ceoManager`
+ALTER TABLE `ceomanager`
   ADD PRIMARY KEY (`userID`);
 
 --
@@ -431,16 +430,17 @@ ALTER TABLE `invoice`
   ADD KEY `payment_type` (`payment_type`);
 
 --
--- Indexes for table `nurseManager`
+-- Indexes for table `nursemanager`
 --
-ALTER TABLE `nurseManager`
+ALTER TABLE `nursemanager`
   ADD PRIMARY KEY (`userID`);
 
 --
 -- Indexes for table `parent`
 --
 ALTER TABLE `parent`
-  ADD PRIMARY KEY (`userID`);
+  ADD PRIMARY KEY (`userID`),
+  ADD KEY `addressID` (`addressID`);
 
 --
 -- Indexes for table `payment`
@@ -481,9 +481,9 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `userType`
+-- Indexes for table `usertype`
 --
-ALTER TABLE `userType`
+ALTER TABLE `usertype`
   ADD PRIMARY KEY (`typeID`);
 
 --
@@ -494,17 +494,11 @@ ALTER TABLE `userType`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `address`
---
-ALTER TABLE `address`
-  ADD CONSTRAINT `address_ibfk_1` FOREIGN KEY (`parent id`) REFERENCES `parent` (`userID`);
 
 --
 -- Constraints for table `category`
@@ -513,9 +507,9 @@ ALTER TABLE `category`
   ADD CONSTRAINT `category_ibfk_1` FOREIGN KEY (`scheduleCode`) REFERENCES `schedule` (`schdule_code`);
 
 --
--- Constraints for table `ceoManager`
+-- Constraints for table `ceomanager`
 --
-ALTER TABLE `ceoManager`
+ALTER TABLE `ceomanager`
   ADD CONSTRAINT `ceoManager_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`ID`);
 
 --
@@ -525,27 +519,27 @@ ALTER TABLE `children`
   ADD CONSTRAINT `children_ibfk_1` FOREIGN KEY (`parentID`) REFERENCES `parent` (`userID`),
   ADD CONSTRAINT `children_ibfk_3` FOREIGN KEY (`invoiceNo`) REFERENCES `invoice` (`invoiceNo`),
   ADD CONSTRAINT `children_ibfk_4` FOREIGN KEY (`categoryNo`) REFERENCES `category` (`categoryNo`),
-  ADD CONSTRAINT `children_ibfk_5` FOREIGN KEY (`carTakerID`) REFERENCES `carTaker` (`carTaker_id`);
+  ADD CONSTRAINT `children_ibfk_5` FOREIGN KEY (`carTakerID`) REFERENCES `cartaker` (`carTaker_id`);
 
 --
 -- Constraints for table `commentson`
 --
 ALTER TABLE `commentson`
-  ADD CONSTRAINT `commentson_ibfk_1` FOREIGN KEY (`nurseID`) REFERENCES `nurseManager` (`userID`),
+  ADD CONSTRAINT `commentson_ibfk_1` FOREIGN KEY (`nurseID`) REFERENCES `nursemanager` (`userID`),
   ADD CONSTRAINT `commentson_ibfk_2` FOREIGN KEY (`child id`) REFERENCES `children` (`child_id`);
 
 --
 -- Constraints for table `commentsto`
 --
 ALTER TABLE `commentsto`
-  ADD CONSTRAINT `commentsto_ibfk_1` FOREIGN KEY (`nurseID`) REFERENCES `nurseManager` (`userID`),
+  ADD CONSTRAINT `commentsto_ibfk_1` FOREIGN KEY (`nurseID`) REFERENCES `nursemanager` (`userID`),
   ADD CONSTRAINT `commentsto_ibfk_2` FOREIGN KEY (`parent id`) REFERENCES `parent` (`userID`);
 
 --
 -- Constraints for table `interviews`
 --
 ALTER TABLE `interviews`
-  ADD CONSTRAINT `interviews_ibfk_1` FOREIGN KEY (`nurseID`) REFERENCES `nurseManager` (`userID`),
+  ADD CONSTRAINT `interviews_ibfk_1` FOREIGN KEY (`nurseID`) REFERENCES `nursemanager` (`userID`),
   ADD CONSTRAINT `interviews_ibfk_2` FOREIGN KEY (`parentID`) REFERENCES `parent` (`userID`);
 
 --
@@ -555,16 +549,17 @@ ALTER TABLE `invoice`
   ADD CONSTRAINT `invoice_ibfk_1` FOREIGN KEY (`payment_type`) REFERENCES `payment` (`payment_type`);
 
 --
--- Constraints for table `nurseManager`
+-- Constraints for table `nursemanager`
 --
-ALTER TABLE `nurseManager`
+ALTER TABLE `nursemanager`
   ADD CONSTRAINT `nurseManager_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`ID`);
 
 --
 -- Constraints for table `parent`
 --
 ALTER TABLE `parent`
-  ADD CONSTRAINT `parent_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`ID`);
+  ADD CONSTRAINT `parent_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`ID`),
+  ADD CONSTRAINT `parent_ibfk_2` FOREIGN KEY (`addressID`) REFERENCES `address` (`addressID`);
 
 --
 -- Constraints for table `schedule`
