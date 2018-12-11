@@ -1,3 +1,5 @@
+
+
 $( document ).ready(function() {
 	$.ajax({
 		url:"fetch.php",
@@ -21,6 +23,7 @@ $( document ).ready(function() {
 			}
 		},
 	});
+	
 	$("#pf").click(function(){
 		$(".HideAll").hide();
 		$("#Profile").show();
@@ -44,6 +47,10 @@ $( document ).ready(function() {
 	$("#is").click(function(){
 		$(".HideAll").hide();
 	});
+	$("#VC").click(function(){
+  $(".HideAll").hide();
+  $("#ViewChildren").show();
+});
 
 	var readURL = function(input) {
 		if (input.files && input.files[0]) {
@@ -122,3 +129,5 @@ function AddChild() {
 	document.childform.confirm.style.display='block';
 	document.getElementById("confirm1").innnerHTML="Add New Child";
 }
+
+

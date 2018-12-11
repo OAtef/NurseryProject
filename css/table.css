@@ -1,0 +1,64 @@
+.data-table{
+	border:1px solid black;
+	padding:0;
+	margin:0;
+	border-collapse: collapse;
+	width: 100%;
+	text-align: center;
+	
+}
+
+.data-table .data-table-head tr{
+	background-color: black;
+	color: white;
+	padding:0;
+	border-spacing: 0;
+	margin:0;
+}
+
+.data-table .data-table-head tr th{
+	margin: 0px;
+	padding: 15px;
+	border: 1px solid black;
+	border-spacing: 0;
+}
+
+.data-table tbody tr td:last-child{
+	border-right: 1px solid black !important;
+}
+
+.data-table tbody tr{
+	border: 1px solid black;
+	border-right: 1px solid black;
+}
+
+.data-table tbody tr:hover{
+	cursor: pointer;
+}
+
+.data-table tbody tr td{
+	padding:12px;
+}
+
+.data-table tbody tr td button{
+	background-color: black;
+	color: white;
+	padding:10px;
+	width: 100px;
+	border:none;
+	font-weight: bold;
+	border-radius: 5px;
+}
+
+.data-table tbody tr td button:hover{
+	cursor: pointer;
+	box-shadow: 0 4px 10px black;
+}
+
+.data-table tbody tr.extra-data{
+	text-align: left;
+	display: none;
+}
+
+
+

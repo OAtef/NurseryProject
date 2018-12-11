@@ -1,5 +1,6 @@
 <?php
 include('SendMsg.php');
+$nameoflabel = "seif elmosalamy"; 
 ?>
 <html>
  <meta charset="utf-8">
@@ -10,7 +11,8 @@ include('SendMsg.php');
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="../css/parent.css">
 <!--   //seif css -->
- 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <link rel="stylesheet" href="../css/table.css">
 <head>
 
    <nav class="navbar navbar-inverse">
@@ -42,7 +44,7 @@ include('SendMsg.php');
   <a href="#"  id="vm">View Msg</a>
   <a href="#"  id="sm">Send Msg</a>
   <a href="#"  id="ch">Child</a>
-
+  <a href="#"  id="VC">View Children </a>
 
 </div>
 
@@ -330,14 +332,84 @@ include('SendMsg.php');
     </div>
   </div>
 </div>
-   
+
+<!-- seif work -->
+    <div class="HideAll" id="ViewChildren" style="margin-left: 100px">
+
+
+      <table class="data-table">
+            <thead class="data-table-head">
+                <tr>
+                    <th>#     </th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Group</th>
+                    <th>Mobile</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="row row1">
+                    <td> <label id="lblId">1</label></td>
+                    <td><label id="lblEmp">14</label></td>
+                    <td><label id="lblName">Seif Elmosalamy </label></td>
+                    <td><label id="lblGroup">C</label></td>
+                    <td><label id="lblMobile">01201815059</label></td>
+                    <td><button><i class="fa fa-edit"></i> Edit</button></td>
+                    <td><button><i class="fa fa-trash"></i> Delete</button></td>
+                </tr>
+                <tr class="extra-data extra-data-row1">
+                    <td colspan="100%">
+                    <b>Name: </b> <label style="font-style: italic;" id="lblName">Seif Elmosalamy</label> <div id="EditorDiv" style="margin-left: 50%"> Enter a Name: <input type="text" id="emp" value="" />  <input type="button" id="textEditor" value="Change Name" onclick="changeName()" /> </div> <hr>
+                        <b>Mobile: </b> 01201815059 <div id="EditorDiv" style="margin-left: 50%"> Enter New Mobile: <input type="text" id="emp" value="" />  <input type="button" id="textEditor" value="Change Name" onclick="changeMobile()" /> </div>
+                        <hr>
+                        <b>Email: </b> <label id="lblEmail">Seifelmosalamy@gmail.com</label> <div id="EditorDiv" style="margin-left: 50%"> Enter New Email: <input type="text" id="emp" value="" />  <input type="button" id="textEditor" value="Change Name" onclick="changeEmail()" /> </div>
+                        <hr>
+                        <b>Data4: </b> Value 4  <div id="EditorDiv" style="margin-left: 50%"> Enter a Name: <input type="text" id="emp" value="" />  <input type="button" id="textEditor" value="Change Name" onclick="changeName()" /> </div>
+                        <hr>
+                        <b>Data5: </b> Value 5 <div id="EditorDiv" style="margin-left: 50%"> Enter a Name: <input type="text" id="emp" value="" />  <input type="button" id="textEditor" value="Change Name" onclick="changeName()" /> </div> 
+                    </td>
+                </tr>
+                <tr class="row row2">
+                     <td> <label id="lblEmp">1</label></td>
+                    <td><label id="lblEmp">14</label></td>
+                    <td><label id="lblEmp">Seif Elmosalamy</label></td>
+                    <td><label id="lblEmp">C</label></td>
+                    <td><label id="lblEmp">01201815059</label></td>
+                    <td><button><i class="fa fa-edit"></i> Edit</button></td>
+                    <td><button><i class="fa fa-trash"></i> Delete</button></td>
+                </tr>
+                <tr class="extra-data extra-data-row2">
+                    <td colspan="100%">
+                        <b>Data1: </b> Value 1  
+
+                        <hr>
+                        <b>Data2: </b> Value 2
+                        <hr>
+                        <b>Data3: </b> Value 3 
+                        <hr>
+                        <b>Data4: </b> Value 4 
+                        <hr>
+                        <b>Data5: </b> Value 5  
+                    </td>
+                </tr>
+               
+            </tbody>
+        </table>
+  
+    </div>
+<!-- end of seif -->
+
 
 
 </div>
 
 <script src="../js/ParentPage.js"></script>
 <script src="../js/dobpicker.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+  <script src="../js/table.js"></script>
 
 </body>
 </html>
