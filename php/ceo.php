@@ -340,11 +340,12 @@ $nameoflabel = "seif elmosalamy";
       <table class="data-table">
             <thead class="data-table-head">
                 <tr>
-                    <th>#     </th>
+                    <th>#    </th>
+                    <th>#    </th>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Group</th>
-                    <th>Mobile</th>
+                    <th>Gender</th>
+                    <th>Bdate</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
@@ -354,21 +355,21 @@ $nameoflabel = "seif elmosalamy";
                     <td> <label id="lblId">1</label></td>
                     <td><label id="lblEmp">14</label></td>
                     <td><label id="lblName">Seif Elmosalamy </label></td>
-                    <td><label id="lblGroup">C</label></td>
-                    <td><label id="lblMobile">01201815059</label></td>
-                    <td><button><i class="fa fa-edit"></i> Edit</button></td>
+                    <td><label id="lblGroup">Male</label></td>
+                    <td><label id="lblMobile">28/11/2017</label></td>
+                    <td><button><i class="fa fa-edit" onclick="setVisible()"></i> Edit</button></td>
                     <td><button><i class="fa fa-trash"></i> Delete</button></td>
                 </tr>
                 <tr class="extra-data extra-data-row1">
                     <td colspan="100%">
-                    <b>Name: </b> <label style="font-style: italic;" id="lblName">Seif Elmosalamy</label> <div id="EditorDiv" style="margin-left: 50%"> Enter a Name: <input type="text" id="emp" value="" />  <input type="button" id="textEditor" value="Change Name" onclick="changeName()" /> </div> <hr>
-                        <b>Mobile: </b> 01201815059 <div id="EditorDiv" style="margin-left: 50%"> Enter New Mobile: <input type="text" id="emp" value="" />  <input type="button" id="textEditor" value="Change Name" onclick="changeMobile()" /> </div>
+                    <b>Name: </b> <label style="font-style: italic;" id="lblName">Seif Elmosalamy</label> <div id="EditorDivName" style="margin-left: 50%"> Enter a Name: <input type="text" id="emp" value="" />  <input type="button" id="textEditor" value="Change Name" onclick="changeName()" /> </div> <hr>
+                        <b>Bdate: </b> 28-10-2018 <div id="EditorDivBdate" style="margin-left: 50%"> Enter New Mobile: <input type="text" id="emp" value="" />  <input type="button" id="textEditor" value="Change Name" onclick="changeMobile()" /> </div>
                         <hr>
-                        <b>Email: </b> <label id="lblEmail">Seifelmosalamy@gmail.com</label> <div id="EditorDiv" style="margin-left: 50%"> Enter New Email: <input type="text" id="emp" value="" />  <input type="button" id="textEditor" value="Change Name" onclick="changeEmail()" /> </div>
+                        <b>Parent Email: </b> Seifelmosalamy@gmail.com <div id="EditorDivEmail" style="margin-left: 50%"> Enter New Email: <input type="text" id="emp" value="" />  <input type="button" id="textEditor" value="Change Name" onclick="changeEmail()" /> </div>
                         <hr>
-                        <b>Data4: </b> Value 4  <div id="EditorDiv" style="margin-left: 50%"> Enter a Name: <input type="text" id="emp" value="" />  <input type="button" id="textEditor" value="Change Name" onclick="changeName()" /> </div>
+                        <b>Interview Date  </b> Value 4  <div id="EditorDiv" style="margin-left: 50%"> Enter a Name: <input type="text" id="emp" value="" />  <input type="button" id="textEditor" value="Change Name" onclick="changeName()" /> </div>
                         <hr>
-                        <b>Data5: </b> Value 5 <div id="EditorDiv" style="margin-left: 50%"> Enter a Name: <input type="text" id="emp" value="" />  <input type="button" id="textEditor" value="Change Name" onclick="changeName()" /> </div> 
+                        <b>Invoice No </b> Value 5 <div id="EditorDiv" style="margin-left: 50%"> Enter a Name: <input type="text" id="emp" value="" />  <input type="button" id="textEditor" value="Change Name" onclick="changeName()" /> </div> 
                     </td>
                 </tr>
                 <tr class="row row2">
@@ -400,7 +401,11 @@ $nameoflabel = "seif elmosalamy";
   
     </div>
 <!-- end of seif -->
-
+<script>
+  document.getElementById("EditorDiv").style.visibility='hidden' ;
+  // document.getElementById("EditorDivEmail").style.visibility='hidden' ;
+  // document.getElementById("EditorDivBdate").style.visibility='hidden' ;
+</script>
 
 
 </div>

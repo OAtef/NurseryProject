@@ -3,9 +3,16 @@ $(".row").on("click", function(){
 	$(extraRowClass).slideToggle(500);
 });
 // to change the labels in the tables
+
+function setVisible() { 
+
+        document.getElementById("EditorDiv").style.visibility='visible' ;
+        // document.getElementById("EditorDivِEmail").style.visibility='visible' ;
+        // document.getElementById("EditorDivBdate").style.visibility='visible' ;
+}
 function changeName() {
 
-	  
+	
         let lbl = document.getElementById('lblName');
         let empName = document.getElementById('emp').value;
 
