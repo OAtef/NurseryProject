@@ -1,4 +1,6 @@
-
+<?php
+include('SendMsg.php');
+?>
 <html>
  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -90,7 +92,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
-                    <button type="submit" class="btn btn-lg btn-default pull-right" >Send &rarr;</button>
+                    <button type="submit" class="btn btn-lg btn-default pull-right" name="Send_Msg">Send &rarr;</button>
                 </div>
             </div>
 
@@ -98,6 +100,13 @@
        </div>
     </div>
   </div>
+
+  <?php include('errors.php');
+        if (isset($MessageSentScript)) {
+          echo $MessageSentScript;
+        }
+  ?>
+
 
 <!-- Profile -->
 
