@@ -43,8 +43,10 @@ $nameoflabel = "seif elmosalamy";
   <a href="#"  id="pf">Profile</a>
   <a href="#"  id="vm">View Msg</a>
   <a href="#"  id="sm">Send Msg</a>
-  <a href="#"  id="ch">Child</a>
-  <a href="#"  id="VC">View Children </a>
+  <a href="#"  id="ch">Add Employee</a>
+  <a href="#"  id="VC">View Employee </a>
+  <a href="#"  id="VP">View Parents </a>
+
 
 </div>
 
@@ -65,7 +67,7 @@ $nameoflabel = "seif elmosalamy";
       <div id="collapse1"class="panel-collapse collapse ">
         <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat  <div>    <input type="button" name="replyButton" value="Reply" > <input type="button" name="deleteButton" value="Delete" > </div> </div>
       </div>
     </div>
 </div>
@@ -74,9 +76,9 @@ $nameoflabel = "seif elmosalamy";
  <div class="container HideAll" id="Smsg" style="display: none">
         <div class="row">
     <div class="col-md-6 col-md-offset-3" id="form_container">
-        <h2>Contact Us</h2>
+        <h2>Send Email</h2>
         <p>
-           Please send your message below. We will get back to you at the earliest!
+           Please send your message below.
         </p>
         <form role="form" method="post" id="reused_form">
 
@@ -143,7 +145,6 @@ $nameoflabel = "seif elmosalamy";
                         <hr>
                     </div>
                 </div>
-
                 <div class="row" >
                     <div class="col-md-12">
                         <form name="ProfilePage">
@@ -260,25 +261,30 @@ $nameoflabel = "seif elmosalamy";
         <div class="card">
             <div class="card-body">
                 <div class="row">
-                 <h4>Your Child</h4>
+                 <h4>Employees</h4>
                  <button name="edit" id="edit" class="btn btn-primary" onclick="EditChild()">Edit Profile</button>
-                  <button name="add" id="add" class="btn btn-primary" onclick="AddChild()">Add New Child</button>
+                  <button name="add" id="add" class="btn btn-primary" onclick="AddChild()">Add New Employee</button>
+             </div>
+          </div>
+
                         <hr>
 
                 </div>
+
+
                 <div class="row">
 
                     <div class="col-md-12">
                         <form name="childform">
 
                               <div class="form-group row">
-                                <label for="name" class="col-4 col-form-label">Child First Name</label>
+                                <label for="name" class="col-4 col-form-label">Employee First Name</label>
                                 <div class="col-8">
                                   <input id="name" name="fname" placeholder="First Name" class="form-control here" type="text" disabled>
                                 </div>
                               </div>
                               <div class="form-group row">
-                                <label for="lastname" class="col-4 col-form-label">Child Last Name</label>
+                                <label for="lastname" class="col-4 col-form-label">Employee Last Name</label>
                                 <div class="col-8">
                                   <input id="lastname" name="lastname" placeholder="Last Name" class="form-control here" type="text" disabled>
                                 </div>
@@ -286,25 +292,28 @@ $nameoflabel = "seif elmosalamy";
 
 
                               <div class="form-group row">
-                                <label for="text" class="col-4 col-form-label">Child Birthdate</label>
+                                <label for="text" class="col-4 col-form-label">Employee Birthdate</label>
                                 <div class="col-8">
+                                  <input type="date" id="textEditor" value="Change Name" onclick="changeName()" /> 
+<!-- 
                                 <select id="dobday" disabled></select>
                                 <select id="dobmonth" disabled></select>
                                 <select id="dobyear" disabled></select>
+ -->
 
 
                                 </div>
                               </div>
 
                               <div class="form-group row">
-                                <label for="Category" class="col-4 col-form-label">Category Number</label>
+                                <label for="Category" class="col-4 col-form-label">Category</label>
                                 <div class="col-8">
                                 <div class="dropdown">
                                 <button class="btn btn-primary dropdown-toggle" id="cat" type="button" data-toggle="dropdown" disabled>Category
                                 <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
-                                <li><a href="#">C1</a></li>
-                                <li><a href="#">C2</a></li>
+                                <li><a href="#">Teacher</a></li>
+                                <li><a href="#">Labor</a></li>
                                 <li><a href="#">C3</a></li>
                                 </ul>
                                 </div>
@@ -334,14 +343,15 @@ $nameoflabel = "seif elmosalamy";
 </div>
 
 <!-- seif work -->
-    <div class="HideAll" id="ViewChildren" style="margin-left: 100px">
+    <div class="HideAll" id="ViewChildren" style="margin-left: 250px; display: none">
 
 
       <table class="data-table">
             <thead class="data-table-head">
                 <tr>
-                    <th>#    </th>
-                    <th>#    </th>
+
+                    <th>  </th>
+                    <th># </th>
                     <th>ID</th>
                     <th>Name</th>
                     <th>Gender</th>
@@ -362,17 +372,22 @@ $nameoflabel = "seif elmosalamy";
                 </tr>
                 <tr class="extra-data extra-data-row1">
                     <td colspan="100%">
-                    <b>Name: </b> <label style="font-style: italic;" id="lblName">Seif Elmosalamy</label> <div id="EditorDivName" style="margin-left: 50%"> Enter a Name: <input type="text" id="emp" value="" />  <input type="button" id="textEditor" value="Change Name" onclick="changeName()" /> </div> <hr>
-                        <b>Bdate: </b> 28-10-2018 <div id="EditorDivBdate" style="margin-left: 50%"> Enter New Mobile: <input type="text" id="emp" value="" />  <input type="button" id="textEditor" value="Change Name" onclick="changeMobile()" /> </div>
+                    <b>Name: </b> <label style="font-style: italic;" id="lblName">Seif Elmosalamy</label> <div id="EditorDivName" style="margin-left: 50%"> Enter a Name: <input type="text" id="emp" value="" />  <input type="button" id="textEditor" value="Change Name" onclick="changeName()" /> </div> 
+                    <hr>
+                    <!-- sdsdas
+                     mehtag hena a3mel date picker -->  <b>Bdate: </b> 28-10-2018 <div id="EditorDivBdate" style="margin-left: 50%"> Enter New Date: <input type="date" id="emp" value="" />  <input type="button" id="textEditor" value="Change Birthday Date" onclick="changeMobile()" /> </div>
                         <hr>
-                        <b>Parent Email: </b> Seifelmosalamy@gmail.com <div id="EditorDivEmail" style="margin-left: 50%"> Enter New Email: <input type="text" id="emp" value="" />  <input type="button" id="textEditor" value="Change Name" onclick="changeEmail()" /> </div>
+                        <b>Employee Email: </b> Seifelmosalamy@gmail.com <div id="EditorDivEmail" style="margin-left: 50%"> Enter New Email: <input type="text" id="emp" value="" />  <input type="button" id="textEditor" value="Change Email" onclick="changeEmail()" /> </div> 
+
+
                         <hr>
-                        <b>Interview Date  </b> Value 4  <div id="EditorDiv" style="margin-left: 50%"> Enter a Name: <input type="text" id="emp" value="" />  <input type="button" id="textEditor" value="Change Name" onclick="changeName()" /> </div>
-                        <hr>
-                        <b>Invoice No </b> Value 5 <div id="EditorDiv" style="margin-left: 50%"> Enter a Name: <input type="text" id="emp" value="" />  <input type="button" id="textEditor" value="Change Name" onclick="changeName()" /> </div> 
+                        <!-- date picker hena brdo -->
+                        <b>Invoice ID:  </b> Value 4  <div id="EditorDiv" style="margin-left: 50%"> Edit Invoice ID: <input type="text" id="emp" value="" />  <input type="button" id="textEditor" value="Change Name" onclick="changeName()" /> </div>
+
+                      
                     </td>
                 </tr>
-                <tr class="row row2">
+               <!--  <tr class="row row2">
                      <td> <label id="lblEmp">1</label></td>
                     <td><label id="lblEmp">14</label></td>
                     <td><label id="lblEmp">Seif Elmosalamy</label></td>
@@ -383,9 +398,7 @@ $nameoflabel = "seif elmosalamy";
                 </tr>
                 <tr class="extra-data extra-data-row2">
                     <td colspan="100%">
-                        <b>Data1: </b> Value 1  
-
-                        <hr>
+                        <b>Data1: </b> Value 1 <hr>
                         <b>Data2: </b> Value 2
                         <hr>
                         <b>Data3: </b> Value 3 
@@ -393,6 +406,65 @@ $nameoflabel = "seif elmosalamy";
                         <b>Data4: </b> Value 4 
                         <hr>
                         <b>Data5: </b> Value 5  
+                    </td>
+                </tr>
+                -->
+            </tbody>
+        </table>
+  
+    </div>
+
+
+
+    <div class="HideAll" id="ViewParents" style="margin-left: 250px; display: none" >
+
+
+      <table class="data-table">
+            <thead class="data-table-head">
+                <tr>
+
+                    <th>  </th>
+                    <th>Number </th>
+                    <th>ID</th>
+
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Bdate</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="row row1">
+                    <td> <label id="lblId">1</label></td>
+                    <td><label id="lblEmp">14</label></td>
+                    <td><label id="lblName">Seif Elmosalamy </label></td>
+                    <td><label id="lblGroup">Male</label></td>
+                    <td><label id="lblMobile">28/11/2017</label></td>
+                    <td><button><i class="fa fa-edit" onclick="setVisible()"></i> Edit</button></td>
+                    <td><button><i class="fa fa-trash"></i> Delete</button></td>
+                </tr>
+                <tr class="extra-data extra-data-row1">
+                    <td colspan="100%">
+                    <b>Name: </b> <label style="font-style: italic;" id="lblName">Seif Elmosalamy</label> <div id="EditorDivName" style="margin-left: 50%"> Enter a Name: <input type="text" id="emp" value="" />  <input type="button" id="textEditor" value="Change Name" onclick="changeName()" /> </div> 
+                    <hr>
+                    <!-- sdsdas
+                     mehtag hena a3mel date picker -->  <b>Bdate: </b> 28-10-2018 <div id="EditorDivBdate" style="margin-left: 50%"> Enter New Date: <input type="date" id="emp" value="" />  <input type="button" id="textEditor" value="Change Birthday Date" onclick="changeMobile()" /> </div>
+                        <hr>
+                        <b>Parent Email: </b> Seifelmosalamy@gmail.com <div id="EditorDivEmail" style="margin-left: 50%"> Enter New Email: <input type="text" id="emp" value="" />  <input type="button" id="textEditor" value="Change Email" onclick="changeEmail()" /> </div> 
+
+
+                        <hr>
+                        <!-- date picker hena brdo -->
+                        <b>Invoice ID:  </b> Value 4  <div id="EditorDiv" style="margin-left: 50%"> Edit Invoice ID: <input type="text" id="emp" value="" />  <input type="button" id="textEditor" value="Change Name" onclick="changeName()" /> </div>
+
+
+                        <hr>
+                        <!-- date picker hena brdo -->
+                        <b>Children Count:  </b> 0  <div id="EditorDiv" style="margin-left: 50%"> Edit Children Number: <input type="text" id="emp" value="" />  <input type="button" id="textEditor" value="Change Number" onclick="changeName()" /> </div>
+
+
+                      
                     </td>
                 </tr>
                
@@ -407,6 +479,9 @@ $nameoflabel = "seif elmosalamy";
   // document.getElementById("EditorDivBdate").style.visibility='hidden' ;
 </script>
 
+
+
+ 
 
 </div>
 

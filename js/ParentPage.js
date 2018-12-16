@@ -47,10 +47,17 @@ $( document ).ready(function() {
 	$("#is").click(function(){
 		$(".HideAll").hide();
 	});
-	$("#VC").click(function(){
+
+  $("#VC").click(function(){
   $(".HideAll").hide();
   $("#ViewChildren").show();
 });
+
+  $("#VP").click(function(){
+  $(".HideAll").hide();
+  $("#ViewParents").show();
+});
+
 
 	var readURL = function(input) {
 		if (input.files && input.files[0]) {
