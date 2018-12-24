@@ -36,10 +36,10 @@ include('php/server.php');
 								<span class='caret'></span></a>
 								<ul class='dropdown-menu'>
 									<li><a href='#'>Book a Visit</a></li>
-									<li><a href='#'>Email Us</a></li>
+									<li><a href='#contact.php'>Email Us</a></li>
 								</ul>
 						</li>
-						<li><a href='#'>About Us</a></li>
+						<li><a href='#About-Us'>About Us</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<?php
@@ -63,10 +63,10 @@ include('php/server.php');
 								 <span class='caret'></span></a>
 								 <ul class='dropdown-menu'>
 									 <li><a href='#'>Book a Visit</a></li>
-									 <li><a href='#'>Email Us</a></li>
+									 <li><a href='contact.php'>Contact Us</a></li>
 								 </ul>
 						 </li>
-						 <li><a href='#'>About Us</a></li>
+						 <li><a href='#About-Us'>About Us</a></li>
 					 </ul>
 					 <ul class="nav navbar-nav navbar-right">
 						 <li><a id="loginBtn"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -395,7 +395,7 @@ include('php/server.php');
 			</div>
 		</div>
 
-		<div class="container text-center">
+		<div id="About-Us" class="container text-center">
 		  <h2>A Place to Grow</h2><br>
 		  <div class="row">
 			<div class="col-sm-1" style="width: 200px height:300px"> </div>
