@@ -253,7 +253,7 @@ $nameoflabel = "seif elmosalamy";
 
 
 <!-- seif work -->
-    <div class="HideAll" id="ViewChildren" style="margin-left: 100px; display: none">
+    <div class="container HideAll" id="ViewChildren" style="margin-left: 100px; display: none">
 
 
       <table class="data-table">
@@ -308,7 +308,7 @@ $nameoflabel = "seif elmosalamy";
 
 
 
-    <div class="HideAll" id="ViewParents" style="margin-left: 100px; display: none" >
+    <div class="container HideAll" id="ViewParents" style="margin-left: 100px; display: none" >
 
 
       <table class="data-table">
@@ -372,7 +372,7 @@ $nameoflabel = "seif elmosalamy";
  <!--    //children list  -->
 
 
-    <div class="HideAll" id="ChildrenList" style="margin-left: 250px; display: none" >
+    <div class="container HideAll" id="ChildrenList" style="margin-left: 250px; display: none" >
 
 
       <table class="data-table">
@@ -393,7 +393,7 @@ $nameoflabel = "seif elmosalamy";
             <tbody>
                 <tr class="row row1">
                     <td> <label id="lblId">1</label></td>
-                    <td><label id="lblEmp">14</label></td>
+                    <td><label id="lblEmp">14000</label></td>
                     <td><label id="lblName">Seif Elmosalamy </label></td>
                     <td><label id="lblGroup">Male</label></td>
                     <td><label id="lblMobile">28/11/2017</label></td>
