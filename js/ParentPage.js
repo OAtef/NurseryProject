@@ -59,6 +59,11 @@ $( document ).ready(function() {
 });
 
 
+  $("#CL").click(function(){
+  $(".HideAll").hide();
+  $("#ChildrenList").show();
+});
+
 	var readURL = function(input) {
 		if (input.files && input.files[0]) {
 				var reader = new FileReader();
