@@ -13,7 +13,7 @@
   </THEAD>
   <TBODY>
     <TR>
-      <TD>P1</TD>
+      <TD>8:30-10:00</TD>
       <TD>
         <div class="subject">Maths</div>
         <div class="room">A120</div>
@@ -36,7 +36,7 @@
       </TD>     
     </TR>
     <TR>
-      <TD>P2</TD>
+      <TD>10:00-11:30</TD>
       <TD>        
         <div class="subject">Science</div>
         <div class="room">Lab1</div>
@@ -62,7 +62,7 @@
       <TD colspan="6" class="break">Break</TD>
       </TR>
       <TR>
-      <TD>P3</TD>
+      <TD>12:00-1:30</TD>
       <TD>        
         <div class="subject">I.T.</div>
         <div class="room">ICT 1</div>
@@ -88,7 +88,7 @@
       <TD colspan="6" class="lunch">Lunch</TD>
     </TR>
       <TR>
-      <TD>P4</TD>
+      <TD>2:00-3:00</TD>
       <TD>        
         <div class="subject">History</div>
         <div class="room">B104</div>
@@ -111,7 +111,7 @@
       </TD>
     </TR>
       <TR>
-      <TD>P5</TD>
+      <TD>3:00-4:30</TD>
       <TD>        
         <div class="subject">Spanish</div>
         <div class="room">C17</div>
