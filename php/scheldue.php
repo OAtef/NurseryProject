@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="../css/schelduecss.css">
 <H1>My Timetable</H1>
 <TABLE class="myTimetable"> 
   <THEAD>
