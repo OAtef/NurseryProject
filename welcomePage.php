@@ -245,7 +245,7 @@ include('php/server.php');
 								<li>Roast Quorn with Yorkshire Pudding  Seasonal Vegetables and Vegetarian Gravy</li>
 								<li>Apple &amp; Chicken Curry with Rice</li>
 								<li>Lentil Curry &amp; Rice</li>
-								<li>Rosemary Lamb &amp; Vegetable Hot Pot</li>
+								<li>Rosemary Lamb &amp;. Vegetable Hot Pot</li>
 								<li>Quorn Hot Pot with Winter Vegetables</li>
 							</ul>
 						</div>
