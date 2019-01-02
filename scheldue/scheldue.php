@@ -129,7 +129,7 @@
         <div class="room">Lab1</div>
       </TD>
       <TD>        
-        <div class="subject">R.E.</div>
+        <div class="subject">R.E</div>
         <div class="room">B18</div>
       </TD>
     </TR>
