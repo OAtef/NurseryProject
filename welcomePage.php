@@ -24,7 +24,7 @@ include('php/server.php');
 		  <div class="container-fluid">
 			<div class="navbar-header">
 			  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"></button>
-			  <a class="navbar-brand" href="#">Logo</a>
+			  <a class="navbar-brand" href="#"><img src="/img/logo.jpg" style="max-width: 40px; max-height: 40px;"></a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="myNavbar">
@@ -278,8 +278,7 @@ include('php/server.php');
 			<div class="container text-center">
 				<h3>ACTIVITES</h3>
 				<p><em>"We Care"</em></p>
-				<p>Our excellent nutritionally balanced menu is changed regularly to encourage a varied diet and is approved by Action for Children.
-				Here is an example of a typical menu.</p>
+				<p>Child may also describe a relationship with a parent (such as sons and daughters of any age)[3] or, metaphorically, an authority figure, or signify group membership in a clan, tribe, or religion; it can also signify being strongly affected by a specific time, place, or circumstance, as in "a child of nature" or "a child of the Sixties"</p>
 				<br>
 				<div class="row">
 					<div class="col-sm-4">
