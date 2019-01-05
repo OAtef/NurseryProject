@@ -5,7 +5,7 @@
 	border-collapse: collapse;
 	width: 100%;
 	text-align: center;
-	
+
 }
 
 .data-table .data-table-head tr{
@@ -59,6 +59,3 @@
 	text-align: left;
 	display: none;
 }
-
-
-

@@ -1,19 +1,18 @@
 <?php
 include('db.php');
-
 session_start();
 
 $errors = array();
 
 if (isset($_POST['Send_Msg'])) {
 
-  $ParentEmail = $_SESSION['email'];
-  $ParentID = 0;
-  $ManagerEmail = mysqli_real_escape_string($db, $_POST['email']);
-  $ManagerID = 0;
+  $FromEmail = $_SESSION['email'];
+  $FromID = 0;
+  $ToEmail = mysqli_real_escape_string($db, $_POST['email']);
+  $ToID = 0;
   $Message = mysqli_real_escape_string($db, $_POST['message']);
 
-  if (empty($ManagerEmail)) {
+  if (empty($ToEmail)) {
     array_push($errors, "email is required");
   }
 
@@ -23,11 +22,11 @@ if (isset($_POST['Send_Msg'])) {
 
   if (count($errors) == 0) {
 
-      $GetParentID = "SELECT ID FROM users WHERE email LIKE '$ParentEmail' AND type = 1";
-      $IDresult = mysqli_query($db, $GetParentID);
+      $GetFromIDQuery = "SELECT ID FROM users WHERE email='$FromEmail'";
+      $IDresult = mysqli_query($db, $GetFromIDQuery);
       $result = mysqli_fetch_array($IDresult);
       if ($result) {
-        $ParentID = $result['ID'];
+        $FromID = $result['ID'];
       }
       else {
         array_push($errors, "<script>Swal({
@@ -37,11 +36,11 @@ if (isset($_POST['Send_Msg'])) {
                                 })</script>");
       }
 
-      $GetManagerID = "SELECT ID FROM users WHERE email LIKE '$ManagerEmail' AND type = 2";
-      $IDresult = mysqli_query($db, $GetManagerID);
+      $GetToIDQuery = "SELECT ID FROM users WHERE email LIKE '$ToEmail'";
+      $IDresult = mysqli_query($db, $GetToIDQuery);
       $result = mysqli_fetch_array($IDresult);
       if ($result) {
-        $ManagerID = $result['ID'];
+        $ToID = $result['ID'];
       }
       else {
         array_push($errors, "<script>Swal({
@@ -51,11 +50,10 @@ if (isset($_POST['Send_Msg'])) {
                                 })</script>");
       }
 
-      $SendMsgQuery = "INSERT INTO commentsto (nurseID, parentID, msg, sentDate) VALUES ('$ManagerID', '$ParentID', '$Message', '2018-12-04')";
+      $SendMsgQuery = "INSERT INTO commentsto (ToID, FromID, msg, date) VALUES ('$ToID', '$FromID', '$Message', '2018-12-04')";
       $results = mysqli_query($db, $SendMsgQuery);
-      // $test = mysqli_fetch_array($results);
-      // echo $test['msg'];
-      if (mysqli_num_rows($results) >= 1) {
+
+      if (mysqli_affected_rows($db) == 1) {
 
           $MessageSentScript = "<script>Swal({
                                     type: 'success',
@@ -68,12 +66,9 @@ if (isset($_POST['Send_Msg'])) {
           array_push($errors, "<script>Swal({
                                     type: 'error',
                                     title: 'Oops...',
-                                    text: 'There was and error while sending message make sure from the Email!',
+                                    text: 'There was an error while sending message make sure from the Email!',
                                   })</script>");
       }
   }
-
 }
-
-
 ?>

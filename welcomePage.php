@@ -24,21 +24,22 @@ include('php/server.php');
 		  <div class="container-fluid">
 			<div class="navbar-header">
 			  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"></button>
-			  <a class="navbar-brand" href="#"><img src="/img/logo.jpg" style="max-width: 40px; max-height: 40px;"></a>
+			  <a class="navbar-brand" href="#"><img src="img/logo.jpg" style="max-width: 40px; max-height: 40px;"></a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="myNavbar">
 
 				<?php if (isset($_SESSION['success']))	{ ?>
 					<ul class='nav navbar-nav'>
-						<li class='dropdown'>
+						<!-- <li class='dropdown'>
 							<a class='dropdown-toggle' data-toggle='dropdown' href='#'>Get in touch
 								<span class='caret'></span></a>
 								<ul class='dropdown-menu'>
 									<li><a href='#'>Book a Visit</a></li>
-									<li><a href='#contact.php'>Email Us</a></li>
+									<li><a href='php/contact.php'>Email Us</a></li>
 								</ul>
-						</li>
+						</li> -->
+						<li><a href='php/contact.php'>Email Us</a></li>
 						<li><a href='#About-Us'>About Us</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
@@ -47,10 +48,10 @@ include('php/server.php');
 										echo "<li><a href='php/parent.php' class='glyphicon glyphicon-user'> UserName</a></li>";
 									}
 									elseif (isset($_SESSION['userType']) && $_SESSION['userType'] == 2) {
-										echo "<li><a href='php/Manager.php' class='glyphicon glyphicon-user'> UserName</a></li>";
+										echo "<li><a href='php/manager.php' class='glyphicon glyphicon-user'> UserName</a></li>";
 									}
 									elseif (isset($_SESSION['userType']) && $_SESSION['userType'] == 3) {
-										echo "<li><a href='php/CEO.php' class='glyphicon glyphicon-user'> UserName</a></li>";
+										echo "<li><a href='php/ceo.php' class='glyphicon glyphicon-user'> UserName</a></li>";
 									}
 						?>
 					 <li><a href='php/logout.php' class="glyphicon glyphicon-log-out"> Logout</a></li>
@@ -58,16 +59,17 @@ include('php/server.php');
 
 				 <?php } else {?>
 					 <ul class='nav navbar-nav'>
-						 <li class='dropdown'>
-							 <a class='dropdown-toggle' data-toggle='dropdown' href='#'>Get in touch
-								 <span class='caret'></span></a>
-								 <ul class='dropdown-menu'>
-									 <li><a href='#'>Book a Visit</a></li>
-									 <li><a href='contact.php'>Contact Us</a></li>
-								 </ul>
-						 </li>
-						 <li><a href='#About-Us'>About Us</a></li>
-					 </ul>
+ 						<!-- <li class='dropdown'>
+ 							<a class='dropdown-toggle' data-toggle='dropdown' href='#'>Get in touch
+ 								<span class='caret'></span></a>
+ 								<ul class='dropdown-menu'>
+ 									<li><a href='#'>Book a Visit</a></li>
+ 									<li><a href='php/contact.php'>Email Us</a></li>
+ 								</ul>
+ 						</li> -->
+ 						<li><a href='php/contact.php'>Email Us</a></li>
+ 						<li><a href='#About-Us'>About Us</a></li>
+ 					</ul>
 					 <ul class="nav navbar-nav navbar-right">
 						 <li><a id="loginBtn"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 						 <li><a id="signupBtn"><span class="glyphicon glyphicon-log-in"></span> Signup</a></li>
@@ -278,7 +280,10 @@ include('php/server.php');
 			<div class="container text-center">
 				<h3>ACTIVITES</h3>
 				<p><em>"We Care"</em></p>
-				<p>Child may also describe a relationship with a parent (such as sons and daughters of any age)[3] or, metaphorically, an authority figure, or signify group membership in a clan, tribe, or religion; it can also signify being strongly affected by a specific time, place, or circumstance, as in "a child of nature" or "a child of the Sixties"</p>
+				<p>Child may also describe a relationship with a parent (such as sons and daughters of any age)[3] or,
+					 metaphorically, an authority figure, or signify group membership in a clan, tribe,
+					  or religion; it can also signify being strongly affected by a specific time, place,
+					 or circumstance, as in "a child of nature" or "a child of the Sixties"</p>
 				<br>
 				<div class="row">
 					<div class="col-sm-4">
