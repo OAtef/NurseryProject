@@ -14,6 +14,4 @@ if(mysqli_num_rows($result) == 1){
     echo json_encode($json);
 }
 
-
-
 ?>

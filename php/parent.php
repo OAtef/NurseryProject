@@ -6,7 +6,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       <link rel="stylesheet" type="text/css" href="../css/parent.css">
@@ -101,14 +100,14 @@
 
     <!-- Parent Profile -->
     <div class="container HideAll" id="Profile">
-      <form name="ProfilePage" id="ProfilePage" method="POST">
+      <form id="ProfilePage" method="POST" enctype="multipart/form-data" name="ProfilePage">
       <div class="row">
         <div class="col-md-3 ">
           <div class="text-center">
             <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
             <div id="uploadImg" style="display: none">
               <h6>Upload a different photo...</h6>
-              <input type="file" class="text-center center-block file-upload" required="required">
+              <input type="file" class="text-center center-block file-upload" name="image" id="image" accept="image/*" required="required">
             </div>
           </div>
         </div>
@@ -143,19 +142,19 @@
                     <div class="form-group row">
                       <label for="relativeRelation" class="col-4 col-form-label">Relative Relation</label>
                       <div class="col-8">
-                        <input id="relativeRelation" name="relativeRelation" placeholder="Relative Relation" class="form-control here" required="required" type="text" disabled>
+                        <input id="relativeRelation" name="relativeRelation" placeholder="Relative Relation" class="form-control here" type="text" required="required"  disabled>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="nationalid" class="col-4 col-form-label">National ID</label>
                       <div class="col-8">
-                        <input id="nationalid" name="Nid" placeholder="National ID" class="form-control here" required="required" type="text" disabled>
+                        <input id="nationalid" name="Nid" placeholder="National ID" class="form-control here" type="text" required="required" disabled>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="parentemail" class="col-4 col-form-label">Email</label>
                       <div class="col-8">
-                        <input id="parentemail" name="email" placeholder="Email" class="form-control here" required="required" type="text" disabled>
+                        <input id="parentemail" name="email" placeholder="Email" class="form-control here" type="text" required="required" disabled>
                       </div>
                     </div>
                     <div class="form-group row">
@@ -205,7 +204,7 @@
                     </div>
                     <div class="form-group row">
                       <div class="offset-4 col-8">
-                        <button id="update" name="update" class="btn btn-primary" style="display: none">Update My Profile</button>
+                        <button type="submit" id="update" name="update" class="btn btn-primary" style="display: none">Update My Profile</button>
                       </div>
                     </div>
                   </div>
@@ -219,13 +218,13 @@
 
       <!-- Child Profile -->
       <div class="container HideAll" id="ChildProfile" style="display: none">
-        <form name="childform" id="childform" method="POST">
+        <form id="childform" method="POST" enctype="multipart/form-data" name="childform">
         <div class="col-md-3 ">
           <div class="text-center">
-            <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+            <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar" id="imgContainer">
             <div id="uploadImgChild" style="display: none">
               <h6>Upload a different photo...</h6>
-              <input type="file" class="text-center center-block file-upload" name="image" id="image" required="required">
+              <input type="file" class="text-center center-block file-upload" name="image" id="image" accept="image/*" required="required">
             </div>
           </div>
         </div>
@@ -284,7 +283,7 @@
                       </div>
                       <div class="form-group row">
                         <div class="offset-4 col-8">
-                          <button id="addNewChild" name="addNewChild" value="addNewChild" class="btn btn-primary" style="display: none"> Confirm </button>
+                          <button type="submit" id="addNewChild" name="addNewChild" value="addNewChild" class="btn btn-primary" style="display: none"> Confirm </button>
                         </div>
                       </div>
                       <div class="form-group row">
@@ -301,7 +300,7 @@
         </form>
       </div>
 
-  <script src="../js/ParentPage.js"></script>
+  <script type="text/javascript" src="../js/ParentPage.js"></script>
 
   </body>
 </html>
