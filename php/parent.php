@@ -6,9 +6,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script src="../js/sweetalert2/sweetalert2.all.min.js"></script>
       <link rel="stylesheet" type="text/css" href="../css/parent.css">
     </head>
   <body>
@@ -47,19 +47,6 @@
   <div id="main">
   <!-- View Msg Panel -->
   <div class="container HideAll" id="Vmsg" style="display: none">
-
-    <!-- <div class="panel-group" id="accordion">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Collapsible Group 1</a>
-          </h4>
-        </div>
-        <div id="collapse1"class="panel-collapse collapse ">
-          <div class="panel-body">The Message Will Be here.</div>
-        </div>
-      </div>
-    </div> -->
 
   </div>
 

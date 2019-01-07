@@ -106,7 +106,7 @@ include('SendMsg.php');
     }
     ?>
 
-    <!-- View Requests -->
+    <!-- View Interviews -->
     <div class="container HideAll" id="ViewInterview" style="margin-left: 100px; display: none">
 
     </div>

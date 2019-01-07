@@ -24,14 +24,14 @@ if (isset($_POST['ChildIDApprove'])) {
                         })</script>";
 
     }else {
-      echo "Error";
+      echo "Error in DeleteInterviewResult";
     }
 
   }else {
-    echo "Error";
+    echo "Error in ApproveResult";
   }
 
 }else {
-  echo "Error";
+  echo "Error in getting ChildIDApprove";
 }
 ?>
