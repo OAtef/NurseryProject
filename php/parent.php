@@ -44,21 +44,21 @@
     </div>
 
   <div id="main">
-  <!-- View Msg Panel -->
-  <div class="container HideAll" id="Vmsg" style="display: none">
+    <!-- View Msg Panel -->
+    <div class="container HideAll" id="Vmsg" style="display: none">
 
-    <!-- <div class="panel-group" id="accordion">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Collapsible Group 1</a>
-          </h4>
+      <!-- <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Collapsible Group 1</a>
+            </h4>
+          </div>
+          <div id="collapse1"class="panel-collapse collapse ">
+            <div class="panel-body">The Message Will Be here.</div>
+          </div>
         </div>
-        <div id="collapse1"class="panel-collapse collapse ">
-          <div class="panel-body">The Message Will Be here.</div>
-        </div>
-      </div>
-    </div> -->
+      </div> -->
 
   </div>
 
@@ -107,7 +107,7 @@
             <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar" id="ParentImgContainer">
             <div id="uploadImg" style="display: none">
               <h6>Upload a different photo...</h6>
-              <input type="file" class="text-center center-block file-upload" name="imageParent" id="imageParent" required="required">
+              <input type="file" class="text-center center-block file-upload" name="imageParent" id="imageParent">
             </div>
           </div>
         </div>
@@ -290,16 +290,16 @@
                       </div>
                       <div class="form-group row">
                         <div class="offset-4 col-8">
-                          <button type="submit" id="addNewChild" name="addNewChild" value="addNewChild" class="btn btn-primary" style="display: none"> Confirm </button>
+                          <button type="submit" id="addNewChild" name="addNewChild" class="btn btn-primary" style="display: none"> Confirm </button>
                         </div>
                       </div>
                       <div class="form-group row">
                         <div class="offset-4 col-8">
-                          <button id="changeChildData" name="changeChildData" class="btn btn-primary" style="display: none"> Confirm Change </button>
+                          <button type="submit" id="changeChildData" name="changeChildData" class="btn btn-primary" style="display: none"> Confirm Change </button>
                         </div>
                       </div>
 
-                      <div id="errormsg"></div>
+                      <!-- <div id="errormsg"></div> -->
 
                     </div>
                   </div>

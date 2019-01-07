@@ -19,38 +19,14 @@ $pass = $_SESSION['password'];
     $buildno=$_POST["buildno"];
 
     // img
-    $img  = addslashes(file_get_contents($_FILES["imageParent"]["tmp_name"]));  
-
+    $img  = addslashes(file_get_contents($_FILES["imageParent"]["tmp_name"])); 
+    
+    // check password
     if($password_old == "" && $password_new == ""){
-        $password_new = $pass;
-
-        if($_FILES['imageParent']['size'] == 0 && $_FILES['imageParent']['error'] == 0){
-            $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum', 
-                users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation',
-                 address.city='$city', address.neigherhoodName='$neigherhoodName', address.StreetName='$StreetName', address.buildingNo='$buildno'
-                WHERE users.email='$email' and users.ID = parent.userID and parent.addressID = address.addressID";
-        }else{
-            $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum', 
-                users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation', parent.img='$img',
-                 address.city='$city', address.neigherhoodName='$neigherhoodName', address.StreetName='$StreetName', address.buildingNo='$buildno'
-                WHERE users.email='$email' and users.ID = parent.userID and parent.addressID = address.addressID";
-        }
-    }
-    else{
+        $password_new = $pass;   
+    }else{
         if($password_old == $pass){
             $_SESSION['password'] = $password_new;
-
-            if($_FILES['imageParent']['size'] == 0 && $_FILES['imageParent']['error'] == 0){
-                $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum', 
-                    users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation',
-                     address.city='$city', address.neigherhoodName='$neigherhoodName', address.StreetName='$StreetName', address.buildingNo='$buildno'
-                    WHERE users.email='$email' and users.ID = parent.userID and parent.addressID = address.addressID";
-            }else{
-                $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum', 
-                    users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation', parent.img='$img',
-                     address.city='$city', address.neigherhoodName='$neigherhoodName', address.StreetName='$StreetName', address.buildingNo='$buildno'
-                    WHERE users.email='$email' and users.ID = parent.userID and parent.addressID = address.addressID";
-            }
         }else{
             array_push($errors, "<script>Swal({
                 type: 'error',
@@ -58,6 +34,27 @@ $pass = $_SESSION['password'];
                 text: 'old password is entered wrong please recheck your old password !',
               })</script>");
         }
+    }
+
+        // check img exist or not
+    if($_FILES['imageParent']['name'] == ''){
+
+        //echo "image does not exist";
+
+        $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum', 
+            users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation',
+             address.city='$city', address.neigherhoodName='$neigherhoodName', address.StreetName='$StreetName', address.buildingNo='$buildno'
+            WHERE users.email='$email' and users.ID = parent.userID and parent.addressID = address.addressID";
+
+    }else{
+
+        //echo "image does exist";
+
+        $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum', 
+            users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation', parent.img='$img',
+             address.city='$city', address.neigherhoodName='$neigherhoodName', address.StreetName='$StreetName', address.buildingNo='$buildno'
+            WHERE users.email='$email' and users.ID = parent.userID and parent.addressID = address.addressID";
+
     }
 
     $results = mysqli_query($db, $query);

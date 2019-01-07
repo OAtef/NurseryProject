@@ -13,7 +13,6 @@ $invoiceNo = $_POST["payment"];
 $not_accepted = 0;
 
 // need to be removed
-$childID = 3;
 $nurseID = 0;
 // img
 $img  = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));  
@@ -35,8 +34,8 @@ $resultid = mysqli_fetch_array($result_ID);
 $parent_ID = $resultid['ID'];
 
 
-$query = "INSERT INTO children (child_id, first_name, last_name, Bdate, Gender, invoiceNo, accepted, parentID, categoryNo, nurseID, img) 
-  VALUES ('$childID', '$firstname', '$lastname', '$bdate', '$gender', '$invoiceNo', '$not_accepted', '$parent_ID', '$category', '$nurseID', '$img')";
+$query = "INSERT INTO children (first_name, last_name, Bdate, Gender, invoiceNo, accepted, parentID, categoryNo, nurseID, img) 
+  VALUES ('$firstname', '$lastname', '$bdate', '$gender', '$invoiceNo', '$not_accepted', '$parent_ID', '$category', '$nurseID', '$img')";
 
 mysqli_query($db, $query)
 // if(mysqli_query($db, $sql)){

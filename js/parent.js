@@ -66,6 +66,23 @@ function child_BDate_min(){
 // 	input.setAttribute("max", interDatee);
 // }
 
+function imageValidation(file = ''){
+	if(fileSize > 16777215){ // 16 MB
+		// alert msg (picture size is huge)
+		alert("picture size is huge");
+		return false;
+	}
+	else{
+		var extension = $('#imageParent').val().split('.').pop().toLowerCase();
+		console.log(extension);
+		if(extension != 'jpg' && extension != 'png' && extension != 'gif' && extension != 'jpeg'){
+			// alert msg (invalid Image Extention )
+			alert("invalid Image Extention -- Image type is invalid");
+			return false;
+		}
+	}
+}
+
 $(document).ready(function() {
 
 	$("#hide-child-info").hide();
@@ -96,7 +113,10 @@ $(document).ready(function() {
 		url:"fetchParentImg.php",
 		type:"POST",
 		success: function(data){
-			$("#ParentImgContainer").attr('src', data);
+			if(data == 'data:image/jpeg;base64,')
+				$("#ParentImgContainer").attr('src', "http://ssl.gstatic.com/accounts/ui/avatar_2x.png");
+			else
+				$("#ParentImgContainer").attr('src', data);
 		},
 	});
 
@@ -138,52 +158,71 @@ $(document).ready(function() {
 		})
 	});
 
-	$("#update").click(function(event){
-		event.preventDefault();
-		$.ajax({
-			url:"update.php",
-			data: $('#ProfilePage').serialize(), // takes all data in the form in a string
-			type:"POST",
-			success: function(data){
-				//alert("successfully done");
-			},
-		});
+	$("#update").click(function(){
+		$("#ProfilePage").on('submit',(function(e) {
+			e.preventDefault();
 
-		document.ProfilePage.fname.disabled=true;
-		document.ProfilePage.lastname.disabled=true;
-		document.ProfilePage.Nid.disabled=true;
-		document.ProfilePage.email.disabled=true;
-		document.ProfilePage.mobile.disabled=true;
-		document.ProfilePage.oldpass.disabled=true;
-		document.ProfilePage.newpass.disabled=true;
-		document.ProfilePage.city.disabled=true;
-		document.ProfilePage.neigherhoodName.disabled=true;
-		document.ProfilePage.StreetName.disabled=true;
-		document.ProfilePage.buildno.disabled=true;
-		document.ProfilePage.relativeRelation.disabled=true;
-		document.ProfilePage.update.style.display='none';
-		document.getElementById("uploadImg").style.display = "none";
+			// var data = new FormData(this);
+
+			// for (var pair of data.entries()) {
+			//  	console.log(pair[0]+ ', ' + pair[1]); 
+			// }
+
+			$.ajax({
+				url: "update.php",
+				type: "POST",
+				data: new FormData(this),
+				contentType: false,
+				cache: false,
+				processData:false,
+				success: function(data)
+				{
+					//$("#errormsg").html(data);
+
+					// notification to ay added sucessfully
+
+					$('#firstname').prop("disabled", true);
+					$('#lastname').prop("disabled", true);
+					$('#genderr').prop("disabled", true);
+					$('#relativeRelation').prop("disabled", true);
+					$('#parentemail').prop("disabled", true);
+					$('#mobilenumber').prop("disabled", true);
+					$('#oldpass').prop("disabled", true);
+					$('#newpass').prop("disabled", true);
+					$('#neigherhoodName').prop("disabled", true);
+					$('#city').prop("disabled", true);
+					$('#StreetName').prop("disabled", true);
+					$('#buildno').prop("disabled", true);
+
+					$("#update").css("display", "none");
+					$("#uploadImg").css("display", "none");
+				}         
+			});
+
+		}));
 	});
 
 	$("#edit").click(function(event){
 		event.preventDefault();
-		
-		document.ProfilePage.fname.disabled=false;
-		document.ProfilePage.lastname.disabled=false;
-		document.ProfilePage.Nid.disabled=false;
-		document.ProfilePage.email.disabled=false;
-		document.ProfilePage.mobile.disabled=false;
-		document.ProfilePage.oldpass.disabled=false;
-		document.ProfilePage.newpass.disabled=false;
-		document.ProfilePage.city.disabled=false;
-		document.ProfilePage.neigherhoodName.disabled=false;
-		document.ProfilePage.StreetName.disabled=false;
-		document.ProfilePage.buildno.disabled=false;
-		document.ProfilePage.relativeRelation.disabled=false;
-		document.ProfilePage.genderr.disabled=false;
-	
-		document.ProfilePage.update.style.display='block';
-		document.getElementById("uploadImg").style.display = "block";
+
+		$('#firstname').prop("disabled", false);
+		$('#lastname').prop("disabled", false);
+		$('#genderr').prop("disabled", false);
+		$('#relativeRelation').prop("disabled", false);
+		$('#parentemail').prop("disabled", false);
+		$('#mobilenumber').prop("disabled", false);
+		$('#oldpass').prop("disabled", false);
+		$('#newpass').prop("disabled", false);
+		$('#neigherhoodName').prop("disabled", false);
+		$('#city').prop("disabled", false);
+		$('#StreetName').prop("disabled", false);
+		$('#buildno').prop("disabled", false);
+
+		// $('#update').show();
+		// $('#uploadImg').show();
+
+		$("#update").css("display", "block");
+		$("#uploadImg").css("display", "block");
 	});
 
 	$("#editChild").click(function(event){
@@ -199,8 +238,6 @@ $(document).ready(function() {
 			 success: function(data){
 				 var obj = data[0];
 
-				console.log(obj.interviewdate);
-
 				 $("#child_fname").val(obj.first_name);
 				 $("#child_lname").val(obj.last_name);
 				 $("#child_bdate").val(obj.Bdate);
@@ -209,17 +246,19 @@ $(document).ready(function() {
 				if(obj.interviewdate == null){
 
 					// notification msg (your request is under our concentration)
-					// alert("your request is under our concentration");
+					alert("your request is under our concentration");
 
 				}
 				else{
-					document.childform.child_fname.disabled=false;
-					document.childform.child_lname.disabled=false;
-					document.childform.child_bdate.disabled=false;
-					document.childform.gender.disabled=false;
+
+					$('#child_fname').prop("disabled", false);
+					$('#child_lname').prop("disabled", false);
+					$('#gender').prop("disabled", false);
+					$('#child_bdate').prop("disabled", false);
+
+					$("#changeChildData").css("display", "block");
+					$("#uploadImgChild").css("display", "block");
 			
-					document.childform.changeChildData.style.display="block";
-					document.getElementById("uploadImgChild").style.display = "block";
 				}
 			 },
 		});
@@ -229,6 +268,9 @@ $(document).ready(function() {
 			data: {name:child_name},
 			type:"POST",
 			success: function(data){
+				if(data == 'data:image/jpeg;base64,')
+				$("#ChildImgContainer").attr('src', "http://ssl.gstatic.com/accounts/ui/avatar_2x.png");
+			else
 				$("#ChildImgContainer").attr('src', data);
 			},
 		});
@@ -240,6 +282,11 @@ $(document).ready(function() {
 	});
 
 	$("#addNewChild").click(function(){
+
+		if($("#image").val() != ''){
+			fileSize = $("#image")[0].files[0].size //size in bytes
+			imageValidation(fileSize);
+		}
 
 		$("#childform").on('submit',(function(e) {
 			e.preventDefault();
@@ -258,7 +305,6 @@ $(document).ready(function() {
 				 processData:false,
 				 success: function(data)
 				{
-					//$("#errormsg").html(data);
 					// notification to ay added sucessfully
 
 					$("#childrenList").empty();
@@ -275,20 +321,18 @@ $(document).ready(function() {
 						},
 					});
 
-					document.childform.child_fname.disabled=true;
-					document.childform.child_lname.disabled=true;
-					document.childform.child_bdate.disabled=true;
-					document.childform.gender.disabled=true;
+					$('#child_fname').prop("disabled", true);
+					$('#child_lname').prop("disabled", true);
+					$('#gender').prop("disabled", true);
+					$('#child_bdate').prop("disabled", true);
 					//document.childform.interview_Date.disabled=true;
 				
 					$("#hide-child-info").hide();
 
-					document.childform.addNewChild.style.display="none";
-					document.getElementById("uploadImgChild").style.display = "none";
+					$("#addNewChild").css("display", "none");
+					$("#uploadImgChild").css("display", "none");
+					$("#payment").css("display", "none");
 					//document.getElementById("interview").style.display = "none";
-					document.getElementById("payment").style.display = "none";
-
-				
 				}         
 			});
 		}));
@@ -298,10 +342,14 @@ $(document).ready(function() {
 		$("#childform").on('submit',(function(e) {
 			e.preventDefault();
 
-			var child_id = $("#childrenList").val();
 			var data = new FormData(this);
 
+			var child_id = $("#childrenList").val();
 			data.append("id", child_id);
+			
+			// for (var pair of data.entries()) {
+			//  	console.log(pair[0]+ ', ' + pair[1]); 
+			// }
 
 			$.ajax({
 				url: "updateChild.php",
@@ -312,28 +360,20 @@ $(document).ready(function() {
 				processData:false,
 				success: function(data)
 				{
+					//$("#errormsg").html(data);
+
 					// notification to say changed sucessfully
 
-					document.childform.child_fname.disabled=true;
-					document.childform.child_lname.disabled=true;
-					document.childform.child_bdate.disabled=true;
-					document.childform.gender.disabled=true;
-						
-					document.childform.changeChildData.style.display="none";
-					document.getElementById("uploadImgChild").style.display = "none";
-
+					$('#child_fname').prop("disabled", true);
+					$('#child_lname').prop("disabled", true);
+					$('#gender').prop("disabled", true);
+					$('#child_bdate').prop("disabled", true);
+				
+					$("#changeChildData").css("display", "none");
+					$("#uploadImgChild").css("display", "none");
 				}         
 			});
 		}));
-
-		// var extension = $('#image').val().split('.').pop().toLowerCase();
-		// if(jQuery.inArray(extension, ['gif','png','jpg','jpeg']) == -1)
-		// {
-		// 	alert('Invalid Image File');
-		// 	$('#image').val('');
-		// 	return false;
-		// }
-
 	});
 
 	$("#ch").click(function(){
@@ -392,18 +432,18 @@ function AddChild() {
 	$("#child_bdate").val("");
 	$("#gender").val("female");
 
-	document.childform.child_fname.disabled=false;
-	document.childform.child_lname.disabled=false;
-	document.childform.child_bdate.disabled=false;
-	document.childform.gender.disabled=false;
+
+	$('#child_fname').prop("disabled", false);
+	$('#child_lname').prop("disabled", false);
+	$('#gender').prop("disabled", false);
+	$('#child_bdate').prop("disabled", false);
 	//document.childform.interview_Date.disabled=false;
 
 	$("#hide-child-info").show();
-	document.childform.changeChildData.style.display="none";
 
-	document.childform.addNewChild.style.display="block";
-	document.getElementById("uploadImgChild").style.display = "block";
+	$("#changeChildData").css("display", "none");
+	$("#addNewChild").css("display", "block");
+	$("#uploadImgChild").css("display", "block");
+	$("#payment").css("display", "block");
 	//document.getElementById("interview").style.display = "block";
-	document.getElementById("payment").style.display = "block";
-
 }
