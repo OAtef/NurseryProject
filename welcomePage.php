@@ -128,7 +128,16 @@ include('php/server.php');
 						<div class="input-group-prepend">
 							<span class="input-group-text"><b>Last Name:</b></span>
 						</div>
-						<input type="text" placeholder="Enter Last Name" name="lastname"required>
+						<input type="text" placeholder="Enter Last Name" name="lastname" required>
+					</div>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><b>Gender:</b></span>
+							<select id="gender" name="gender" required="required" style="display: inline-block">
+								<option>female</option>
+								<option>male</option>
+                        	</select>
+						</div>
 					</div>
 					<div class="input-group">
 						<div class="input-group-prepend">

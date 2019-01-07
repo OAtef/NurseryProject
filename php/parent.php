@@ -45,8 +45,8 @@
     </div>
 
   <div id="main">
-  <!-- View Msg Panel -->
-  <div class="container HideAll" id="Vmsg" style="display: none">
+    <!-- View Msg Panel -->
+    <div class="container HideAll" id="Vmsg" style="display: none">
 
   </div>
 
@@ -88,14 +88,14 @@
 
     <!-- Parent Profile -->
     <div class="container HideAll" id="Profile">
-      <form name="ProfilePage" id="ProfilePage" method="POST">
+      <form id="ProfilePage" method="POST" enctype="multipart/form-data" name="ProfilePage">
       <div class="row">
         <div class="col-md-3 ">
           <div class="text-center">
-            <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+            <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar" id="ParentImgContainer">
             <div id="uploadImg" style="display: none">
               <h6>Upload a different photo...</h6>
-              <input type="file" class="text-center center-block file-upload" required="required">
+              <input type="file" class="text-center center-block file-upload" name="imageParent" id="imageParent">
             </div>
           </div>
         </div>
@@ -128,21 +128,28 @@
                       </div>
                     </div>
                     <div class="form-group row">
+                        <label for="genderr" class="col-4 col-form-label">Gender: </label>
+                        <select id="genderr" name="genderr" required="required" style="display: inline-block" disabled>
+                          <option>female</option>
+                          <option>male</option>
+                        </select>
+                    </div>
+                    <div class="form-group row">
                       <label for="relativeRelation" class="col-4 col-form-label">Relative Relation</label>
                       <div class="col-8">
-                        <input id="relativeRelation" name="relativeRelation" placeholder="Relative Relation" class="form-control here" required="required" type="text" disabled>
+                        <input id="relativeRelation" name="relativeRelation" placeholder="Relative Relation" class="form-control here" type="text" required="required"  disabled>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="nationalid" class="col-4 col-form-label">National ID</label>
                       <div class="col-8">
-                        <input id="nationalid" name="Nid" placeholder="National ID" class="form-control here" required="required" type="text" disabled>
+                        <input id="nationalid" name="Nid" placeholder="National ID" class="form-control here" type="text" required="required" disabled>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="parentemail" class="col-4 col-form-label">Email</label>
                       <div class="col-8">
-                        <input id="parentemail" name="email" placeholder="Email" class="form-control here" required="required" type="text" disabled>
+                        <input id="parentemail" name="email" placeholder="Email" class="form-control here" type="text" required="required" disabled>
                       </div>
                     </div>
                     <div class="form-group row">
@@ -192,7 +199,7 @@
                     </div>
                     <div class="form-group row">
                       <div class="offset-4 col-8">
-                        <button id="update" name="update" class="btn btn-primary" style="display: none">Update My Profile</button>
+                        <button type="submit" id="update" name="update" class="btn btn-primary" style="display: none">Update My Profile</button>
                       </div>
                     </div>
                   </div>
@@ -206,13 +213,13 @@
 
       <!-- Child Profile -->
       <div class="container HideAll" id="ChildProfile" style="display: none">
-        <form name="childform" id="childform" method="POST">
+        <form id="childform" method="POST" enctype="multipart/form-data" name="childform">
         <div class="col-md-3 ">
           <div class="text-center">
-            <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+            <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar" id="ChildImgContainer">
             <div id="uploadImgChild" style="display: none">
               <h6>Upload a different photo...</h6>
-              <input type="file" class="text-center center-block file-upload" name="image" id="image" required="required">
+              <input type="file" class="text-center center-block file-upload" name="image" id="image" >
             </div>
           </div>
         </div>
@@ -271,14 +278,17 @@
                       </div>
                       <div class="form-group row">
                         <div class="offset-4 col-8">
-                          <button id="addNewChild" name="addNewChild" value="addNewChild" class="btn btn-primary" style="display: none"> Confirm </button>
+                          <button type="submit" id="addNewChild" name="addNewChild" class="btn btn-primary" style="display: none"> Confirm </button>
                         </div>
                       </div>
                       <div class="form-group row">
                         <div class="offset-4 col-8">
-                          <button id="changeChildData" name="changeChildData" class="btn btn-primary" style="display: none"> Confirm Change </button>
+                          <button type="submit" id="changeChildData" name="changeChildData" class="btn btn-primary" style="display: none"> Confirm Change </button>
                         </div>
                       </div>
+
+                      <!-- <div id="errormsg"></div> -->
+
                     </div>
                   </div>
                 </div>
@@ -288,7 +298,7 @@
         </form>
       </div>
 
-  <script src="../js/ParentPage.js"></script>
+  <script src="../js/parent.js"></script>
 
   </body>
 </html>

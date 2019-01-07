@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$DBname = "Nursery-Database";
+$DBname = "nursery-database";
 
 // connect to the database
 $db = mysqli_connect($servername, $username, $password, $DBname);

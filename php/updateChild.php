@@ -1,4 +1,5 @@
 <?php
+
 include('db.php');
 session_start();
 
@@ -10,8 +11,19 @@ $bdate = $_POST["child_bdate"];
 $gender = $_POST["gender"];
 $id = $_POST["id"];
 
-$query = "UPDATE children SET children.first_name='$firstname', children.last_name='$lastname', children.Gender='$gender', children.Bdate='$bdate'
+$img  = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));  
+
+if($_FILES['image']['name'] == ''){
+
+    $query = "UPDATE children SET children.first_name='$firstname', children.last_name='$lastname', children.Gender='$gender', children.Bdate='$bdate'
     WHERE children.child_id='$id' and children.parentID IN (SELECT ID FROM users WHERE users.ID = children.parentID and users.email='$email')";
+    
+}else{
+
+    $query = "UPDATE children SET children.first_name='$firstname', children.last_name='$lastname', children.Gender='$gender', children.Bdate='$bdate', children.img='$img'
+    WHERE children.child_id='$id' and children.parentID IN (SELECT ID FROM users WHERE users.ID = children.parentID and users.email='$email')";
+   
+}
 
 $results = mysqli_query($db, $query);
 
