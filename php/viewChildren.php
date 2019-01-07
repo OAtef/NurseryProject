@@ -41,9 +41,11 @@ if (mysqli_num_rows($ChildrenResult) > 0) {
           <td><label id='lblBdate'>".$row['Bdate']."</label></td>
           <td><label id='lblBdate'>";
           if ($row['accepted'] == 1) {
-            echo "accepted";
+            echo "Accepted";
           }elseif ($row['accepted'] == 0) {
-            echo "pending";
+            echo "Pending";
+          }elseif ($row['accepted'] == 2) {
+            echo "Rejected";
           }
           echo "</label></td>
           <td><button onclick='DeleteChild()'><i class='fa fa-trash'></i> Delete</button></td>
@@ -59,7 +61,7 @@ if (mysqli_num_rows($ChildrenResult) > 0) {
             <b>Child Birthdate: </b> ".$row['Bdate']."
             <hr>
             ";
-            if ($row['accepted'] == 1) {
+            if ($row['accepted'] == 1 || $row['accepted'] == 2) {
               echo "<b>InterView Date: </b> ".$row['interviewdate']."";
             }elseif ($row['accepted'] == 0) {
               echo "<b>InterView Date: </b> ".$row['interviewdate']."

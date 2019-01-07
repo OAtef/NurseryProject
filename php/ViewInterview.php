@@ -44,7 +44,7 @@ if (mysqli_num_rows($RequestsResult) > 0) {
           <td><label id='lblMobile'>".$ParentData['mobilenumber']."</label></td>
           <td><label id='lblDay'>".$row['day']."</label></td>
           <td><button onclick='ApproveInterview()'><i class='fa fa-edit'></i> Approve</button></td>
-          <td><button onclick='RejectInterview()><i class='fa fa-trash'></i> Reject</button></td>
+          <td><button onclick='RejectInterview()'><i class='fa fa-trash'></i> Reject</button></td>
         </tr>
         <tr class='extra-data extra-data-row".$Counter."'>
           <td colspan='100%'>

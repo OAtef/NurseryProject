@@ -197,6 +197,7 @@ function interview_Date_max(){
 			 		//alert("successfully done");
 			 		console.log(data);
 			 	},
+
 			 });
 		});
 
@@ -270,10 +271,6 @@ function interview_Date_max(){
 			$(".HideAll").hide();
 			$("#ChildProfile").show();
 			$("#parent_img").attr("src","http://ssl.gstatic.com/accounts/ui/avatar_2x.png");
-		});
-
-		$("#is").click(function(){
-			$(".HideAll").hide();
 		});
 
 		//---------------- Show IMG on HTML ------------------
