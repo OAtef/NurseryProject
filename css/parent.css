@@ -4,6 +4,19 @@ body {
     background: url(../img/ParentBackground.jpg);
 }
 
+/* sweetalert2 css edits */
+.swal2-modal {
+  min-height: 350px;
+  min-width: 300px;
+  font-size: 14px !important;
+}
+
+.swal2-popup {
+  min-height: 50px;
+  min-width: 250px;
+  font-size: 16px !important;
+}
+
 .panel-group{
   margin: 0px 100px;
 }

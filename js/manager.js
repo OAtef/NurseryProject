@@ -108,13 +108,13 @@ function DeleteParent() {
     success: function(deleteParent) {
       $("#ViewParents").html(deleteParent);
 
-      // $.ajax({
-      //   url: "ViewParent.php",
-      //   type: "POST",
-      //   success: function(parentsData) {
-      //     $("#ViewParents").html(parentsData);
-      //   },
-      // })
+      $.ajax({
+        url: "ViewParent.php",
+        type: "POST",
+        success: function(parentsData) {
+          $("#ViewParents").html(parentsData);
+        },
+      })
     },
   })
 }
@@ -128,13 +128,13 @@ function DeleteChild() {
     success: function(deleteChild) {
       $("#ChildrenList").html(deleteChild);
 
-      // $.ajax({
-      //   url: "ViewChildren.php",
-      //   type: "POST",
-      //   success: function(childrenData) {
-      //     $("#ChildrenList").html(childrenData);
-      //   },
-      // })
+      $.ajax({
+        url: "ViewChildren.php",
+        type: "POST",
+        success: function(childrenData) {
+          $("#ChildrenList").html(childrenData);
+        },
+      })
     },
   })
 }
@@ -170,13 +170,13 @@ function RejectInterview() {
 
       $("#ViewInterview").html(rejectChild);
 
-      // $.ajax({
-      //   url: "ViewInterview.php",
-      //   type: "POST",
-      //   success: function(requestsData) {
-      //     $("#ViewInterview").html(requestsData);
-      //   },
-      // })
+      $.ajax({
+        url: "ViewInterview.php",
+        type: "POST",
+        success: function(requestsData) {
+          $("#ViewInterview").html(requestsData);
+        },
+      })
     },
   })
 }

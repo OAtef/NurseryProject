@@ -6,11 +6,6 @@ $addressID = -1;
 $parentID = -1;
 $ChildID = -1;
 
-
-if (!empty($_POST["ParentID"])) {
-
-  $parentID = $_POST["ParentID"];
-
 // $DeleteParentQuery = "DELETE FROM parent WHERE parent.userID = 3" // 6)
 //
 // $DeleteAdressQuery; // 7) get addressID from $DeleteParentQuery and DeleteAddress
@@ -27,98 +22,174 @@ if (!empty($_POST["ParentID"])) {
 //
 // $DeleteInterviewQuery; // 2) should be done before deleting ParentID
 
+if (!empty($_POST["ParentID"])) {
+
+  $parentID = $_POST["ParentID"];
+
+  $GetChildrenIDQuery = "SELECT child_id FROM children WHERE parentID = '$parentID'";
+  $ChildrenIDResults = mysqli_query($db, $GetChildrenIDQuery);
+
+  if (mysqli_num_rows($ChildrenIDResults) > 0) {
+    while ($row = mysqli_fetch_assoc($ChildrenIDResults)) {
+
+      $ChildID = $row['child_id'];
+
+      $DeleteTeachesQuery =  "DELETE FROM teaches WHERE teaches.child id = ".$ChildID;
+      $DeleteTeachesResult = mysqli_query($db, $DeleteTeachesQuery);
+
+      if (!$DeleteTeachesResult) {
+
+        echo "<script>Swal({
+                            type: 'error',
+                            title: 'Problem with deleting teaches table',
+                            toast: true,
+                            position: 'top-right',
+                            showConfirmButton: true
+                          })</script>";
+      }
+
+      $DeleteCommentSonQuery = "DELETE FROM commentson WHERE commentson.child id = ".$ChildID;
+      $DeleteCoommentSonResult = mysqli_query($db, $DeleteCommentSonQuery);
+
+      if (!$DeleteCoommentSonResult) {
+
+        echo "<script>Swal({
+                            type: 'error',
+                            title: 'Problem with deleting CommentSon Table',
+                            toast: true,
+                            position: 'top-right',
+                            showConfirmButton: true
+                          })</script>";
+      }
+
+      $DeleteChildQuery = "DELETE FROM children WHERE children.child_id = ".$ChildID;
+      $DeleteChildResult = mysqli_query($db, $DeleteChildQuery);
+
+      if (!$DeleteChildResult) {
+
+        echo "<script>Swal({
+                            type: 'error',
+                            title: 'There was a problem while deleting one of the children',
+                            toast: true,
+                            position: 'top-right',
+                            showConfirmButton: true
+                          })</script>";
+      }
+    }
+  }else {
+    echo "<script>Swal({
+                        type: 'error',
+                        title: 'Couldn't get ChildID',
+                        toast: true,
+                        position: 'top-right',
+                        showConfirmButton: true
+                      })</script>";
+  }
+
   $DeleteCommentsToQuery = "DELETE FROM commentsto WHERE commentsto.ToID = '$parentID' OR commentsto.FromID = '$parentID'";
+  $DeleteCommentsToResult = mysqli_query($db, $DeleteCommentsToQuery);
 
-  if ($DeleteCommentsToResult = mysqli_query($db, $DeleteCommentsToQuery)) {
+  if (!$DeleteCommentsToResult) {
 
-    $DeleteInterviewQuery = "DELETE FROM interviews WHERE interviews.parentID = ".$parentID;
+  echo "<script>Swal({
+                      type: 'error',
+                      title: 'Problem with deleting CommentsTo table',
+                      toast: true,
+                      position: 'top-right',
+                      showConfirmButton: true
+                    })</script>";
+  }
 
-    if ($DeleteInterviewResult = mysqli_query($db, $DeleteInterviewQuery)) {
+  $DeleteInterviewQuery = "DELETE FROM interviews WHERE interviews.parentID = ".$parentID;
+  $DeleteInterviewResult = mysqli_query($db, $DeleteInterviewQuery);
 
-      $GetChildrenIDQuery = "SELECT child_id FROM children WHERE parentID = '$parentID'";
-      $ChildrenIDResults = mysqli_query($db, $GetChildrenIDQuery);
+  if (!$DeleteInterviewResult) {
 
-      if (mysqli_num_rows($ChildrenIDResults) > 0) {
-        while ($row = mysqli_fetch_assoc($ChildrenIDResults)) {
+    echo "<script>Swal({
+                        type: 'error',
+                        title: 'Problem with deleting Interview table',
+                        toast: true,
+                        position: 'top-right',
+                        showConfirmButton: true
+                      })</script>";
+  }
 
-          $ChildID = $row['child_id'];
+  $GetAddressIDQuery = "SELECT addressID FROM parent WHERE parent.userID = '$parentID'";
+  $GetAddressIDResults = mysqli_query($db, $GetAddressIDQuery);
+  $Result = mysqli_fetch_array($GetAddressIDResults);
 
-          $DeleteTeachesQuery =  "DELETE FROM teaches WHERE teaches.child id = ".$ChildID;
+  if ($Result) {
+    $addressID = $Result['addressID'];
 
-          if ($DeleteTeachesResult = mysqli_query($db, $DeleteTeachesQuery)) {
+    $DeleteAddressQuery = "DELETE FROM address WHERE address.addressID = '$addressID'";
+    $DeleteAddressResult = mysqli_query($db, $DeleteAddressQuery);
 
-            $DeleteCommentSonQuery = "DELETE FROM commentson WHERE commentson.child id = ".$ChildID;
+    if (!$DeleteAddressResult) {
 
-            if ($DeleteCoommentSonResult = mysqli_query($db, $DeleteCommentSonQuery)) {
-
-              $DeleteChildQuery = "DELETE FROM children WHERE children.child_id = ".$ChildID;
-
-              if ($DeleteChildResult = mysqli_query($db, $DeleteChildQuery)) {
-
-                echo "Delete Child Done";
-
-              }else {
-                echo "Error in DeleteChildResult ";
-              }
-            }else {
-              echo "Error in DeleteCoommentSonResult";
-            }
-          }else {
-            echo "Error in DeleteTeachesResult";
-          }
-        }
-      }else {
-        echo "Error in ChildrenIDResults fetch";
-      }
-
-
-      $GetAddressIDQuery = "SELECT addressID FROM parent WHERE parent.userID = '$parentID'";
-      $GetAddressIDResults = mysqli_query($db, $GetAddressIDQuery);
-      $Result = mysqli_fetch_array($GetAddressIDResults);
-
-      if ($Result) {
-        $addressID = $Result['addressID'];
-
-        $DeleteAddressQuery = "DELETE FROM address WHERE address.addressID = '$addressID'"
-
-        if ($DeleteAddressResult = mysqli_query($db, $DeleteAddressQuery)) {
-
-          $DeleteParentQuery = "DELETE FROM parent WHERE parent.userID = '$parentID'";
-
-          if ($DeleteParentResult = mysqli_query($db, $DeleteParentQuery)) {
-
-            $DeleteParentFromUserQuery = "DELETE FROM users WHERE users.ID = '$parentID'";
-
-            if ($DeleteParentFromUserResult = mysqli_query($db, $DeleteParentFromUserQuery)) {
-
-              echo "Parent Deleted";
-
-            }else {
-              echo "Error in DeleteParentFromUserResult";
-            }
-
-          }else {
-            echo "Error in DeleteParentResult";
-          }
-
-        }else {
-          echo "Error in DeleteAddressResult";
-        }
-
-      }else {
-        echo "Error in GetAddressIDResults";
-      }
-
-    }else {
-      echo "Error in DeleteInterviewResult";
+      echo "<script>Swal({
+                          type: 'error',
+                          title: 'Problem with deleting Address table',
+                          toast: true,
+                          position: 'top-right',
+                          showConfirmButton: true
+                        })</script>";
     }
 
   }else {
-    echo "Error in DeleteCommentsToResult";
+    echo "<script>Swal({
+                        type: 'error',
+                        title: 'Couldn't get addressID',
+                        toast: true,
+                        position: 'top-right',
+                        showConfirmButton: true
+                      })</script>";
   }
 
-}else {
-  echo "Error getting parentID";
-}
+  $DeleteParentQuery = "DELETE FROM parent WHERE parent.userID = '$parentID'";
+  $DeleteParentResult = mysqli_query($db, $DeleteParentQuery);
+
+  if (!$DeleteParentResult) {
+
+    echo "<script>Swal({
+                        type: 'error',
+                        title: 'Problem with deleting Parent table',
+                        toast: true,
+                        position: 'top-right',
+                        showConfirmButton: true
+                      })</script>";
+  }
+
+  $DeleteParentFromUserQuery = "DELETE FROM users WHERE users.ID = '$parentID'";
+  $DeleteParentFromUserResult = mysqli_query($db, $DeleteParentFromUserQuery);
+
+  if ($DeleteParentFromUserResult) {
+
+    echo "<script>Swal({
+                        type: 'success',
+                        title: 'Parent Deleted',
+                        toast: true,
+                        position: 'top-right',
+                        showConfirmButton: false,
+                        timer: 2000
+                      })</script>";
+  }else {
+    echo "<script>Swal({
+                        type: 'error',
+                        title: 'Problem with deleting Users table',
+                        toast: true,
+                        position: 'top-right',
+                        showConfirmButton: true
+                      })</script>";
+  }
+
+  }else {
+    echo "<script>Swal({
+                        type: 'error',
+                        title: 'Couldn't get ParentID',
+                        toast: true,
+                        position: 'top-right',
+                        showConfirmButton: true
+                      })</script>";
+  }
 
 ?>

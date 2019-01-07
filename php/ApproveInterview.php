@@ -24,14 +24,32 @@ if (isset($_POST['ChildIDApprove'])) {
                         })</script>";
 
     }else {
-      echo "Error in DeleteInterviewResult";
+      echo "<script>Swal({
+                          type: 'error',
+                          title: 'Problem with deleting Interview table',
+                          toast: true,
+                          position: 'top-right',
+                          showConfirmButton: true
+                        })</script>";
     }
 
   }else {
-    echo "Error in ApproveResult";
+    echo "<script>Swal({
+                        type: 'error',
+                        title: 'Problem with approving Interview in child table',
+                        toast: true,
+                        position: 'top-right',
+                        showConfirmButton: true
+                      })</script>";
   }
 
 }else {
-  echo "Error in getting ChildIDApprove";
+  echo "<script>Swal({
+                      type: 'error',
+                      title: 'Couldn't get childID',
+                      toast: true,
+                      position: 'top-right',
+                      showConfirmButton: true
+                    })</script>";
 }
 ?>
