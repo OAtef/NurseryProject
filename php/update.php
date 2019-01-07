@@ -19,26 +19,38 @@ $pass = $_SESSION['password'];
     $buildno=$_POST["buildno"];
 
     // img
-    $img  = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));  
+    $img  = addslashes(file_get_contents($_FILES["imageParent"]["tmp_name"]));  
 
     if($password_old == "" && $password_new == ""){
         $password_new = $pass;
 
-        $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum', 
+        if($_FILES['imageParent']['size'] == 0 && $_FILES['imageParent']['error'] == 0){
+            $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum', 
+                users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation',
+                 address.city='$city', address.neigherhoodName='$neigherhoodName', address.StreetName='$StreetName', address.buildingNo='$buildno'
+                WHERE users.email='$email' and users.ID = parent.userID and parent.addressID = address.addressID";
+        }else{
+            $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum', 
                 users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation', parent.img='$img',
                  address.city='$city', address.neigherhoodName='$neigherhoodName', address.StreetName='$StreetName', address.buildingNo='$buildno'
                 WHERE users.email='$email' and users.ID = parent.userID and parent.addressID = address.addressID";
-            $results = mysqli_query($db, $query);
+        }
     }
     else{
         if($password_old == $pass){
             $_SESSION['password'] = $password_new;
 
-            $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum', 
-                users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation', parent.img='$img',
-                 address.city='$city', address.neigherhoodName='$neigherhoodName', address.StreetName='$StreetName', address.buildingNo='$buildno'
-                WHERE users.email='$email' and users.ID = parent.userID and parent.addressID = address.addressID";
-            $results = mysqli_query($db, $query);
+            if($_FILES['imageParent']['size'] == 0 && $_FILES['imageParent']['error'] == 0){
+                $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum', 
+                    users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation',
+                     address.city='$city', address.neigherhoodName='$neigherhoodName', address.StreetName='$StreetName', address.buildingNo='$buildno'
+                    WHERE users.email='$email' and users.ID = parent.userID and parent.addressID = address.addressID";
+            }else{
+                $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum', 
+                    users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation', parent.img='$img',
+                     address.city='$city', address.neigherhoodName='$neigherhoodName', address.StreetName='$StreetName', address.buildingNo='$buildno'
+                    WHERE users.email='$email' and users.ID = parent.userID and parent.addressID = address.addressID";
+            }
         }else{
             array_push($errors, "<script>Swal({
                 type: 'error',
@@ -47,6 +59,8 @@ $pass = $_SESSION['password'];
               })</script>");
         }
     }
+
+    $results = mysqli_query($db, $query);
 
     if (mysqli_affected_rows($db) == 1) {
 

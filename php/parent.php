@@ -104,10 +104,10 @@
       <div class="row">
         <div class="col-md-3 ">
           <div class="text-center">
-            <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+            <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar" id="ParentImgContainer">
             <div id="uploadImg" style="display: none">
               <h6>Upload a different photo...</h6>
-              <input type="file" class="text-center center-block file-upload" name="image" id="image" accept="image/*" required="required">
+              <input type="file" class="text-center center-block file-upload" name="imageParent" id="imageParent" required="required">
             </div>
           </div>
         </div>
@@ -138,6 +138,13 @@
                       <div class="col-8">
                         <input id="lastname" name="lastname" placeholder="Last Name" class="form-control here" type="text" required="required" disabled>
                       </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="genderr" class="col-4 col-form-label">Gender: </label>
+                        <select id="genderr" name="genderr" required="required" style="display: inline-block" disabled>
+                          <option>female</option>
+                          <option>male</option>
+                        </select>
                     </div>
                     <div class="form-group row">
                       <label for="relativeRelation" class="col-4 col-form-label">Relative Relation</label>
@@ -221,10 +228,10 @@
         <form id="childform" method="POST" enctype="multipart/form-data" name="childform">
         <div class="col-md-3 ">
           <div class="text-center">
-            <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar" id="imgContainer">
+            <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar" id="ChildImgContainer">
             <div id="uploadImgChild" style="display: none">
               <h6>Upload a different photo...</h6>
-              <input type="file" class="text-center center-block file-upload" name="image" id="image" accept="image/*" required="required">
+              <input type="file" class="text-center center-block file-upload" name="image" id="image" >
             </div>
           </div>
         </div>
@@ -291,6 +298,9 @@
                           <button id="changeChildData" name="changeChildData" class="btn btn-primary" style="display: none"> Confirm Change </button>
                         </div>
                       </div>
+
+                      <div id="errormsg"></div>
+
                     </div>
                   </div>
                 </div>
@@ -300,7 +310,7 @@
         </form>
       </div>
 
-  <script type="text/javascript" src="../js/ParentPage.js"></script>
+  <script src="../js/parent.js"></script>
 
   </body>
 </html>
