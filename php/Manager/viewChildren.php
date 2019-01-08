@@ -1,6 +1,6 @@
 <?php
 
-include('db.php');
+include('../db.php');
 
 $AllChildrenQuery = "SELECT * FROM children";
 $ChildrenResult = mysqli_query($db, $AllChildrenQuery);

@@ -1,5 +1,5 @@
 <?php
-include('db.php');
+include('../db.php');
 session_start();
 
 $email = $_SESSION['email'];

@@ -1,7 +1,6 @@
 <?php
-include('db.php');
 
-$ChildID = 0;
+include('../db.php');
 
 // to delete child need to remove first
 
@@ -9,9 +8,11 @@ $ChildID = 0;
 
 // delete teaches
 
-if (isset($_POST['ChildIDReject'])) {
+// delete interviews
 
-  $ChildID = $_POST['ChildIDReject'];
+if (!empty($_POST["ChidlID"])) {
+
+  $ChildID = $_POST['ChidlID'];
 
   $DeleteInterviewQuery = "DELETE FROM interviews WHERE interviews.childID = ".$ChildID;
   $DeleteInterviewResult = mysqli_query($db, $DeleteInterviewQuery);
@@ -27,21 +28,7 @@ if (isset($_POST['ChildIDReject'])) {
                       })</script>";
   }
 
-  $DeleteTeachesQuery =  "DELETE FROM teaches WHERE child id = ".$ChildID;
-  $DeleteTeachesResult = mysqli_query($db, $DeleteTeachesQuery);
-
-  if (!$DeleteTeachesResult) {
-
-    echo "<script>Swal({
-                        type: 'error',
-                        title: 'Problem with deleting Teaches table',
-                        toast: true,
-                        position: 'top-right',
-                        showConfirmButton: true
-                      })</script>";
-  }
-
-  $DeleteCommentSonQuery = "DELETE FROM commentson WHERE child id = ".$ChildID;
+  $DeleteCommentSonQuery = "DELETE FROM commentson WHERE commentson.child id = ".$ChildID;
   $DeleteCoommentSonResult = mysqli_query($db, $DeleteCommentSonQuery);
 
   if (!$DeleteCoommentSonResult) {
@@ -55,13 +42,14 @@ if (isset($_POST['ChildIDReject'])) {
                       })</script>";
   }
 
-  $RejectChildQuery = "UPDATE children SET accepted = 2 WHERE children.child_id = ".$ChildID;
-  $RejectChildResult = mysqli_query($db, $RejectChildQuery);
+  $DeleteChildQuery = "DELETE FROM children WHERE children.child_id = ".$ChildID;
+  $DeleteChildResult = mysqli_query($db, $DeleteChildQuery);
 
-  if ($RejectChildResult) {
+  if ($DeleteChildResult) {
+
     echo "<script>Swal({
                         type: 'success',
-                        title: 'Child Rejected',
+                        title: 'Child Deleted',
                         toast: true,
                         position: 'top-right',
                         showConfirmButton: false,
@@ -71,7 +59,7 @@ if (isset($_POST['ChildIDReject'])) {
   }else {
     echo "<script>Swal({
                         type: 'error',
-                        title: 'Problem with rejecting Interview in child table',
+                        title: 'Problem with deleting Child table',
                         toast: true,
                         position: 'top-right',
                         showConfirmButton: true

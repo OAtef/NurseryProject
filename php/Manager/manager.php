@@ -1,5 +1,5 @@
 <?php
-include('SendMsg.php');
+include('../SendMsg.php');
 ?>
 <html>
 <meta charset="utf-8">
@@ -7,11 +7,11 @@ include('SendMsg.php');
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="../css/parent.css">
-<script src="../js/sweetalert2/sweetalert2.all.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../../css/parent.css">
+<script src="../../js/sweetalert2/sweetalert2.all.min.js"></script>
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-<link rel="stylesheet" href="../css/table.css">
+<link rel="stylesheet" href="../../css/table.css">
 
 <head>
 
@@ -21,7 +21,7 @@ include('SendMsg.php');
         <a class="navbar-brand" href="#"><span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span></a>
       </div>
       <ul class="nav navbar-nav">
-        <li class="active"><a href="../welcomePage.php">Home</a></li>
+        <li class="active"><a href="../../welcomePage.php">Home</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a id="Pic-btn"><span class=""></span> Pic</a></li>
@@ -30,7 +30,7 @@ include('SendMsg.php');
           <a class='dropdown-toggle' data-toggle='dropdown' href='#'>Name
             <span class='caret'></span></a>
           <ul class='dropdown-menu'>
-            <li><a href='logout.php'>Logout</a></li>
+            <li><a href='../logout.php'>Logout</a></li>
           </ul>
         </li>
       </ul>
@@ -100,7 +100,7 @@ include('SendMsg.php');
       </div>
     </div>
 
-    <?php include('errors.php');
+    <?php include('../errors.php');
     if (isset($MessageSentScript)) {
       echo $MessageSentScript;
     }
@@ -123,7 +123,7 @@ include('SendMsg.php');
 
   </div>
 
-  <script src="../js/manager.js"></script>
+  <script src="../../js/manager.js"></script>
   <!-- <script src="../js/dobpicker.js"></script> -->
 
 </body>

@@ -1,5 +1,5 @@
 <?php
-include('db.php');
+include('../db.php');
 
 $query = "SELECT payment_type,invoiceNo from invoice";
 $result = mysqli_query($db, $query);

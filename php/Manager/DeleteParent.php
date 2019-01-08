@@ -1,6 +1,6 @@
 <?php
 
-include('db.php');
+include('../db.php');
 
 $addressID = -1;
 $parentID = -1;
@@ -33,20 +33,6 @@ if (!empty($_POST["ParentID"])) {
     while ($row = mysqli_fetch_assoc($ChildrenIDResults)) {
 
       $ChildID = $row['child_id'];
-
-      $DeleteTeachesQuery =  "DELETE FROM teaches WHERE teaches.child id = ".$ChildID;
-      $DeleteTeachesResult = mysqli_query($db, $DeleteTeachesQuery);
-
-      if (!$DeleteTeachesResult) {
-
-        echo "<script>Swal({
-                            type: 'error',
-                            title: 'Problem with deleting teaches table',
-                            toast: true,
-                            position: 'top-right',
-                            showConfirmButton: true
-                          })</script>";
-      }
 
       $DeleteCommentSonQuery = "DELETE FROM commentson WHERE commentson.child id = ".$ChildID;
       $DeleteCoommentSonResult = mysqli_query($db, $DeleteCommentSonQuery);

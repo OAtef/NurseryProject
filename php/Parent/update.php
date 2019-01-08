@@ -1,5 +1,5 @@
 <?php
-include('db.php');
+include('../db.php');
 session_start();
 
 $email = $_SESSION['email'];
@@ -12,25 +12,25 @@ $pass = $_SESSION['password'];
     $password_new = $_POST["newpass"];
     $natinalID = $_POST["Nid"];
     $relativeRelation = $_POST["relativeRelation"];
-    
+
     $city = $_POST["city"];
     $neigherhoodName = $_POST["neigherhoodName"];
     $StreetName = $_POST["StreetName"];
     $buildno=$_POST["buildno"];
 
     // img
-    $img  = addslashes(file_get_contents($_FILES["imageParent"]["tmp_name"]));  
+    $img  = addslashes(file_get_contents($_FILES["imageParent"]["tmp_name"]));
 
     if($password_old == "" && $password_new == ""){
         $password_new = $pass;
 
         if($_FILES['imageParent']['size'] == 0 && $_FILES['imageParent']['error'] == 0){
-            $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum', 
+            $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum',
                 users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation',
                  address.city='$city', address.neigherhoodName='$neigherhoodName', address.StreetName='$StreetName', address.buildingNo='$buildno'
                 WHERE users.email='$email' and users.ID = parent.userID and parent.addressID = address.addressID";
         }else{
-            $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum', 
+            $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum',
                 users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation', parent.img='$img',
                  address.city='$city', address.neigherhoodName='$neigherhoodName', address.StreetName='$StreetName', address.buildingNo='$buildno'
                 WHERE users.email='$email' and users.ID = parent.userID and parent.addressID = address.addressID";
@@ -41,12 +41,12 @@ $pass = $_SESSION['password'];
             $_SESSION['password'] = $password_new;
 
             if($_FILES['imageParent']['size'] == 0 && $_FILES['imageParent']['error'] == 0){
-                $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum', 
+                $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum',
                     users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation',
                      address.city='$city', address.neigherhoodName='$neigherhoodName', address.StreetName='$StreetName', address.buildingNo='$buildno'
                     WHERE users.email='$email' and users.ID = parent.userID and parent.addressID = address.addressID";
             }else{
-                $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum', 
+                $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum',
                     users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation', parent.img='$img',
                      address.city='$city', address.neigherhoodName='$neigherhoodName', address.StreetName='$StreetName', address.buildingNo='$buildno'
                     WHERE users.email='$email' and users.ID = parent.userID and parent.addressID = address.addressID";

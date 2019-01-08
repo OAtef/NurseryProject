@@ -45,13 +45,13 @@ include('php/server.php');
 					<ul class="nav navbar-nav navbar-right">
 						<?php
 									if (isset($_SESSION['userType']) && $_SESSION['userType'] == 1) {
-										echo "<li><a href='php/parent.php' class='glyphicon glyphicon-user'> UserName</a></li>";
+										echo "<li><a href='php/Parent/parent.php' class='glyphicon glyphicon-user'> UserName</a></li>";
 									}
 									elseif (isset($_SESSION['userType']) && $_SESSION['userType'] == 2) {
-										echo "<li><a href='php/manager.php' class='glyphicon glyphicon-user'> UserName</a></li>";
+										echo "<li><a href='php/Manager/manager.php' class='glyphicon glyphicon-user'> UserName</a></li>";
 									}
 									elseif (isset($_SESSION['userType']) && $_SESSION['userType'] == 3) {
-										echo "<li><a href='php/ceo.php' class='glyphicon glyphicon-user'> UserName</a></li>";
+										echo "<li><a href='php/CEO/ceo.php' class='glyphicon glyphicon-user'> UserName</a></li>";
 									}
 						?>
 					 <li><a href='php/logout.php' class="glyphicon glyphicon-log-out"> Logout</a></li>

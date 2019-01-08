@@ -1,5 +1,5 @@
 <?php
-  include('SendMsg.php');
+  include('../SendMsg.php');
 ?>
 <html>
   <head>
@@ -8,8 +8,8 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-      <script src="../js/sweetalert2/sweetalert2.all.min.js"></script>
-      <link rel="stylesheet" type="text/css" href="../css/parent.css">
+      <script src="../../js/sweetalert2/sweetalert2.all.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="../../css/parent.css">
     </head>
   <body>
 
@@ -20,7 +20,7 @@
           <a class="navbar-brand" href="#"><span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span></a>
         </div>
         <ul class="nav navbar-nav">
-          <li class="active"><a href="../welcomePage.php">Home</a></li>
+          <li class="active"><a href="../../welcomePage.php">Home</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a id="Pic-btn"><span class=""></span> Pic</a></li>
@@ -28,7 +28,7 @@
             <a class='dropdown-toggle' data-toggle='dropdown' href='#'>Name
             <span class='caret'></span></a>
             <ul class='dropdown-menu'>
-              <li><a href='logout.php'>Logout</a></li>
+              <li><a href='../logout.php'>Logout</a></li>
             </ul>
           </li>
         </ul>
@@ -80,7 +80,7 @@
   </div>
 
     <?php
-    include('errors.php');
+    include('../errors.php');
           if (isset($MessageSentScript)) {
             echo $MessageSentScript;
           }
@@ -114,7 +114,7 @@
                 </div>
               </div>
               <div class="row" >
-              <div id="errormsg"></div> 
+              <div id="errormsg"></div>
                 <div class="col-md-12">
                     <div class="form-group row">
                       <label for="firstname" class="col-4 col-form-label">First Name</label>
@@ -291,9 +291,6 @@
                           <button type="submit" id="changeChildData" name="changeChildData" class="btn btn-primary" style="display: none"> Confirm Change </button>
                           <button id="intakebtn" name="intakebtn" class="btn btn-primary" style="display: none"> Print Intake Report </button>
                       </div>
-
-                      
-
                     </div>
                   </div>
                 </div>
@@ -303,7 +300,7 @@
         </form>
       </div>
 
-  <script src="../js/parent.js"></script>
+  <script src="../../js/parent.js"></script>
 
   </body>
 </html>

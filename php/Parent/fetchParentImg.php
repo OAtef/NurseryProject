@@ -1,5 +1,5 @@
 <?php
-include('db.php');
+include('../db.php');
 session_start();
 
 $email = $_SESSION['email'];
@@ -8,6 +8,6 @@ $email = $_SESSION['email'];
     $result = mysqli_query($db, $query);
 
     $row = mysqli_fetch_array($result);
-    
+
     echo 'data:image/jpeg;base64,'.base64_encode( $row['img'] );
 ?>

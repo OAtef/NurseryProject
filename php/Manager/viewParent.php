@@ -1,6 +1,6 @@
 <?php
 
-include('db.php');
+include('../db.php');
 
 $AllParentsQuery = "SELECT userID, relativeRelation FROM parent";
 $ParentResult = mysqli_query($db, $AllParentsQuery);

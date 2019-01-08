@@ -1,5 +1,5 @@
 <?php
-include('db.php');
+include('../db.php');
 session_start();
 
 $todayDate = date("Y-m-d");
@@ -14,7 +14,7 @@ $not_accepted = 0;
 // need to be removed
 $nurseID = 0;
 // img
-$img  = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));  
+$img  = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
 
 
 // // calc to find which category
@@ -39,7 +39,7 @@ if(mysqli_num_rows($query_name_result)) {
   // error child name already exist
 }
 else{
-  $query = "INSERT INTO children (first_name, last_name, Bdate, Gender, accepted, parentID, categoryNo, nurseID, img) 
+  $query = "INSERT INTO children (first_name, last_name, Bdate, Gender, accepted, parentID, categoryNo, nurseID, img)
   VALUES ('$firstname', '$lastname', '$bdate', '$gender', '$not_accepted', '$parent_ID', '$category', '$nurseID', '$img')";
 
   mysqli_query($db, $query);

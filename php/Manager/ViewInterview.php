@@ -1,5 +1,5 @@
 <?php
-include('db.php');
+include('../db.php');
 
 $AllRequestsQuery = "SELECT parentID, childID, day, childAge FROM interviews ";
 $RequestsResult = mysqli_query($db, $AllRequestsQuery);
