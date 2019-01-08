@@ -1,7 +1,5 @@
 $(document).ready(function() {
 
-  document.getElementById("EditorDiv").style.visibility = 'hidden';
-
   $("#vm").click(function() {
 
     $(".HideAll").hide();
@@ -29,6 +27,14 @@ $(document).ready(function() {
   $("#VE").click(function() {
     $(".HideAll").hide();
     $("#ViewEmployee").show();
+
+    $.ajax({
+      url: "viewEmployee.php",
+      type: "POST",
+      success: function(employeeData) {
+        $("#ViewEmployee").html(employeeData);
+      },
+    })
   });
 
   $("#addEmpbtn").click(function(event) {
@@ -70,6 +76,23 @@ function openNav() {
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
   document.getElementById("main").style.marginLeft = "0";
+}
+
+//table
+
+$(document).on("click",".row", function(){
+  extraRowClass = ".extra-data-" + $(this).prop("class").split(" ")[1];
+  $(extraRowClass).slideToggle(50);
+});
+
+// to change the labels in the tables
+
+function changeEmail() {
+
+  let lbl = document.getElementById('lblEmail');
+  let empName = document.getElementById('emp').value;
+
+  lbl.innerText = empName; // TREATS EVERY CONTENT AS TEXT.
 }
 
 function EditEmployee() {

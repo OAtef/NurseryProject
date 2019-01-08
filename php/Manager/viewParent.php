@@ -34,7 +34,7 @@ if (mysqli_num_rows($ParentResult) > 0) {
         <td> <label id='lblNo'>".$Counter."</label></td>
         <td><label class='lblID-row".$Counter."' id='lblID'>".$row['userID']."</label></td>
         <td><label id='lblName'>".$Data['firstname']." ".$Data['lastname']."</label></td>
-        <td><label id='lblGroup'>".$Data['gender']."</label></td>
+        <td><label id='lblGender'>".$Data['gender']."</label></td>
         <td><label id='lblMobile'>".$Data['mobilenumber']."</label></td>
         <td><button onclick='DeleteParent()'><i class='fa fa-trash'></i> Delete</button></td>
       </tr>
