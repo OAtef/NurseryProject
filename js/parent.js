@@ -132,18 +132,6 @@ $(document).ready(function() {
 		},
 	});
 
-	$.ajax({
-		url:"paymentList.php",
-		type:"POST",
-		dataType: "json",
-		success: function(data){
-			for(var i = 0; i < data.length; i++) {
-				var obj = data[i];
-				$("#paymentList").append("<option value='"+obj.invoiceNo+"'>"+obj.payment_type+"</option>");
-			}
-		},
-	});
-
 	$("#vm").click(function(){
 
 		$(".HideAll").hide();
@@ -162,22 +150,24 @@ $(document).ready(function() {
 		$("#ProfilePage").on('submit',(function(e) {
 			e.preventDefault();
 
-			// var data = new FormData(this);
+			 var data = new FormData(this);
+			var national = $('#nationalid').val();
+			 data.append("Nid", national);
 
-			// for (var pair of data.entries()) {
-			//  	console.log(pair[0]+ ', ' + pair[1]); 
-			// }
+			 for (var pair of data.entries()) {
+			  	console.log(pair[0]+ ', ' + pair[1]); 
+			 }
 
 			$.ajax({
 				url: "update.php",
 				type: "POST",
-				data: new FormData(this),
+				data: data,
 				contentType: false,
 				cache: false,
 				processData:false,
 				success: function(data)
 				{
-					//$("#errormsg").html(data);
+					$("#errormsg").html(data);
 
 					// notification to ay added sucessfully
 
@@ -193,7 +183,8 @@ $(document).ready(function() {
 					$('#city').prop("disabled", true);
 					$('#StreetName').prop("disabled", true);
 					$('#buildno').prop("disabled", true);
-
+					$('#nationalid').prop("disabled", true);
+					
 					$("#update").css("display", "none");
 					$("#uploadImg").css("display", "none");
 				}         
@@ -238,26 +229,78 @@ $(document).ready(function() {
 			 success: function(data){
 				 var obj = data[0];
 
-				 $("#child_fname").val(obj.first_name);
-				 $("#child_lname").val(obj.last_name);
-				 $("#child_bdate").val(obj.Bdate);
-				 $("#gender").val(obj.Gender);
+				 $("#interview_state").css("display", "block");
 
-				if(obj.interviewdate == null){
+				if(obj.accepted == 0){
+
+					$('#hide-rejected').show();
 
 					// notification msg (your request is under our concentration)
-					alert("your request is under our concentration");
+
+					$("#interState").val("Pending");
+
+					if(obj.interviewdate != null){
+						
+						$("#interview").css("display", "block");
+						$("#interviewbtn").css("display", "block");
+						$("#interview_Date").val(obj.interviewdate);
+					
+					}	
+
+					$("#child_fname").val(obj.first_name);
+					$("#child_lname").val(obj.last_name);
+					$("#child_bdate").val(obj.Bdate);
+					$("#gender").val(obj.Gender);
+
+					$('#child_fname').prop("disabled", true);
+					$('#child_lname').prop("disabled", true);
+					$('#gender').prop("disabled", true);
+					$('#child_bdate').prop("disabled", true);
+
+					$("#changeChildData").css("display", "none");
+					$("#intakebtn").css("display", "none");
+					$("#uploadImgChild").css("display", "none");
 
 				}
-				else{
+				else if(obj.accepted == 1){
+
+					$('#hide-rejected').show();
+
+					$("#interview").css("display", "none");
+					$("#interviewbtn").css("display", "none");
+
+					$("#interview_state").css("display", "block");
+					$("#interState").val("Accepted");
+
+					$("#child_fname").val(obj.first_name);
+					$("#child_lname").val(obj.last_name);
+					$("#child_bdate").val(obj.Bdate);
+					$("#gender").val(obj.Gender);
 
 					$('#child_fname').prop("disabled", false);
 					$('#child_lname').prop("disabled", false);
 					$('#gender').prop("disabled", false);
 					$('#child_bdate').prop("disabled", false);
 
-					$("#changeChildData").css("display", "block");
+					$("#changeChildData").css("display", "inline-block");
+					$("#intakebtn").css("display", "inline-block");
 					$("#uploadImgChild").css("display", "block");
+					
+			
+				}
+				else if(obj.accepted == 2){
+
+					$('#hide-rejected').hide();
+					
+					$("#interview").css("display", "none");
+					$("#interviewbtn").css("display", "none");
+
+					$("#interview_state").css("display", "block");
+					$("#interState").val("Rejected");
+
+					$("#changeChildData").css("display", "none");
+					$("#intakebtn").css("display", "none");
+					$("#uploadImgChild").css("display", "none");
 			
 				}
 			 },
@@ -278,28 +321,35 @@ $(document).ready(function() {
 		$("#hide-child-info").show();
 		document.childform.addNewChild.style.display="none";
 		//document.getElementById("interview").style.display = "none";
-		document.getElementById("payment").style.display = "none";
+	});
+
+	$("#intakebtn").click(function(event){
+		event.preventDefault();
+
+		window.open('intakeReport.php');
+
+	});
+
+	$("#interviewbtn").click(function(event){
+
+		event.preventDefault();
+
+		window.open('ParentChildPaper.php');
+		
+
+		
+
 	});
 
 	$("#addNewChild").click(function(){
 
-		if($("#image").val() != ''){
-			fileSize = $("#image")[0].files[0].size //size in bytes
-			imageValidation(fileSize);
-		}
-
 		$("#childform").on('submit',(function(e) {
 			e.preventDefault();
-
-			var payment = $("#paymentList").val();
-			var data = new FormData(this);
-
-			data.append("payment", payment);
 
 			$.ajax({
 				url: "insertChild.php",
 				 type: "POST",
-				data: data,
+				data: new FormData(this),
 				contentType: false,
 				cache: false,
 				 processData:false,
@@ -331,7 +381,6 @@ $(document).ready(function() {
 
 					$("#addNewChild").css("display", "none");
 					$("#uploadImgChild").css("display", "none");
-					$("#payment").css("display", "none");
 					//document.getElementById("interview").style.display = "none";
 				}         
 			});
@@ -370,6 +419,7 @@ $(document).ready(function() {
 					$('#child_bdate').prop("disabled", true);
 				
 					$("#changeChildData").css("display", "none");
+					$("#intakebtn").css("display", "none");
 					$("#uploadImgChild").css("display", "none");
 				}         
 			});
@@ -437,13 +487,15 @@ function AddChild() {
 	$('#child_lname').prop("disabled", false);
 	$('#gender').prop("disabled", false);
 	$('#child_bdate').prop("disabled", false);
-	//document.childform.interview_Date.disabled=false;
 
 	$("#hide-child-info").show();
 
+	$("#interview_state").css("display", "none");
+	$("#interview").css("display", "none");
 	$("#changeChildData").css("display", "none");
+	$("#intakebtn").css("display", "none");
+	$("#interviewbtn").css("display", "none");
 	$("#addNewChild").css("display", "block");
 	$("#uploadImgChild").css("display", "block");
-	$("#payment").css("display", "block");
-	//document.getElementById("interview").style.display = "block";
+	
 }

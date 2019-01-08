@@ -114,6 +114,7 @@
                 </div>
               </div>
               <div class="row" >
+              <div id="errormsg"></div> 
                 <div class="col-md-12">
                     <div class="form-group row">
                       <label for="firstname" class="col-4 col-form-label">First Name</label>
@@ -241,53 +242,57 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div id="hide-child-info">
-                      <div class="form-group row">
-                        <label for="child_fname" class="col-4 col-form-label">Child First Name</label>
-                        <div class="col-8">
-                          <input id="child_fname" name="child_fname" placeholder="First Name" class="form-control here" type="text" required="required" disabled>
+                      <div id="hide-rejected">
+                        <div class="form-group row">
+                          <label for="child_fname" class="col-4 col-form-label">Child First Name</label>
+                          <div class="col-8">
+                            <input id="child_fname" name="child_fname" placeholder="First Name" class="form-control here" type="text" required="required" disabled>
+                          </div>
                         </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="child_lname" class="col-4 col-form-label">Child Last Name</label>
-                        <div class="col-8">
-                          <input id="child_lname" name="child_lname" placeholder="Last Name" class="form-control here" type="text" required="required" disabled>
+                        <div class="form-group row">
+                          <label for="child_lname" class="col-4 col-form-label">Child Last Name</label>
+                          <div class="col-8">
+                            <input id="child_lname" name="child_lname" placeholder="Last Name" class="form-control here" type="text" required="required" disabled>
+                          </div>
                         </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="text" class="col-4 col-form-label">Child Birthdate</label>
-                        <div class="col-8">
-                          <input id="child_bdate" name="child_bdate" class="form-control here" type="date" required="required" disabled>
+                        <div class="form-group row">
+                          <label for="text" class="col-4 col-form-label">Child Birthdate</label>
+                          <div class="col-8">
+                            <input id="child_bdate" name="child_bdate" class="form-control here" type="date" required="required" disabled>
+                          </div>
                         </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="gender" class="col-4 col-form-label">Gender: </label>
-                        <select id="gender" name="gender" required="required" style="display: inline-block" disabled>
-                          <option>female</option>
-                          <option>male</option>
-                        </select>
+                        <div class="form-group row">
+                          <label for="gender" class="col-4 col-form-label">Gender: </label>
+                          <select id="gender" name="gender" required="required" style="display: inline-block" disabled>
+                            <option>female</option>
+                            <option>male</option>
+                          </select>
+                        </div>
                       </div>
                       <div id="interview" class="form-group row" style="display: none">
                         <label for="interviewDate" class="col-4 col-form-label">Interview Date</label>
                         <div class="col-8">
-                          <input id="interview_Date" name="interview_Date" class="form-control here" type="date" required="required" disabled>
+                          <input id="interview_Date" name="interview_Date" class="form-control here" type="date" disabled>
                         </div>
                       </div>
-                      <div id="payment" class="form-group row" style="display: none">
-                        <label for="paymentList" class="col-4 col-form-label" >Payment: </label>
-                        <select id="paymentList"style="display: inline-block"></select>
+                      <div id="interview_state" class="form-group row" style="display: none">
+                        <label for="interState" class="col-4 col-form-label">Interview State</label>
+                        <div class="col-8">
+                          <input id="interState" name="interState" class="form-control here" type="text" disabled>
+                        </div>
                       </div>
                       <div class="form-group row">
                         <div class="offset-4 col-8">
                           <button type="submit" id="addNewChild" name="addNewChild" class="btn btn-primary" style="display: none"> Confirm </button>
+                          <button id="interviewbtn" name="interviewbtn" class="btn btn-primary" style="display: none"> Print Interview Paper </button>
                         </div>
                       </div>
                       <div class="form-group row">
-                        <div class="offset-4 col-8">
                           <button type="submit" id="changeChildData" name="changeChildData" class="btn btn-primary" style="display: none"> Confirm Change </button>
-                        </div>
+                          <button id="intakebtn" name="intakebtn" class="btn btn-primary" style="display: none"> Print Intake Report </button>
                       </div>
 
-                      <!-- <div id="errormsg"></div> -->
+                      
 
                     </div>
                   </div>
