@@ -66,7 +66,8 @@ if (mysqli_num_rows($ChildrenResult) > 0) {
             }elseif ($row['accepted'] == 0) {
               echo "<b>InterView Date: </b> ".$row['interviewdate']."
               <div id='EditorDivBdate' style='margin-left: 50%'>
-                Enter New Date: <input type='date' id='InterviewDate-row".$Counter."' value='' /> <input type='button' id='textEditor' value='Change Birthday Date' onclick='changeInterviewDate()' />
+                Enter New Date: <input type='date' id='InterviewDate-row".$Counter."' value='' />
+                                <input type='button' id='textEditor' value='Change Birthday Date' onclick='changeInterviewDate()' />
               </div>";
             }
             echo "

@@ -152,8 +152,8 @@ function ApproveInterview() {
       $.ajax({
         url: "ViewInterview.php",
         type: "POST",
-        success: function(requestsData) {
-          $("#ViewInterview").html(requestsData);
+        success: function(approveData) {
+          $("#ViewInterview").html(approveData);
         },
       })
     },
@@ -173,8 +173,8 @@ function RejectInterview() {
       $.ajax({
         url: "ViewInterview.php",
         type: "POST",
-        success: function(requestsData) {
-          $("#ViewInterview").html(requestsData);
+        success: function(rejectData) {
+          $("#ViewInterview").html(rejectData);
         },
       })
     },
@@ -182,7 +182,22 @@ function RejectInterview() {
 }
 
 function changeInterviewDate() {
-  let newParentName = document.getElementById('InterviewDate-' + selectedRow).value;
+  let newInterviewDate = document.getElementById('InterviewDate-' + selectedRow).value;
 
-  alert(newParentName);
+  $.ajax({
+    url: "setInterviewDate.php",
+    type: "POST",
+    data: 'newInterviewDate='+newInterviewDate,
+    success: function(newDate) {
+      $("#ChildrenList").html(newDate);
+    },
+  })
+
+  $.ajax({
+    url: "ViewChildren.php",
+    type: "POST",
+    success: function(childrenData) {
+      $("#ChildrenList").html(childrenData);
+    },
+  })
 }

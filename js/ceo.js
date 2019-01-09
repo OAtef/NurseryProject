@@ -1,5 +1,6 @@
 var extraRowClass;
 var selectedID;
+var selectedRow;
 
 $(document).ready(function() {
 
@@ -90,6 +91,7 @@ $(document).on("click",".row", function(){
 
 $(document).on("mouseenter",".row", function(){
   selectedID = ".lblID-" + $(this).prop("class").split(" ")[1];
+  selectedRow = $(this).prop("class").split(" ")[1];
 });
 
 
@@ -112,19 +114,77 @@ function DeleteEmployee() {
           },
         });
 
-        // $.ajax({
-        //   url: "viewEmployee.php",
-        //   type: "POST",
-        //   success: function(employeeData) {
-        //     $("#ViewEmployee").html(employeeData);
-        //   },
-        // });
+        $.ajax({
+          url: "viewEmployee.php",
+          type: "POST",
+          success: function(employeeData) {
+            $("#ViewEmployee").html(employeeData);
+          },
+        });
       }
   })
 }
 
 
-function AddEmployee() {
+function changeMobileNumber() {
+  let newMobileNumber = document.getElementById('lblMobNumber-' + selectedRow).value;
 
+  $.ajax({
+    url: "updateNurse.php",
+    type: "POST",
+    data: {newNumber: newMobileNumber},
+    success: function(newDate) {
+      $("#ViewEmployee").html(newDate);
+    },
+  })
 
+  $.ajax({
+    url: "viewEmployee.php",
+    type: "POST",
+    success: function(updatedData) {
+      $("#ViewEmployee").html(updatedData);
+    },
+  })
+}
+
+function changeWorkingHours() {
+  let newWorkingHours = document.getElementById('lblworkingHours-' + selectedRow).value;
+
+  $.ajax({
+    url: "updateNurse.php",
+    type: "POST",
+    data: {newHours: newWorkingHours},
+    success: function(newDate) {
+      $("#ViewEmployee").html(newDate);
+    },
+  })
+
+  $.ajax({
+    url: "viewEmployee.php",
+    type: "POST",
+    success: function(updatedData) {
+      $("#ViewEmployee").html(updatedData);
+    },
+  })
+}
+
+function changePassword() {
+  let newPassword = document.getElementById('lblPass-' + selectedRow).value;
+
+  $.ajax({
+    url: "updateNurse.php",
+    type: "POST",
+    data: {newPass: newPassword},
+    success: function(newDate) {
+      $("#ViewEmployee").html(newDate);
+    },
+  })
+
+  $.ajax({
+    url: "viewEmployee.php",
+    type: "POST",
+    success: function(updatedData) {
+      $("#ViewEmployee").html(updatedData);
+    },
+  })
 }
