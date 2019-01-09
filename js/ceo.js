@@ -1,3 +1,6 @@
+var extraRowClass;
+var selectedID;
+
 $(document).ready(function() {
 
   $("#vm").click(function() {
@@ -85,20 +88,41 @@ $(document).on("click",".row", function(){
   $(extraRowClass).slideToggle(50);
 });
 
+$(document).on("mouseenter",".row", function(){
+  selectedID = ".lblID-" + $(this).prop("class").split(" ")[1];
+});
+
+
 // to change the labels in the tables
 
-function changeEmail() {
+function DeleteEmployee() {
 
-  let lbl = document.getElementById('lblEmail');
-  let empName = document.getElementById('emp').value;
+  swal({
+      html: "Enter New Employee ID: <input type='text' id='NewEmployeeID' value=''>",
+      confirmButtonText: 'Confirm',
+      showCancelButton: true,
+      preConfirm: function() {
 
-  lbl.innerText = empName; // TREATS EVERY CONTENT AS TEXT.
+        $.ajax({
+          url: "deleteEmployee.php",
+          data: {oldEmployee: $(selectedID).text(), newEmployee: $('#NewEmployeeID').val()},
+          type: "POST",
+          success: function(deleteData) {
+            $("#ViewEmployee").html(deleteData);
+          },
+        });
+
+        // $.ajax({
+        //   url: "viewEmployee.php",
+        //   type: "POST",
+        //   success: function(employeeData) {
+        //     $("#ViewEmployee").html(employeeData);
+        //   },
+        // });
+      }
+  })
 }
 
-function EditEmployee() {
-
-
-}
 
 function AddEmployee() {
 

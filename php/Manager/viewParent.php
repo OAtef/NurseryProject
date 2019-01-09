@@ -2,26 +2,26 @@
 
 include('../db.php');
 
+echo "
+<table class='data-table'>
+<thead class='data-table-head'>
+  <tr>
+    <th> </th>
+    <th>Number </th>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Gender</th>
+    <th>Mobile</th>
+    <th>Delete</th>
+  </tr>
+</thead>
+<tbody>";
+
 $AllParentsQuery = "SELECT userID, relativeRelation FROM parent";
 $ParentResult = mysqli_query($db, $AllParentsQuery);
 $Counter = 1;
 
 if (mysqli_num_rows($ParentResult) > 0) {
-
-  echo "
-  <table class='data-table'>
-  <thead class='data-table-head'>
-    <tr>
-      <th> </th>
-      <th>Number </th>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Gender</th>
-      <th>Mobile</th>
-      <th>Delete</th>
-    </tr>
-  </thead>";
-
   while ($row = mysqli_fetch_assoc($ParentResult)) {
     $GetParentInfoQuery = "SELECT * FROM users WHERE ID = ".$row['userID'];
     $ParentInfoResult = mysqli_query($db, $GetParentInfoQuery);
@@ -29,7 +29,6 @@ if (mysqli_num_rows($ParentResult) > 0) {
 
     if ($Data) {
       echo "
-    <tbody>
       <tr class='row row".$Counter."'>
         <td> <label id='lblNo'>".$Counter."</label></td>
         <td><label class='lblID-row".$Counter."' id='lblID'>".$row['userID']."</label></td>
@@ -50,8 +49,7 @@ if (mysqli_num_rows($ParentResult) > 0) {
           <hr>
           <b>Children Count: </b> 0
         </td>
-      </tr>
-    </tbody>";
+      </tr>";
     }
     else {
       echo "user doesn't exist";
@@ -60,6 +58,8 @@ if (mysqli_num_rows($ParentResult) > 0) {
   }
 }
 
-echo "</table>";
+echo "
+  </tbody>
+</table>";
 
 ?>

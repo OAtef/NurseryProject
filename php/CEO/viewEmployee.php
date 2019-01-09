@@ -2,27 +2,27 @@
 
 include('../db.php');
 
+echo "
+<table class='data-table'>
+  <thead class='data-table-head'>
+    <tr>
+      <th> </th>
+      <th># </th>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Mobile</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>";
+
 $AllEmployeeQuery = "SELECT * FROM nursemanager";
 $EmployeeResult = mysqli_query($db, $AllEmployeeQuery);
 $Counter = 1;
 
 if (mysqli_num_rows($EmployeeResult) > 0) {
-
-  echo "
-  <table class='data-table'>
-    <thead class='data-table-head'>
-      <tr>
-        <th> </th>
-        <th># </th>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Gender</th>
-        <th>Mobile</th>
-        <th>Edit</th>
-        <th>Delete</th>
-      </tr>
-    </thead>";
-
   while ($row = mysqli_fetch_assoc($EmployeeResult)) {
     $GetEmployeeInfoQuery = "SELECT * FROM users WHERE ID = ".$row['userID'];
     $EmployeeInfoResult = mysqli_query($db, $GetEmployeeInfoQuery);
@@ -30,10 +30,9 @@ if (mysqli_num_rows($EmployeeResult) > 0) {
 
     if ($Data) {
       echo "
-      <tbody>
         <tr class='row row".$Counter."'>
           <td> <label id='lblNo'>".$Counter."</label></td>
-          <td><label id='lblID'>".$row['userID']."</label></td>
+          <td><label class='lblID-row".$Counter."'>".$row['userID']."</label></td>
           <td><label id='lblName'>".$Data['firstname']." ".$Data['lastname']."</label></td>
           <td><label id='lblGender'>".$Data['gender']."</label></td>
           <td><label id='lblMobile'>".$Data['mobilenumber']."</label></td>
@@ -52,8 +51,7 @@ if (mysqli_num_rows($EmployeeResult) > 0) {
             <div id='EditorDivEmail' style='margin-left: 50%'> Enter New Email: <input type='text' id='emp' value='' /> <input type='button' id='textEditor' value='Change Email' onclick='changeEmail()' /> </div>
             <hr>
           </td>
-        </tr>
-      </tbody>";
+        </tr>";
     }
     else {
       echo "user doesn't exist";
@@ -62,6 +60,8 @@ if (mysqli_num_rows($EmployeeResult) > 0) {
   }
 }
 
-echo "</table>";
+echo "
+  </tbody>
+</table>";
 
 ?>

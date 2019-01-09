@@ -2,27 +2,28 @@
 
 include('../db.php');
 
+echo "
+<table class='data-table'>
+  <thead class='data-table-head'>
+    <tr>
+      <th> </th>
+      <th>Number </th>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Bdate</th>
+      <th>Interview</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>";
+
+
 $AllChildrenQuery = "SELECT * FROM children";
 $ChildrenResult = mysqli_query($db, $AllChildrenQuery);
 $Counter = 1;
 
 if (mysqli_num_rows($ChildrenResult) > 0) {
-
-  echo "
-  <table class='data-table'>
-    <thead class='data-table-head'>
-      <tr>
-        <th> </th>
-        <th>Number </th>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Gender</th>
-        <th>Bdate</th>
-        <th>Interview</th>
-        <th>Delete</th>
-      </tr>
-    </thead>";
-
   while ($row = mysqli_fetch_assoc($ChildrenResult)) {
 
     $GetParentInfoQuery = "SELECT * FROM users WHERE ID = ".$row['parentID'];
@@ -32,7 +33,6 @@ if (mysqli_num_rows($ChildrenResult) > 0) {
     if ($ParentData) {
 
       echo "
-      <tbody>
         <tr class='row row".$Counter."'>
           <td> <label id='lblNo'>".$Counter."</label></td>
           <td><label class='lblID-row".$Counter."' id='lblID'>".$row['child_id']."</label></td>
@@ -71,8 +71,7 @@ if (mysqli_num_rows($ChildrenResult) > 0) {
             }
             echo "
           </td>
-        </tr>
-      </tbody>";
+        </tr>";
 
     }
     else {
@@ -82,6 +81,8 @@ if (mysqli_num_rows($ChildrenResult) > 0) {
   }
 }
 
-echo "</table>";
+echo "
+  </tbody>
+</table>";
 
 ?>

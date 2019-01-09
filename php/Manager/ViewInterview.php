@@ -1,28 +1,28 @@
 <?php
 include('../db.php');
 
+echo "
+<table class='data-table'>
+  <thead class='data-table-head'>
+    <tr>
+      <th> </th>
+      <th># </th>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Mobile</th>
+      <th>Day</th>
+      <th>Approve</th>
+      <th>Reject</th>
+    </tr>
+  </thead>
+  <tbody>";
+
 $AllRequestsQuery = "SELECT parentID, childID, day, childAge FROM interviews ";
 $RequestsResult = mysqli_query($db, $AllRequestsQuery);
 $Counter = 1;
 
 if (mysqli_num_rows($RequestsResult) > 0) {
-
-  echo "
-  <table class='data-table'>
-    <thead class='data-table-head'>
-      <tr>
-        <th> </th>
-        <th># </th>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Gender</th>
-        <th>Mobile</th>
-        <th>Day</th>
-        <th>Approve</th>
-        <th>Reject</th>
-      </tr>
-    </thead>";
-
   while ($row = mysqli_fetch_assoc($RequestsResult)) {
     $GetParentInfoQuery = "SELECT * FROM users WHERE ID = ".$row['parentID'];
     $ParentInfoResult = mysqli_query($db, $GetParentInfoQuery);
@@ -35,7 +35,6 @@ if (mysqli_num_rows($RequestsResult) > 0) {
     if ($ParentData && $ChildData) {
 
       echo "
-      <tbody>
         <tr class='row row".$Counter."'>
           <td> <label id='lblNo'>".$Counter."</label></td>
           <td><label id='lblID'>".$ParentData['ID']."</label></td>
@@ -58,9 +57,7 @@ if (mysqli_num_rows($RequestsResult) > 0) {
             <hr>
             <b>Child Age: </b> <span id='lblChildAge'>".$row['childAge']."</span>
           </td>
-        </tr>
-      </tbody>";
-
+        </tr>";
     }
     else {
       echo "user doesn't exist";
@@ -69,6 +66,7 @@ if (mysqli_num_rows($RequestsResult) > 0) {
   }
 }
 
-echo "</table>";
+echo "</tbody>
+    </table>";
 
 ?>

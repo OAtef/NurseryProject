@@ -1,7 +1,6 @@
 <?php
 include('../db.php');
 
-
 $firstname = $_POST["firstname"];
 $lastname = $_POST["lastname"];
 $mobilenumber = $_POST["mobilenumber"];
