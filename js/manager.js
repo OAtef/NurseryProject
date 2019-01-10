@@ -71,7 +71,6 @@ $(document).ready(function() {
       },
     })
   });
-
 });
 
 function openNav() {
@@ -95,6 +94,10 @@ $(document).on("mouseenter",".row", function(){
   selectedID = ".lblID-" + $(this).prop("class").split(" ")[1];
   childID = ".lblChildID-" + $(this).prop("class").split(" ")[1];
   selectedRow = $(this).prop("class").split(" ")[1];
+
+  //todayDate();
+  //maxInterviewDate();
+
 });
 
 // to change the labels in the tables
@@ -187,7 +190,7 @@ function changeInterviewDate() {
   $.ajax({
     url: "setInterviewDate.php",
     type: "POST",
-    data: 'newInterviewDate='+newInterviewDate,
+    data: {newInterviewDate: newInterviewDate, ChildID: $(childID).text()},
     success: function(newDate) {
       $("#ChildrenList").html(newDate);
     },
@@ -200,4 +203,55 @@ function changeInterviewDate() {
       $("#ChildrenList").html(childrenData);
     },
   })
+}
+
+function todayDate(){
+
+// min is today
+
+	var today = new Date();
+	var day = today.getDate();
+	var month = today.getMonth()+1; //January is 0!
+	var year = today.getFullYear();
+
+	if(day<10) {
+		day = '0'+day
+	}
+
+	if(month<10) {
+		month = '0'+month
+	}
+
+	today = year + '-' + month + '-' + day;
+
+  let interview = document.getElementById('InterviewDate-' + selectedRow);
+	interview.setAttribute("min", today);
+}
+
+function maxInterviewDate(){
+
+  // max is a month
+
+  var interDatee = new Date();
+  var day = interDatee.getDate();
+  var month = interDatee.getMonth()+2; //January is 0!
+  var year = interDatee.getFullYear();
+
+  if(day<10) {
+    day = '0'+day
+  }
+
+  if(month<10) {
+    month = '0'+month
+  }
+
+  if(month > 12){
+    month ='0'+1
+    year++
+  }
+
+  interDatee = year + '-' + month + '-' + day;
+
+  let interview = document.getElementById('InterviewDate-' + selectedRow);
+  interview.setAttribute("max", interDatee);
 }

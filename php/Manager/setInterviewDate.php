@@ -1,7 +1,15 @@
 <?php
 
+include('../db.php');
 
-if (!empty($_POST['newInterviewDate'])) {
+$interview = $_POST['newInterviewDate'];
+$childID = $_POST['ChildID'];
+
+
+if (!empty($interview)) {
+
+  $query = "UPDATE children SET children.interviewdate='$interview' WHERE children.child_id='$childID'";
+  mysqli_query($db, $query);
 
 
 }else {
