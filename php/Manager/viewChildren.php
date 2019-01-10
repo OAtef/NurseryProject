@@ -80,6 +80,12 @@ if (mysqli_num_rows($ChildrenResult) > 0) {
     }
   $Counter++;
   }
+}else {
+  echo "<script>Swal({
+                      type: 'error',
+                      title: 'There is no data to show.',
+                      showConfirmButton: true
+                    })</script>";
 }
 
 echo "

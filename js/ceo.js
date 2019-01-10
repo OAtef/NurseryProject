@@ -49,7 +49,7 @@ $(document).ready(function() {
       data: $('#EmployeeForm').serialize(), // takes all data in the form in a string
       type: "POST",
       success: function(data) {
-        console.log(data);
+        $("#AddEmployee").html(employeeData);
       },
     });
   });

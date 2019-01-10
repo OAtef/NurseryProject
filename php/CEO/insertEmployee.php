@@ -13,8 +13,12 @@ $type = 2;
 
 $check_email = "SELECT email from users WHERE users.email='$email'";
 $check_email_result = mysqli_query($db, $check_email);
-if(mysqli_num_rows($check_email_result)) {
-  // error child name already exist
+if(mysqli_num_rows($check_email_result) > 0) {
+  echo "<script>Swal({
+                      type: 'error',
+                      title: 'Email is used by other user',
+                      showConfirmButton: true
+                    })</script>";
 }
 else{
   $query_into_users = "INSERT INTO users (firstname, lastname, mobilenumber, email, password, nationalID, type, gender)
@@ -28,14 +32,27 @@ else{
     $id = $result['ID'];
 
     $query_into_manager = "INSERT INTO nursemanager (userID, workingHours) VALUES ('$id','$workingHours')";
-    mysqli_query($db, $query_into_manager);
+    
+    if(mysqli_query($db, $query_into_manager)){
+      echo "<script>Swal({
+                          type: 'success',
+                          title: 'Employee Added',
+                          toast: true,
+                          position: 'top-right',
+                          showConfirmButton: false,
+                          timer: 2000
+                        })</script>";
+    }
 
   } else{
-    // error
+    echo "<script>Swal({
+                        type: 'error',
+                        title: 'Problem inserting into users table',
+                        toast: true,
+                        position: 'top-right',
+                        showConfirmButton: true
+                      })</script>";
   }
 }
-
-
-
 
 ?>

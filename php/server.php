@@ -4,7 +4,7 @@ session_start();
 
 // initializing variables
 $email  = "";
-$errors = array();
+$alerts = array();
 $userType = 0;
 
 // REGISTER USER
@@ -20,17 +20,17 @@ if (isset($_POST['signup_user'])) {
 
 
     // form validation: ensure that the form is correctly filled ...
-    // by adding (array_push()) corresponding error unto $errors array
-    if (empty($firstname)) { array_push($errors, "firstname is required"); }
-    if (empty($lastname)) { array_push($errors, "lastname is required"); }
-    if (empty($mobileNum)) { array_push($errors, "mobile number is required"); }
-    if (empty($natinalID)) { array_push($errors, "natinalID is required"); }
-    if (empty($email)) { array_push($errors, "Email is required"); }
-    if (empty($password_1)) { array_push($errors, "Password is required"); }
-    if (empty($password_2)) { array_push($errors, "Password is required"); }
-    if ($password_1 != $password_2) {
-        array_push($errors, "The two passwords do not match");
-    }
+    // by adding (array_push()) corresponding error unto $alerts array
+    // if (empty($firstname)) { array_push($alerts, "firstname is required"); }
+    // if (empty($lastname)) { array_push($alerts, "lastname is required"); }
+    // if (empty($mobileNum)) { array_push($alerts, "mobile number is required"); }
+    // if (empty($natinalID)) { array_push($alerts, "natinalID is required"); }
+    // if (empty($email)) { array_push($alerts, "Email is required"); }
+    // if (empty($password_1)) { array_push($alerts, "Password is required"); }
+    // if (empty($password_2)) { array_push($alerts, "Password is required"); }
+    // if ($password_1 != $password_2) {
+    //     array_push($alerts, "The two passwords do not match");
+    // }
 
     // first check the database to make sure
     // a user does not already exist with the same username and/or email
@@ -40,12 +40,16 @@ if (isset($_POST['signup_user'])) {
 
     if ($user) { // if user exists
         if ($user['email'] === $email) {
-            array_push($errors, "email already exists");
+            array_push($alerts, "<script>Swal({
+                                type: 'error',
+                                title: 'Error in signup!!',
+                                text: 'This email already exists',
+                              })</script>");
         }
     }
 
     // Finally, register user if there are no errors in the form
-    if (count($errors) == 0) {
+    if (count($alerts) == 0) {
         //$password = md5($password_1); //encrypt the password before saving in the database
 
         $signupquery = "INSERT INTO users (firstname, lastname, mobilenumber, email, password, nationalID, type)
@@ -55,17 +59,21 @@ if (isset($_POST['signup_user'])) {
           $_SESSION['email'] = $email;
           $_SESSION['password'] = $password_1;
           $_SESSION['success'] = "You are now logged in";
-          $signUpScript = "<script>Swal({
+          array_push($alerts, "<script>Swal({
                                     type: 'success',
                                     title: 'Signed Up successfully',
                                     toast: true,
                                     position: 'top-right',
                                     showConfirmButton: false,
                                     timer: 3000
-                                  })</script>";
+                                  })</script>");
         }
         else {
-            array_push($errors, "error");
+            array_push($alerts, "<script>Swal({
+                                      type: 'error',
+                                      title: 'Couldnt signup',
+                                      text: 'Wasnt able to add your account into database'
+                                    })</script>");
         }
     }
 }
@@ -75,15 +83,15 @@ if (isset($_POST['login_user'])) {
     $email = mysqli_real_escape_string($db, $_POST['email']);
     $password = mysqli_real_escape_string($db, $_POST['password']);
 
-    if (empty($email)) {
-        array_push($errors, "email is required");
+    // if (empty($email)) {
+    //     array_push($alerts, "email is required");
+    //
+    // }
+    // if (empty($password)) {
+    //     array_push($alerts, "Password is required");
+    // }
 
-    }
-    if (empty($password)) {
-        array_push($errors, "Password is required");
-    }
-
-    if (count($errors) == 0) {
+    if (count($alerts) == 0) {
         $signinquery = "SELECT * FROM users WHERE email='$email' AND password='$password'";
         $results = mysqli_query($db, $signinquery);
         if (mysqli_num_rows($results) == 1) {
@@ -104,20 +112,24 @@ if (isset($_POST['login_user'])) {
               $_SESSION['userType'] = 3;
             }
             else{
-                array_push($errors, "the type asked for is not identified");
+                array_push($alerts, "<script>Swal({
+                                          type: 'error',
+                                          title: 'Wrong Type',
+                                          text: 'There was error while detecting your account type!'
+                                        })</script>");
             }
 
             $_SESSION['success'] = "You are now logged in";
-            $logedInScript = "<script>Swal({
+            array_push($alerts, "<script>Swal({
                                       type: 'success',
                                       title: 'Signed in successfully',
                                       toast: true,
                                       position: 'top-right',
                                       showConfirmButton: false,
                                       timer: 3000
-                                    })</script>";
+                                    })</script>");
         }else {
-            array_push($errors, "<script>Swal({
+            array_push($alerts, "<script>Swal({
                                       type: 'error',
                                       title: 'Oops...',
                                       text: 'Wrong email or password!',

@@ -18,6 +18,10 @@ include('../SendMsg.php');
 
 <body>
 
+  <?php
+  include('../alerts.php');
+  ?>
+
   <!-- top navigation -->
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
@@ -177,13 +181,6 @@ include('../SendMsg.php');
       </div>
     </div>
 
-    <?php include('../errors.php');
-      if (isset($MessageSentScript)) {
-        echo $MessageSentScript;
-      }
-      ?>
-
-
 
     <!-- View Employee -->
     <div class="container HideAll" id="ViewEmployee" style="margin-left: 100px; display: none">
@@ -194,7 +191,6 @@ include('../SendMsg.php');
 
 
   <script src="../../js/ceo.js"></script>
-  <!-- <script src="../../js/table.js"></script> -->
 
 </body>
 

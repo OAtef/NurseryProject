@@ -95,8 +95,8 @@ $(document).on("mouseenter",".row", function(){
   childID = ".lblChildID-" + $(this).prop("class").split(" ")[1];
   selectedRow = $(this).prop("class").split(" ")[1];
 
-  //todayDate();
-  //maxInterviewDate();
+  todayDate();
+  maxInterviewDate();
 
 });
 
@@ -190,7 +190,7 @@ function changeInterviewDate() {
   $.ajax({
     url: "setInterviewDate.php",
     type: "POST",
-    data: {newInterviewDate: newInterviewDate, ChildID: $(childID).text()},
+    data: {newInterviewDate: newInterviewDate, ChildID: $(selectedID).text()},
     success: function(newDate) {
       $("#ChildrenList").html(newDate);
     },

@@ -1,5 +1,6 @@
 <?php
   include('../SendMsg.php');
+
 ?>
 <html>
   <head>
@@ -12,6 +13,10 @@
       <link rel="stylesheet" type="text/css" href="../../css/parent.css">
     </head>
   <body>
+
+    <?php
+    include('../alerts.php');
+    ?>
 
   <!-- Upper Nav-bar-->
     <nav class="navbar navbar-inverse">
@@ -38,7 +43,7 @@
   <!-- Side Nav-bar-->
     <div id="mySidenav" class="sidenav">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <a href="#"  id="pf">Profile</a>
+      <a href="#s"  id="pf">Profile</a>
       <a href="#"  id="vm">View Msg</a>
       <a href="#"  id="sm">Send Msg</a>
       <a href="#"  id="ch">Child</a>
@@ -79,12 +84,7 @@
     </div>
   </div>
 
-    <?php
-    include('../errors.php');
-          if (isset($MessageSentScript)) {
-            echo $MessageSentScript;
-          }
-    ?>
+
 
     <!-- Parent Profile -->
     <div class="container HideAll" id="Profile">

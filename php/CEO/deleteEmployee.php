@@ -23,7 +23,7 @@ if (!empty($_POST["oldEmployee"]) && !empty($_POST["newEmployee"])) {
   $check_interview = "SELECT * FROM interviews WHERE interviews.nurseID = '$oldID'";
   $check_interview_result = mysqli_query($db, $check_interview);
   if(mysqli_num_rows($check_interview_result)) {
-    
+
     $UpdateTableInterviewQuery = "UPDATE interviews SET nurseID = '$newID' WHERE interviews.nurseID = '$oldID'";
     $UpdateTableInterviewResult = mysqli_query($db, $UpdateTableInterviewQuery);
 
@@ -42,7 +42,7 @@ if (!empty($_POST["oldEmployee"]) && !empty($_POST["newEmployee"])) {
   $check_children = "SELECT * FROM children WHERE children.nurseID = '$oldID'";
   $check_children_result = mysqli_query($db, $check_children);
   if(mysqli_num_rows($check_children_result)) {
-    
+
     $UpdateTableChildrenQuery = "UPDATE children SET nurseID = '$newID' WHERE children.nurseID = '$oldID'";
     $UpdateTableChildrenResult = mysqli_query($db, $UpdateTableChildrenQuery);
 
@@ -94,6 +94,12 @@ if (!empty($_POST["oldEmployee"]) && !empty($_POST["newEmployee"])) {
   }
 
 }else {
-  echo "You should enter the new employee";
+  echo "<script>Swal({
+                      type: 'error',
+                      title: 'Please enter new Employee ID',
+                      toast: true,
+                      position: 'top-right',
+                      showConfirmButton: true
+                    })</script>";
 }
  ?>

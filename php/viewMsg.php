@@ -7,8 +7,7 @@ $ToEmail = $_SESSION['email'];
 $ToID = 0;
 $FromEmail = "";
 
-$errors = array();
-$Messages = array();
+$alerts = array();
 
 $ToIDQuery = "SELECT ID FROM users WHERE email='$ToEmail'";
 $IDresult = mysqli_query($db, $ToIDQuery);
@@ -17,10 +16,10 @@ if ($result) {
   $ToID = $result['ID'];
 }
 else {
-  array_push($errors, "<script>Swal({
+  array_push($alerts, "<script>Swal({
                             type: 'error',
-                            title: 'Oops...',
-                            text: 'You dont exist in the database you dont have ID!',
+                            title: 'Error in viewing messages',
+                            text: 'We couldnt get your ID from database'
                           })</script>");
 }
 
@@ -52,8 +51,11 @@ if (mysqli_num_rows($messagesResult) > 0) {
     }
     $collapseID += 1;
   }
+}else {
+  array_push($alerts, "<script>Swal({
+                            type: 'error',
+                            title: 'No messages to view'
+                          })</script>");
 }
 
-// print_r($Messages);
-// echo($Messages);
 ?>
