@@ -1,6 +1,5 @@
 <?php
   include('../SendMsg.php');
-
 ?>
 <html>
   <head>

@@ -29,7 +29,7 @@ include('../SendMsg.php');
         <a class="navbar-brand" href="#"><span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span></a>
       </div>
       <ul class="nav navbar-nav">
-        <li class="active"><a href="../welcomePage.php">Home</a></li>
+        <li class="active"><a href="../../welcomePage.php">Home</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a id="Pic-btn"><span class=""></span> Pic</a></li>
@@ -38,7 +38,7 @@ include('../SendMsg.php');
           <a class='dropdown-toggle' data-toggle='dropdown' href='#'>Name
             <span class='caret'></span></a>
           <ul class='dropdown-menu'>
-            <li><a href='logout.php'>Logout</a></li>
+            <li><a href='../logout.php'>Logout</a></li>
           </ul>
         </li>
       </ul>

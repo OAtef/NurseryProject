@@ -32,7 +32,7 @@ else{
     $id = $result['ID'];
 
     $query_into_manager = "INSERT INTO nursemanager (userID, workingHours) VALUES ('$id','$workingHours')";
-    
+
     if(mysqli_query($db, $query_into_manager)){
       echo "<script>Swal({
                           type: 'success',
@@ -48,8 +48,6 @@ else{
     echo "<script>Swal({
                         type: 'error',
                         title: 'Problem inserting into users table',
-                        toast: true,
-                        position: 'top-right',
                         showConfirmButton: true
                       })</script>";
   }

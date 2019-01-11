@@ -21,8 +21,6 @@ if (isset($_POST['ChildIDReject'])) {
     echo "<script>Swal({
                         type: 'error',
                         title: 'Problem with deleting Interview table',
-                        toast: true,
-                        position: 'top-right',
                         showConfirmButton: true
                       })</script>";
   }
@@ -36,8 +34,6 @@ if (isset($_POST['ChildIDReject'])) {
     echo "<script>Swal({
                         type: 'error',
                         title: 'Problem with deleting CommentSon table',
-                        toast: true,
-                        position: 'top-right',
                         showConfirmButton: true
                       })</script>";
   }
@@ -59,8 +55,6 @@ if (isset($_POST['ChildIDReject'])) {
     echo "<script>Swal({
                         type: 'error',
                         title: 'Problem with rejecting Interview in child table',
-                        toast: true,
-                        position: 'top-right',
                         showConfirmButton: true
                       })</script>";
   }
@@ -69,8 +63,6 @@ if (isset($_POST['ChildIDReject'])) {
   echo "<script>Swal({
                       type: 'error',
                       title: 'Couldn't get ChildID',
-                      toast: true,
-                      position: 'top-right',
                       showConfirmButton: true
                     })</script>";
 }

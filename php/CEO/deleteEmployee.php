@@ -31,8 +31,6 @@ if (!empty($_POST["oldEmployee"]) && !empty($_POST["newEmployee"])) {
       echo "<script>Swal({
                           type: 'error',
                           title: 'no interviews with the deleted employee',
-                          toast: true,
-                          position: 'top-right',
                           showConfirmButton: true
                         })</script>";
     }
@@ -50,8 +48,6 @@ if (!empty($_POST["oldEmployee"]) && !empty($_POST["newEmployee"])) {
         echo "<script>Swal({
                             type: 'error',
                             title: 'no children related with the deleted employee',
-                            toast: true,
-                            position: 'top-right',
                             showConfirmButton: true
                           })</script>";
       }
@@ -64,8 +60,6 @@ if (!empty($_POST["oldEmployee"]) && !empty($_POST["newEmployee"])) {
     echo "<script>Swal({
                         type: 'error',
                         title: 'Problem with deleting nursemanager table',
-                        toast: true,
-                        position: 'top-right',
                         showConfirmButton: true
                       })</script>";
   }
@@ -87,8 +81,6 @@ if (!empty($_POST["oldEmployee"]) && !empty($_POST["newEmployee"])) {
     echo "<script>Swal({
                         type: 'error',
                         title: 'Problem with deleting Users table',
-                        toast: true,
-                        position: 'top-right',
                         showConfirmButton: true
                       })</script>";
   }
@@ -97,8 +89,6 @@ if (!empty($_POST["oldEmployee"]) && !empty($_POST["newEmployee"])) {
   echo "<script>Swal({
                       type: 'error',
                       title: 'Please enter new Employee ID',
-                      toast: true,
-                      position: 'top-right',
                       showConfirmButton: true
                     })</script>";
 }

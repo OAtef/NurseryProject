@@ -42,8 +42,6 @@ if (!empty($_POST["ParentID"])) {
         echo "<script>Swal({
                             type: 'error',
                             title: 'Problem with deleting CommentSon Table',
-                            toast: true,
-                            position: 'top-right',
                             showConfirmButton: true
                           })</script>";
       }
@@ -56,8 +54,6 @@ if (!empty($_POST["ParentID"])) {
         echo "<script>Swal({
                             type: 'error',
                             title: 'There was a problem while deleting one of the children',
-                            toast: true,
-                            position: 'top-right',
                             showConfirmButton: true
                           })</script>";
       }
@@ -66,8 +62,6 @@ if (!empty($_POST["ParentID"])) {
     echo "<script>Swal({
                         type: 'error',
                         title: 'Couldn't get ChildID',
-                        toast: true,
-                        position: 'top-right',
                         showConfirmButton: true
                       })</script>";
   }
@@ -80,8 +74,6 @@ if (!empty($_POST["ParentID"])) {
   echo "<script>Swal({
                       type: 'error',
                       title: 'Problem with deleting CommentsTo table',
-                      toast: true,
-                      position: 'top-right',
                       showConfirmButton: true
                     })</script>";
   }
@@ -94,8 +86,6 @@ if (!empty($_POST["ParentID"])) {
     echo "<script>Swal({
                         type: 'error',
                         title: 'Problem with deleting Interview table',
-                        toast: true,
-                        position: 'top-right',
                         showConfirmButton: true
                       })</script>";
   }
@@ -115,8 +105,6 @@ if (!empty($_POST["ParentID"])) {
       echo "<script>Swal({
                           type: 'error',
                           title: 'Problem with deleting Address table',
-                          toast: true,
-                          position: 'top-right',
                           showConfirmButton: true
                         })</script>";
     }
@@ -125,8 +113,6 @@ if (!empty($_POST["ParentID"])) {
     echo "<script>Swal({
                         type: 'error',
                         title: 'Couldn't get addressID',
-                        toast: true,
-                        position: 'top-right',
                         showConfirmButton: true
                       })</script>";
   }
@@ -139,8 +125,6 @@ if (!empty($_POST["ParentID"])) {
     echo "<script>Swal({
                         type: 'error',
                         title: 'Problem with deleting Parent table',
-                        toast: true,
-                        position: 'top-right',
                         showConfirmButton: true
                       })</script>";
   }
@@ -162,8 +146,6 @@ if (!empty($_POST["ParentID"])) {
     echo "<script>Swal({
                         type: 'error',
                         title: 'Problem with deleting Users table',
-                        toast: true,
-                        position: 'top-right',
                         showConfirmButton: true
                       })</script>";
   }
@@ -172,8 +154,6 @@ if (!empty($_POST["ParentID"])) {
     echo "<script>Swal({
                         type: 'error',
                         title: 'Couldn't get ParentID',
-                        toast: true,
-                        position: 'top-right',
                         showConfirmButton: true
                       })</script>";
   }

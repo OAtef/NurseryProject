@@ -7,16 +7,28 @@ $childID = $_POST['ChildID'];
 
 if (!empty($interview)) {
 
-  $query = "UPDATE children SET children.interviewdate='$interview' WHERE children.child_id='$childID'";
-  mysqli_query($db, $query);
-
-
+  $setInterviewDateQuery = "UPDATE children SET children.interviewdate='$interview' WHERE children.child_id='$childID'";
+  $setInterviewDateResult = mysqli_query($db, $setInterviewDateQuery);
+  if ($setInterviewDateResult) {
+    echo "<script>Swal({
+                        type: 'success',
+                        title: 'Interview Date Updated',
+                        toast: true,
+                        position: 'top-right',
+                        showConfirmButton: false,
+                        timer: 2000
+                      })</script>";
+  }else {
+    echo "<script>Swal({
+                        type: 'error',
+                        title: 'Problem while setting interview date',
+                        showConfirmButton: true
+                      })</script>";
+  }
 }else {
   echo "<script>Swal({
                       type: 'error',
                       title: 'Please make sure to select a date',
-                      toast: true,
-                      position: 'top-right',
                       showConfirmButton: true
                     })</script>";
 }

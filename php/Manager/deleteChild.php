@@ -22,8 +22,6 @@ if (!empty($_POST["ChidlID"])) {
     echo "<script>Swal({
                         type: 'error',
                         title: 'Problem with deleting Interview table',
-                        toast: true,
-                        position: 'top-right',
                         showConfirmButton: true
                       })</script>";
   }
@@ -36,8 +34,6 @@ if (!empty($_POST["ChidlID"])) {
     echo "<script>Swal({
                         type: 'error',
                         title: 'Problem with deleting CommentSon table',
-                        toast: true,
-                        position: 'top-right',
                         showConfirmButton: true
                       })</script>";
   }
@@ -60,8 +56,6 @@ if (!empty($_POST["ChidlID"])) {
     echo "<script>Swal({
                         type: 'error',
                         title: 'Problem with deleting Child table',
-                        toast: true,
-                        position: 'top-right',
                         showConfirmButton: true
                       })</script>";
   }
@@ -70,8 +64,6 @@ if (!empty($_POST["ChidlID"])) {
   echo "<script>Swal({
                       type: 'error',
                       title: 'Couldn't get ChildID',
-                      toast: true,
-                      position: 'top-right',
                       showConfirmButton: true
                     })</script>";
 }

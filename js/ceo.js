@@ -115,7 +115,7 @@ function changeMobileNumber() {
   $.ajax({
     url: "updateNurse.php",
     type: "POST",
-    data: {newNumber: newMobileNumber},
+    data: {EmployeeID: $(selectedID).text(), newNumber: newMobileNumber},
     success: function(newDate) {
       $("#ViewEmployee").html(newDate);
     },
@@ -136,7 +136,7 @@ function changeWorkingHours() {
   $.ajax({
     url: "updateNurse.php",
     type: "POST",
-    data: {newHours: newWorkingHours},
+    data: {EmployeeID: $(selectedID).text(), newHours: newWorkingHours},
     success: function(newDate) {
       $("#ViewEmployee").html(newDate);
     },
@@ -157,7 +157,7 @@ function changePassword() {
   $.ajax({
     url: "updateNurse.php",
     type: "POST",
-    data: {newPass: newPassword},
+    data: {EmployeeID: $(selectedID).text(), newPass: newPassword},
     success: function(newDate) {
       $("#ViewEmployee").html(newDate);
     },
