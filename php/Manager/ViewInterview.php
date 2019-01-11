@@ -1,5 +1,8 @@
 <?php
 include('../db.php');
+session_start();
+
+$email = $_SESSION['email'];
 
 echo "
 <table class='data-table'>
@@ -18,7 +21,7 @@ echo "
   </thead>
   <tbody>";
 
-$AllRequestsQuery = "SELECT parentID, childID, day, childAge FROM interviews ";
+$AllRequestsQuery = "SELECT parentID, childID, day, childAge FROM interviews INNER JOIN users ON interviews.nurseID = users.ID WHERE users.email='$email'";
 $RequestsResult = mysqli_query($db, $AllRequestsQuery);
 $Counter = 1;
 

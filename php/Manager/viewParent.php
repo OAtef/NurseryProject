@@ -1,6 +1,9 @@
 <?php
 
 include('../db.php');
+session_start();
+
+$email = $_SESSION['email'];
 
 echo "
 <table class='data-table'>
@@ -17,7 +20,7 @@ echo "
 </thead>
 <tbody>";
 
-$AllParentsQuery = "SELECT userID, relativeRelation FROM parent";
+$AllParentsQuery = "SELECT userID, relativeRelation FROM parent INNER JOIN children ON children.parentID = parent.userID INNER JOIN users ON children.nurseID = users.ID WHERE users.email='$email'";
 $ParentResult = mysqli_query($db, $AllParentsQuery);
 $Counter = 1;
 

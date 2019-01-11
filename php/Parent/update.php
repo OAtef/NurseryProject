@@ -60,7 +60,7 @@ $pass = $_SESSION['password'];
         }
     }
 
-    $results = mysqli_query($db, $query);
+    mysqli_query($db, $query);
 
     if (mysqli_affected_rows($db) == 1) {
 

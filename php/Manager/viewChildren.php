@@ -1,6 +1,9 @@
 <?php
 
 include('../db.php');
+session_start();
+
+$email = $_SESSION['email'];
 
 echo "
 <table class='data-table'>
@@ -19,7 +22,7 @@ echo "
   <tbody>";
 
 
-$AllChildrenQuery = "SELECT * FROM children";
+$AllChildrenQuery = "SELECT * FROM children INNER JOIN users ON children.nurseID = users.ID WHERE users.email='$email'";
 $ChildrenResult = mysqli_query($db, $AllChildrenQuery);
 $Counter = 1;
 
