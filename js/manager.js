@@ -184,6 +184,27 @@ function RejectInterview() {
   })
 }
 
+function addCommentSon(){
+  let comment = document.getElementById('CommentSon-' + selectedRow).value;
+
+  $.ajax({
+    url: "setCommentson.php",
+    type: "POST",
+    data: {Comment: comment, ChildID: $(selectedID).text()},
+    success: function(newDate) {
+      $("#ChildrenList").html(newDate);
+    },
+  })
+
+  $.ajax({
+    url: "ViewChildren.php",
+    type: "POST",
+    success: function(childrenData) {
+      $("#ChildrenList").html(childrenData);
+    },
+  })
+}
+
 function changeInterviewDate() {
   let newInterviewDate = document.getElementById('InterviewDate-' + selectedRow).value;
 

@@ -4,6 +4,7 @@ include('../db.php');
 session_start();
 
 $email = $_SESSION['email'];
+$Commentson = 0;
 
 echo "
 <table class='data-table'>
@@ -16,6 +17,7 @@ echo "
       <th>Gender</th>
       <th>Bdate</th>
       <th>Interview</th>
+      <th>Delete Request</th>
       <th>Delete</th>
     </tr>
   </thead>
@@ -33,6 +35,13 @@ if (mysqli_num_rows($ChildrenResult) > 0) {
     $ParentInfoResult = mysqli_query($db, $GetParentInfoQuery);
     $ParentData = mysqli_fetch_array($ParentInfoResult);
 
+    $GetCommentsonQuery = "SELECT * FROM commentson WHERE childID = ".$row['child_id'];
+    $GetCommentsonResult = mysqli_query($db, $GetCommentsonQuery);
+    if ($GetCommentsonResult) {
+      $Commentson = mysqli_fetch_array($GetCommentsonResult);
+    }
+
+
     if ($ParentData) {
 
       echo "
@@ -42,7 +51,8 @@ if (mysqli_num_rows($ChildrenResult) > 0) {
           <td><label id='lblName'>".$row['first_name']." ".$row['last_name']."</label></td>
           <td><label id='lblGender'>".$row['Gender']."</label></td>
           <td><label id='lblBdate'>".$row['Bdate']."</label></td>
-          <td><label id='lblBdate'>";
+          <td><label id='lblInterview'>";
+
           if ($row['accepted'] == 1) {
             echo "Accepted";
           }elseif ($row['accepted'] == 0) {
@@ -50,6 +60,16 @@ if (mysqli_num_rows($ChildrenResult) > 0) {
           }elseif ($row['accepted'] == 2) {
             echo "Rejected";
           }
+
+          echo "</label></td>
+          <td><label id='lblDeleteReq'>";
+
+          if ($row['reqDelete'] == 1) {
+            echo "Yes";
+          }elseif ($row['reqDelete'] == 0) {
+            echo "No";
+          }
+
           echo "</label></td>
           <td><button onclick='DeleteChild()'><i class='fa fa-trash'></i> Delete</button></td>
         </tr>
@@ -65,10 +85,18 @@ if (mysqli_num_rows($ChildrenResult) > 0) {
             <hr>
             ";
             if ($row['accepted'] == 1 || $row['accepted'] == 2) {
-              echo "<b>InterView Date: </b> ".$row['interviewdate']."";
+              echo "
+              <b>InterView Date: </b> ".$row['interviewdate']."
+              <hr>
+              <b>Comments on Child: </b> ".$Commentson['comment']."
+              <div id='EditorDivCommentson' style='margin-left: 50%'>
+                Type Comment: <input type='text' id='CommentSon-row".$Counter."' value='' />
+                                <input type='button' id='textEditor' value='Enter Comment' onclick='addCommentSon()' />
+              </div>";
             }elseif ($row['accepted'] == 0) {
-              echo "<b>InterView Date: </b> ".$row['interviewdate']."
-              <div id='EditorDivBdate' style='margin-left: 50%'>
+              echo "
+              <b>InterView Date: </b> ".$row['interviewdate']."
+              <div id='EditorDivInterview' style='margin-left: 50%'>
                 Enter New Date: <input type='date' id='InterviewDate-row".$Counter."' value='' />
                                 <input type='button' id='textEditor' value='Change Birthday Date' onclick='changeInterviewDate()' />
               </div>";
