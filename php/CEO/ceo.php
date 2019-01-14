@@ -195,10 +195,12 @@ include('../SendMsg.php');
 
     </div>
 
+ <!-- TimeTable -->
+
     <div class="container HideAll" id="TimeTable1" style="margin-left: 50px; display:none; ">
       <form name="saveScheldueForm" id="saveScheldueForm" method="POST">
 
-        <div contenteditable="true" style="margin-top: 100px; margin-left: 100px">
+        <div  style="margin-top: 100px; margin-left: 100px">
           <H1>Nursery Timetable</H1>
           <TABLE class="myTimetable">
             <THEAD>
@@ -220,118 +222,129 @@ include('../SendMsg.php');
                   <div class="room"><input id="room" name="room" placeholder="A120" class="form-control here" type="text"></div>
                 </TD>
                 <TD>
-                  <div class="subject">Art</div>
-                  <div class="room">C1</div>
+                  <div class="subject"><input id="subject1" name="subject1" placeholder="Art" class="form-control here" type="text"></div>
+                  <div class="room"><input id="room1" name="room1" placeholder="C1" class="form-control here" type="text"></div>
                 </TD>
                 <TD>
-                  <div class="subject">English</div>
-                  <div class="room">B21</div>
+                  <div class="subject"><input id="subject2" name="subject2" placeholder="English" class="form-control here" type="text"></div>
+                  <div class="room"><input id="room2" name="room2" placeholder="B21" class="form-control here" type="text"></div>
                 </TD>
                 <TD>
-                  <div class="subject">Maths</div>
-                  <div class="room">A120</div>
+                  <div class="subject"><input id="subject3" name="subject3" placeholder="Maths" class="form-control here" type="text"></div>
+                  <div class="subject"><input id="room3" name="room3" placeholder="A120" class="form-control here" type="text"></div>
                 </TD>
                 <TD>
-                  <div class="subject">Geography</div>
-                  <div class="room">B101</div>
+                  <div class="subject"><input id="subject4" name="subject4" placeholder="Geography" class="form-control here" type="text"></div>
+                  <div class="room"><input id="room4" name="room4" placeholder="B101" class="form-control here" type="text"></div>
                 </TD>
               </TR>
               <TR>
-                <TD>9:30-11:00</TD>
+                <TD><input id="time1" name="time1" placeholder="9:30-11:00" class="form-control here" type="text"></TD>
                 <TD>
-                  <div class="subject">Science</div>
-                  <div class="room">Lab1</div>
+                  <div class="subject"><input id="subject5" name="subject5" placeholder="Science" class="form-control here" type="text"></div>
+                  <div class="room"><input id="room5" name="room5" placeholder="Lab1" class="form-control here" type="text"></div>
                 </TD>
                 <TD>
-                  <div class="subject">History</div>
-                  <div class="room">B104</div>
+                  <div class="subject"><input id="subject6" name="subject6" placeholder="History" class="form-control here" type="text"></div>
+                  <div class="room"><input id="room6" name="room6" placeholder="B104" class="form-control here" type="text"></div>
                 </TD>
                 <TD>
-                  <div class="subject">Spanish</div>
-                  <div class="room">C17</div>
+                  <div class="subject"><input id="subject7" name="subject7" placeholder="Spanish" class="form-control here" type="text"></div>
+                  <div class="room"><input id="room7" name="room7" placeholder="C17" class="form-control here" type="text"></div>
                 </TD>
                 <TD>
-                  <div class="subject">P.E.</div>
-                  <div class="room">A Gym</div>
+                  <div class="subject"><input id="subject8" name="subject8" placeholder="P.E." class="form-control here" type="text"></div>
+                  <div class="room"><input id="room8" name="room8" placeholder="A Gym" class="form-control here" type="text"></div>
                 </TD>
                 <TD>
-                  <div class="subject">Maths</div>
-                  <div class="room">A120</div>
+                  <div class="subject"><input id="subject9" name="subject9" placeholder="Maths" class="form-control here" type="text"></div>
+
+                  <div class="room"><input id="room9" name="room9" placeholder="A120" class="form-control here" type="text"></div>
                 </TD>
               </TR>
               <TR>
                 <TD colspan="6" class="break">Break</TD>
               </TR>
               <TR>
-                <TD>11:30-1:00</TD>
+                <TD><input id="time2" name="time2" placeholder="11:30-1:00" class="form-control here" type="text"></TD>
                 <TD>
-                  <div class="subject">I.T.</div>
-                  <div class="room">ICT 1</div>
+                  <div class="subject"><input id="subject10" name="subject10" placeholder="I.T." class="form-control here" type="text"></div>
+
+                  <div class="room"><input id="room10" name="room10" placeholder="ICT 1" class="form-control here" type="text"></div>
                 </TD>
                 <TD>
-                  <div class="subject">English</div>
-                  <div class="room">B21</div>
+                  <div class="subject"><input id="subject11" name="subject11" placeholder="English" class="form-control here" type="text"></div>
+
+                  <div class="room"><input id="room11" name="room11" placeholder="B21" class="form-control here" type="text"></div>
                 </TD>
                 <TD>
-                  <div class="subject">Musique</div>
-                  <div class="room">C5</div>
+                  <div class="subject"><input id="subject12" name="subject12" placeholder="Musique" class="form-control here" type="text"></div>
+
+                  <div class="room"><input id="room12" name="room12" placeholder="C5" class="form-control here" type="text"></div>
                 </TD>
                 <TD>
-                  <div class="subject">English</div>
-                  <div class="room">B21</div>
+                  <div class="subject"><input id="subject13" name="subject13" placeholder="English" class="form-control here" type="text"></div>
+
+                  <div class="room"><input id="room13" name="room13" placeholder="B21" class="form-control here" type="text"></div>
                 </TD>
                 <TD>
-                  <div class="subject">PSHE</div>
-                  <div class="room">A24</div>
+                  <div class="subject"><input id="subject14" name="subject14" placeholder="PSHE" class="form-control here" type="text"></div>
+
+                  <div class="room"><input id="room14" name="room14" placeholder="A24" class="form-control here" type="text"></div>
                 </TD>
               </TR>
               <TR>
                 <TD colspan="6" class="lunch">Lunch</TD>
               </TR>
               <TR>
-                <TD>1:30-3:00</TD>
+                <TD><input id="time3" name="time3" placeholder="1:30-3:00" class="form-control here" type="text"></TD>
                 <TD>
-                  <div class="subject">History</div>
-                  <div class="room">B104</div>
+                  <div class="subject"><input id="subject15" name="subject15" placeholder="History" class="form-control here" type="text"></div>
+
+                  <div class="room"><input id="room15" name="room15" placeholder="B104" class="form-control here" type="text"></div>
                 </TD>
                 <TD>
-                  <div class="subject">Drama</div>
-                  <div class="room">C17</div>
+                  <div class="subject"><input id="subject16" name="subject16" placeholder="Drama" class="form-control here" type="text"></div>
+
+                  <div class="room"><input id="room16" name="room16" placeholder="C17" class="form-control here" type="text"></div>
                 </TD>
                 <TD>
-                  <div class="subject">Maths</div>
-                  <div class="room">A120</div>
+                  <div class="subject"><input id="subject17" name="subject17" placeholder="Maths" class="form-control here" type="text"></div>
+
+                  <div class="room"><input id="room17" name="room17" placeholder="A120" class="form-control here" type="text"></div>
                 </TD>
                 <TD>
-                  <div class="subject">Geography</div>
-                  <div class="room">B101</div>
+                  <div class="subject"><input id="subject18" name="subject18" placeholder="Geography" class="form-control here" type="text"></div>
+                  <div class="room"><input id="room18" name="room18" placeholder="B101" class="form-control here" type="text"></div>
                 </TD>
                 <TD>
-                  <div class="subject">P.E.</div>
-                  <div class="room">A Gym</div>
+                  <div class="subject"><input id="subject19" name="subject19" placeholder="P.E." class="form-control here" type="text"></div>
+                  <div class="room"><input id="room19" name="room19" placeholder="A Gym" class="form-control here" type="text"></div>
                 </TD>
               </TR>
               <TR>
-                <TD>3:00-4:30</TD>
+                <TD><input id="time4" name="time4" placeholder="3:00-4:30" class="form-control here" type="text"></TD>
                 <TD>
-                  <div class="subject">Spanish</div>
-                  <div class="room">C17</div>
+                  <div class="subject"><input id="subject20" name="subject20" placeholder="Spanish" class="form-control here" type="text"></div>
+                  <div class="room"><input id="room20" name="room20" placeholder="C17" class="form-control here" type="text"></div>
                 </TD>
                 <TD>
-                  <div class="subject">Science</div>
-                  <div class="room">Lab1</div>
+                  <div class="subject"><input id="subject21" name="subject21" placeholder="Science" class="form-control here" type="text"></div>
+                  <div class="room"><input id="room21" name="room21" placeholder="Lab1" class="form-control here" type="text"></div>
                 </TD>
                 <TD>
-                  <div class="subject">English</div>
-                  <div class="room">B21</div>
+                  <div class="subject"><input id="subject22" name="subject22" placeholder="English" class="form-control here" type="text"></div>
+
+                  <div class="room"><input id="room22" name="room22" placeholder="B21" class="form-control here" type="text"></div>
                 </TD>
                 <TD>
-                  <div class="subject">Science</div>
-                  <div class="room">Lab1</div>
+                  <div class="subject"><input id="subject23" name="subject23" placeholder="Science" class="form-control here" type="text"></div>
+
+                  <div class="room"><input id="room23" name="room23" placeholder="Lab1" class="form-control here" type="text"></div>
                 </TD>
                 <TD>
-                  <div class="subject">R.E</div>
-                  <div class="room">B18</div>
+                  <div class="subject"><input id="subject24" name="subject24" placeholder="R.E" class="form-control here" type="text"></div>
+                  <div class="room"><input id="room24" name="room24" placeholder="B18" class="form-control here" type="text"></div>
                 </TD>
               </TR>
             </TBODY>
@@ -339,7 +352,8 @@ include('../SendMsg.php');
 
         </div>
       
-<input type="button" name="saveSchedule" value="Save" id="saveSchedule" style="margin-left: 200px; background-color: blue ">
+<!-- <input type="button" name="saveSchedule" value="Save" id="saveSchedule" style="margin-left: 200px; background-color: blue "> -->
+<input id="saveSchedule" name="saveSchedule" value="Save" type="button" class="btn btn-primary" style="margin-left: 982px;margin-top:30px "> 
       </form>
     </div>
 
