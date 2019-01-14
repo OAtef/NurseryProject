@@ -215,11 +215,11 @@ include('../SendMsg.php');
             </THEAD>
             <TBODY>
               <TR>
-                <TD><input id="time" name="time" placeholder="8:00-9:30" class="form-control here" type="text"></TD>
+                <TD><input id="time0" name="time0" placeholder="8:00-9:30" class="form-control here" type="text"></TD>
                 <TD>
-                  <div class="subject">  <input id="subject" name="subject" placeholder="Math" class="form-control here" type="text"></div>
+                  <div class="subject">  <input id="subject0" name="subject0" placeholder="Math" class="form-control here" type="text"></div>
                  
-                  <div class="room"><input id="room" name="room" placeholder="A120" class="form-control here" type="text"></div>
+                  <div class="room"><input id="room0" name="room0" placeholder="A120" class="form-control here" type="text"></div>
                 </TD>
                 <TD>
                   <div class="subject"><input id="subject1" name="subject1" placeholder="Art" class="form-control here" type="text"></div>

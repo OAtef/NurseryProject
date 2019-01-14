@@ -9,10 +9,9 @@ $message = 'hello world';
    
      $subject=array();
     
-for($i=0;$i<3;$i++){
-    
-    if($i!=0)
-    {
+for($i=0;$i<3;$i++){ // fadel bs el 3 elly bnloop aleha de nkhleha count of row number b2a ashan law ghyrna aktr mn 3 
+
+   
         $roomname = "room"."$i"; //To make it automated for any data in the table 
         $timename = "time"."$i";  
         $subjectname = "subject"."$i"; 
@@ -21,13 +20,13 @@ for($i=0;$i<3;$i++){
         $room[$i] = $_POST[$roomname];
         $subject[$i] = $_POST[$subjectname];
         
-    }
-
+    
+/*
     else if ($i==0){ //only in the 0 condition because we need to write in S_post time without .$i
         $time[$i] = $_POST["time"];
     $room[$i] = $_POST["room"];
     $subject[$i] = $_POST["subject"];
-}
+}*/
     
   
 $count=$i+1 ;  //count for IDs
