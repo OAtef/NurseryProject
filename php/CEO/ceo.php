@@ -331,7 +331,7 @@ include('../SendMsg.php');
           </TABLE>
 
         </div>
-        <input type="button" name="saveScheldue" value="Save" id="saveScheldue">
+        <input type="button" name="saveSchedule" value="Save" id="saveSchedule">
 
       </form>
     </div>

@@ -59,7 +59,7 @@ $(document).ready(function() {
     });
   });
 
-  $("#saveScheldue").click(function() {
+  $("#saveSchedule").click(function() {
    $.ajax({
      url: "saveSchedule.php",
      data: $('#saveScheldueForm').serialize(), // takes all data in the form in a string

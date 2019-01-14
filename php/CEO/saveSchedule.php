@@ -1,5 +1,5 @@
 <?php
-include('db.php');
+include('../db.php');
 session_start();
 
 
@@ -9,7 +9,7 @@ if($_POST['saveScheldue'] == NULL){
     $subject = $_POST["subject"];
 
 
-        $query = "UPDATE scheldue  SET scheldue.subject='$subject', scheldue.room='$room', scheldue.time='$time'"
+        $query = "UPDATE scheldue  SET scheldue.subject='$subject', scheldue.room='$room', scheldue.time='$time'" ;
 
             $results = mysqli_query($db, $query);
 
