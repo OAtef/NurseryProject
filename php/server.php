@@ -17,6 +17,8 @@ if (isset($_POST['signup_user'])) {
     $password_1 = mysqli_real_escape_string($db, $_POST['password1']);
     $password_2 = mysqli_real_escape_string($db, $_POST['password2']);
     $natinalID = mysqli_real_escape_string($db, $_POST['nationalID']);
+    $gender = mysqli_real_escape_string($db, $_POST['gender']);
+
 
 
     // form validation: ensure that the form is correctly filled ...
@@ -52,12 +54,22 @@ if (isset($_POST['signup_user'])) {
     if (count($alerts) == 0) {
         //$password = md5($password_1); //encrypt the password before saving in the database
 
-        $signupquery = "INSERT INTO users (firstname, lastname, mobilenumber, email, password, nationalID, type)
-        VALUES('$firstname', '$lastname', '$mobileNum', '$email', '$password_1', '$natinalID', '1')";
+        $signupquery = "INSERT INTO users (firstname, lastname, mobilenumber, email, password, nationalID, type, gender)
+        VALUES('$firstname', '$lastname', '$mobileNum', '$email', '$password_1', '$natinalID', '1', '$gender')";
         $result = mysqli_query($db, $signupquery);
         if ($result) {
+
+          $query = "SELECT ID FROM users WHERE users.email='$email'";
+          $result_ID = mysqli_query($db, $query);
+          $resultid = mysqli_fetch_array($result_ID);
+          $parent_ID = $resultid['ID'];
+
+          $parentquery = "INSERT INTO parent (userID) VALUES('$parent_ID')";
+          mysqli_query($db, $parentquery);
+
           $_SESSION['email'] = $email;
           $_SESSION['password'] = $password_1;
+          $_SESSION['userType'] = 1;
           $_SESSION['success'] = "You are now logged in";
           array_push($alerts, "<script>Swal({
                                     type: 'success',
@@ -111,13 +123,13 @@ if (isset($_POST['login_user'])) {
             else if($result['type'] == 3){ // CEO Manager
               $_SESSION['userType'] = 3;
             }
-            else{
-                array_push($alerts, "<script>Swal({
-                                          type: 'error',
-                                          title: 'Wrong Type',
-                                          text: 'There was error while detecting your account type!'
-                                        })</script>");
-            }
+            // else{
+            //     array_push($alerts, "<script>Swal({
+            //                               type: 'error',
+            //                               title: 'Wrong Type',
+            //                               text: 'There was error while detecting your account type!'
+            //                             })</script>");
+            // }
 
             $_SESSION['success'] = "You are now logged in";
             array_push($alerts, "<script>Swal({

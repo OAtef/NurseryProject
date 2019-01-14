@@ -66,7 +66,7 @@
     </head>
 
     <body>
-                <img src="../img/logo.jpg" >
+                <img src="../../img/logo.jpg" >
                 <p id="intake-report"> <b> Child Intake Report </b> </p>
 
             <table>

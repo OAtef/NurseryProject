@@ -18,6 +18,11 @@ $pass = $_SESSION['password'];
     $StreetName = $_POST["StreetName"];
     $buildno=$_POST["buildno"];
 
+    $query = "SELECT addressID FROM parent IINER JOIN users ON parent.userID = users.ID WHERE users.email='$email'";
+    $result = mysqli_query($db, $query);
+    $resultadd = mysqli_fetch_array($result);
+    $address = $resultadd['addressID'];
+
     // img
     $img  = addslashes(file_get_contents($_FILES["imageParent"]["tmp_name"]));
 
@@ -25,15 +30,80 @@ $pass = $_SESSION['password'];
         $password_new = $pass;
 
         if($_FILES['imageParent']['size'] == 0 && $_FILES['imageParent']['error'] == 0){
-            $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum',
+
+            if($address != null){
+                $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum',
                 users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation',
-                 address.city='$city', address.neigherhoodName='$neigherhoodName', address.StreetName='$StreetName', address.buildingNo='$buildno'
+                address.city='$city', address.neigherhoodName='$neigherhoodName', address.StreetName='$StreetName', address.buildingNo='$buildno'
                 WHERE users.email='$email' and users.ID = parent.userID and parent.addressID = address.addressID";
+            }
+            else{
+
+                $query_addressID = "SELECT addressID FROM address WHERE address.city='$city' and address.neigherhoodName='$neigherhoodName' 
+                and address.StreetName='$StreetName' and address.buildingNo='$buildno'";
+                $result_addID = mysqli_query($db, $query_address);
+                $resultaddressID = mysqli_fetch_array($result_addID);
+                $addressID = $resultaddressID['addressID'];
+
+                if($addressID == null){ // means there is pre. address record
+
+                    $queryInsert = "INSERT INTO address (city, neigherhoodName, StreetName, buildingNo) VALUES('$city','$neigherhoodName','$StreetName','$buildno')";
+                    mysqli_query($db, $queryInsert);
+
+                    $query_add = "SELECT addressID FROM address WHERE address.city='$city' and address.neigherhoodName='$neigherhoodName' 
+                    and address.StreetName='$StreetName' and address.buildingNo='$buildno'";
+                    $result_adds = mysqli_query($db, $query_add);
+                    $resultaddID = mysqli_fetch_array($result_adds);
+                    $addressIdd = $resultaddID['addressID'];
+
+                    $query = "UPDATE users,parent SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum',
+                        users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation', parent.addressID='$addressIdd'
+                         WHERE users.email='$email' and users.ID = parent.userID";
+                }
+                else{
+                    $query = "UPDATE users,parent SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum',
+                        users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation', parent.addressID='$addressID'
+                         WHERE users.email='$email' and users.ID = parent.userID";
+                }
+            }
+
         }else{
-            $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum',
+            if($address != null){ // means there is pre. address record
+                $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum',
                 users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation', parent.img='$img',
                  address.city='$city', address.neigherhoodName='$neigherhoodName', address.StreetName='$StreetName', address.buildingNo='$buildno'
                 WHERE users.email='$email' and users.ID = parent.userID and parent.addressID = address.addressID";
+            }
+            else{
+
+                $query_addressID = "SELECT addressID FROM address WHERE address.city='$city' and address.neigherhoodName='$neigherhoodName' 
+                and address.StreetName='$StreetName' and address.buildingNo='$buildno'";
+                $result_addID = mysqli_query($db, $query_address);
+                $resultaddressID = mysqli_fetch_array($result_addID);
+                $addressID = $resultaddressID['addressID'];
+
+                if($addressID == null){ // means there is no address with the same informations
+
+                    $queryInsert = "INSERT INTO address (city, neigherhoodName, StreetName, buildingNo) VALUES('$city','$neigherhoodName','$StreetName','$buildno')";
+                    mysqli_query($db, $queryInsert);
+
+                    $query_add = "SELECT addressID FROM address WHERE address.city='$city' and address.neigherhoodName='$neigherhoodName' 
+                    and address.StreetName='$StreetName' and address.buildingNo='$buildno'";
+                    $result_adds = mysqli_query($db, $query_add);
+                    $resultaddID = mysqli_fetch_array($result_adds);
+                    $addressIdd = $resultaddID['addressID'];
+
+                    $query = "UPDATE users,parent SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum', parent.img='$img',
+                        users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation', parent.addressID='$addressIdd'
+                         WHERE users.email='$email' and users.ID = parent.userID";
+                }
+                else{
+                    $query = "UPDATE users,parent SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum', parent.img='$img',
+                        users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation', parent.addressID='$addressID'
+                         WHERE users.email='$email' and users.ID = parent.userID";
+                }
+            }
+            
         }
     }
     else{
@@ -41,15 +111,51 @@ $pass = $_SESSION['password'];
             $_SESSION['password'] = $password_new;
 
             if($_FILES['imageParent']['size'] == 0 && $_FILES['imageParent']['error'] == 0){
-                $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum',
+
+                if($address != null){
+                    $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum',
                     users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation',
                      address.city='$city', address.neigherhoodName='$neigherhoodName', address.StreetName='$StreetName', address.buildingNo='$buildno'
                     WHERE users.email='$email' and users.ID = parent.userID and parent.addressID = address.addressID";
+                }
+                else{
+    
+                    $queryInsert = "INSERT INTO address (city, neigherhoodName, StreetName, buildingNo) VALUES('$city','$neigherhoodName','$StreetName','$buildno')";
+                    mysqli_query($db, $queryInsert);
+    
+                    $query_addressID = "SELECT addressID FROM address WHERE address.city='$city' and address.neigherhoodName='$neigherhoodName' 
+                        and address.StreetName='$StreetName' and address.buildingNo='$buildno'";
+                    $result_addID = mysqli_query($db, $query_address);
+                    $resultaddressID = mysqli_fetch_array($result_addID);
+                    $addressID = $resultaddressID['addressID'];
+    
+                    $query = "UPDATE users,parent SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum',
+                    users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation', parent.addressID='$addressID'
+                    WHERE users.email='$email' and users.ID = parent.userID";
+                }
+    
             }else{
-                $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum',
+                if($address != null){
+                    $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum',
                     users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation', parent.img='$img',
                      address.city='$city', address.neigherhoodName='$neigherhoodName', address.StreetName='$StreetName', address.buildingNo='$buildno'
                     WHERE users.email='$email' and users.ID = parent.userID and parent.addressID = address.addressID";
+                }
+                else{
+                    $queryInsert = "INSERT INTO address (city, neigherhoodName, StreetName, buildingNo) VALUES('$city','$neigherhoodName','$StreetName','$buildno')";
+                    mysqli_query($db, $queryInsert);
+    
+                    $query_addressID = "SELECT addressID FROM address WHERE address.city='$city' and address.neigherhoodName='$neigherhoodName' 
+                        and address.StreetName='$StreetName' and address.buildingNo='$buildno'";
+                    $result_addID = mysqli_query($db, $query_address);
+                    $resultaddressID = mysqli_fetch_array($result_addID);
+                    $addressID = $resultaddressID['addressID'];
+    
+                    $query = "UPDATE users,parent SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum',
+                    users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation', parent.img='$img', parent.addressID='$addressID'
+                    WHERE users.email='$email' and users.ID = parent.userID";
+                }
+                
             }
         }else{
             array_push($errors, "<script>Swal({
@@ -61,6 +167,9 @@ $pass = $_SESSION['password'];
     }
 
     mysqli_query($db, $query);
+
+    echo "ERROR: Could not able to execute $query. " . mysqli_error($db);
+
 
     if (mysqli_affected_rows($db) == 1) {
 

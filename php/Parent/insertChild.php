@@ -9,10 +9,7 @@ $firstname = $_POST["child_fname"];
 $lastname = $_POST["child_lname"];
 $bdate = $_POST["child_bdate"];
 $gender = $_POST["gender"];
-$not_accepted = 0;
 
-// need to be removed
-$nurseID = 0;
 // img
 $img  = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
 
@@ -39,16 +36,16 @@ if(mysqli_num_rows($query_name_result)) {
   // error child name already exist
 }
 else{
-  $query = "INSERT INTO children (first_name, last_name, Bdate, Gender, accepted, parentID, categoryNo, nurseID, img)
-  VALUES ('$firstname', '$lastname', '$bdate', '$gender', '$not_accepted', '$parent_ID', '$category', '$nurseID', '$img')";
+  $query = "INSERT INTO children (first_name, last_name, Bdate, Gender, parentID, categoryNo, img)
+  VALUES ('$firstname', '$lastname', '$bdate', '$gender', '$parent_ID', '$category', '$img')";
 
   mysqli_query($db, $query);
 
-  // if(mysqli_query($db, $sql)){
-  //   echo "Records added successfully.";
-  // } else{
-  //   echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);
-  // }
+   if(mysqli_query($db, $sql)){
+     echo "Records added successfully.";
+   } else{
+     echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);
+   }
 }
 
 

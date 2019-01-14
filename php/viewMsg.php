@@ -16,11 +16,11 @@ if ($result) {
   $ToID = $result['ID'];
 }
 else {
-  array_push($alerts, "<script>Swal({
+  echo"<script>Swal({
                             type: 'error',
                             title: 'Error in viewing messages',
                             text: 'We couldnt get your ID from database'
-                          })</script>");
+                          })</script>";
 }
 
 $messageQuery = "SELECT FromID, msg, date from commentsto WHERE ToID='$ToID'";
@@ -52,10 +52,10 @@ if (mysqli_num_rows($messagesResult) > 0) {
     $collapseID += 1;
   }
 }else {
-  array_push($alerts, "<script>Swal({
+  echo"<script>Swal({
                             type: 'error',
                             title: 'No messages to view'
-                          })</script>");
+                          })</script>";
 }
 
 ?>
