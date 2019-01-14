@@ -1,12 +1,16 @@
 <?php
 include('../db.php');
 session_start();
+$message = 'hello world'; 
 
 
-if($_POST['saveScheldue'] == NULL){
+if(isset($_POST['saveScheldue']))
+{
+   
     $time = $_POST["time"];
     $room = $_POST["room"];
     $subject = $_POST["subject"];
+
 
 
         $query = "UPDATE scheldue  SET scheldue.subject='$subject', scheldue.room='$room', scheldue.time='$time'" ;
