@@ -37,15 +37,15 @@ else{
 
 if (mysqli_affected_rows($db) == 1) {
 
-    $MessageSentScript = "<script>Swal({
+    array_push($alerts, "<script>Swal({
                             type: 'success',
                             title: 'Profile Updated successfully',
                             toast: true,
                             position: 'top-right',
                             showConfirmButton: true
-                        })</script>";
+                        })</script>");
 }else {
-    array_push($errors, "<script>Swal({
+    array_push($alerts, "<script>Swal({
                             type: 'error',
                             title: 'Oops...',
                             text: 'There was an error while upadting your data!',

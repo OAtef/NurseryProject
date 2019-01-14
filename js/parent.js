@@ -4,13 +4,13 @@ $(document).ready(function() {
 
   $("#hide-child-info").hide();
   var childid = null;
-  
+
   $.ajax({
     url: "fetch.php",
     type: "POST",
     dataType: "JSON",
-    success: function(data) {  
-      
+    success: function(data) {
+
       for (var i = 0; i < data.length; i++) {
         var obj = data[i];
 
@@ -38,7 +38,7 @@ $(document).ready(function() {
           $("#uploadImg").css("display", "block");
           $("#imageParent").prop("required", true);
         }
-        
+
       }
     },
   });
@@ -75,7 +75,7 @@ $(document).ready(function() {
       });
       return false;
     }
-    
+
   });
 
   $("#vm").click(function() {
@@ -88,6 +88,21 @@ $(document).ready(function() {
       type: "POST",
       success: function(msgData) {
         $("#Vmsg").html(msgData);
+      },
+    })
+  });
+
+  $("#Send_Msg").click(function() {
+
+    senderMail = $("#SendingEmail").val();
+    message = $("#message").val();
+
+    $.ajax({
+      url: "../SendMsg.php",
+      type: "POST",
+      data: {Mail: senderMail, Message: message},
+      success: function(msgData) {
+        $("#SmsgResults").html(msgData);
       },
     })
   });
@@ -138,7 +153,7 @@ $(document).ready(function() {
 		         title: 'Account Updated Successfully',
 		         showConfirmButton: true
              });
-          
+
           $('#firstname').prop("disabled", true);
           $('#lastname').prop("disabled", true);
           $('#genderr').prop("disabled", true);
@@ -438,7 +453,7 @@ $(document).ready(function() {
       $('#city').prop("disabled", false);
       $('#StreetName').prop("disabled", false);
       $('#buildno').prop("disabled", false);
-  
+
       $("#update").css("display", "block");
       $("#uploadImg").css("display", "block");
 
@@ -571,8 +586,6 @@ function imageValidation(file = '') {
       });
 
     return false;
-  } 
+  }
  }
 }
-  
-

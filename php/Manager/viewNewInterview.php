@@ -11,14 +11,13 @@ echo "
       <th>Name</th>
       <th>Gender</th>
       <th>Mobile</th>
-      <th>Day</th>
       <th>Approve</th>
       <th>Reject</th>
     </tr>
   </thead>
   <tbody>";
 
-$AllRequestsQuery = "SELECT * FROM interviews WHERE day IS NOT NULL";
+$AllRequestsQuery = "SELECT * FROM interviews WHERE day IS NULL";
 $RequestsResult = mysqli_query($db, $AllRequestsQuery);
 $Counter = 1;
 
@@ -41,7 +40,6 @@ if (mysqli_num_rows($RequestsResult) > 0) {
           <td><label id='lblName'>".$ParentData['firstname']." ".$ParentData['lastname']."</label></td>
           <td><label id='lblGender'>".$ParentData['gender']."</label></td>
           <td><label id='lblMobile'>".$ParentData['mobilenumber']."</label></td>
-          <td><label id='lblDay'>".$row['day']."</label></td>
           <td><button onclick='ApproveInterview()'><i class='fa fa-edit'></i> Approve</button></td>
           <td><button onclick='RejectInterview()'><i class='fa fa-trash'></i> Reject</button></td>
         </tr>
@@ -55,7 +53,11 @@ if (mysqli_num_rows($RequestsResult) > 0) {
             <hr>
             <b>Bdate: </b> <span id='lblChildBdate'>".$ChildData['Bdate']."</span>
             <hr>
-            <b>Child Age: </b> <span id='lblChildAge'>".$row['childAge']."</span>
+            <b>Enter InterView Date: </b> ".$row['day']."
+            <div id='EditorDivInterview' style='margin-left: 50%'>
+              Enter New Date: <input type='date' id='InterviewDate-row".$Counter."' value='' />
+                              <input type='button' id='textEditor' value='Change Birthday Date' onclick='changeInterviewDate()' />
+            </div>
           </td>
         </tr>";
     }

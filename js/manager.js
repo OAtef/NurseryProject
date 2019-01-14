@@ -31,6 +31,7 @@ $(document).ready(function() {
     $(".HideAll").hide();
     $("#ChildrenList").empty();
     $("#ViewParents").empty();
+    $("#ViewNewInterview").empty();
     $("#ViewInterview").show();
 
     $.ajax({
@@ -42,10 +43,27 @@ $(document).ready(function() {
     })
   });
 
+  $("#VNI").click(function() {
+    $(".HideAll").hide();
+    $("#ChildrenList").empty();
+    $("#ViewParents").empty();
+    $("#ViewInterview").empty();
+    $("#ViewNewInterview").show();
+
+    $.ajax({
+      url: "viewNewInterview.php",
+      type: "POST",
+      success: function(requestsData) {
+        $("#ViewNewInterview").html(requestsData);
+      },
+    })
+  });
+
   $("#VP").click(function() {
     $(".HideAll").hide();
     $("#ChildrenList").empty();
     $("#ViewInterview").empty();
+    $("#ViewNewInterview").empty();
     $("#ViewParents").show();
 
     $.ajax({
@@ -61,6 +79,7 @@ $(document).ready(function() {
     $(".HideAll").hide();
     $("#ViewParents").empty();
     $("#ViewInterview").empty();
+    $("#ViewInterview").empty();
     $("#ChildrenList").show();
 
     $.ajax({
@@ -68,6 +87,21 @@ $(document).ready(function() {
       type: "POST",
       success: function(childrenData) {
         $("#ChildrenList").html(childrenData);
+      },
+    })
+  });
+
+  $("#Send_Msg").click(function() {
+
+    senderMail = $("#SendingEmail").val();
+    message = $("#message").val();
+
+    $.ajax({
+      url: "../SendMsg.php",
+      type: "POST",
+      data: {Mail: senderMail, Message: message},
+      success: function(msgData) {
+        $("#SmsgResults").html(msgData);
       },
     })
   });
@@ -193,16 +227,17 @@ function addCommentSon(){
     data: {Comment: comment, ChildID: $(selectedID).text()},
     success: function(newDate) {
       $("#ChildrenList").html(newDate);
+
+      $.ajax({
+        url: "ViewChildren.php",
+        type: "POST",
+        success: function(childrenData) {
+          $("#ChildrenList").html(childrenData);
+        },
+      })
     },
   })
 
-  $.ajax({
-    url: "ViewChildren.php",
-    type: "POST",
-    success: function(childrenData) {
-      $("#ChildrenList").html(childrenData);
-    },
-  })
 }
 
 function changeInterviewDate() {
@@ -211,17 +246,17 @@ function changeInterviewDate() {
   $.ajax({
     url: "setInterviewDate.php",
     type: "POST",
-    data: {newInterviewDate: newInterviewDate, ChildID: $(selectedID).text()},
+    data: {newInterviewDate: newInterviewDate, ChildID: $(childID).text()},
     success: function(newDate) {
-      $("#ChildrenList").html(newDate);
-    },
-  })
+      $("#ViewNewInterview").html(newDate);
 
-  $.ajax({
-    url: "ViewChildren.php",
-    type: "POST",
-    success: function(childrenData) {
-      $("#ChildrenList").html(childrenData);
+      $.ajax({
+        url: "viewNewInterview.php",
+        type: "POST",
+        success: function(childrenData) {
+          $("#ViewNewInterview").html(childrenData);
+        },
+      })
     },
   })
 }
