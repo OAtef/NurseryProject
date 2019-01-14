@@ -183,11 +183,11 @@ include('../SendMsg.php');
       </div>
     </div>
 
-    <form name="saveScheldueForm1" id="saveScheldueForm1" method="POST">
+ <!--    <form name="saveScheldueForm1" id="saveScheldueForm1" method="POST">
     <input id="subject" name="subject" placeholder="Math" class="form-control here" type="text">
-    <input type="button" name="saveSchedule" value="Save" id="saveSchedule">
+    <input type="button" name="saveSchedule" value="Save" id="saveSchedule"> 
 
-    </form>
+    </form>-->
 
 
     <!-- View Employee -->
@@ -196,7 +196,7 @@ include('../SendMsg.php');
     </div>
 
     <div class="container HideAll" id="TimeTable1" style="margin-left: 50px; display:none; ">
-      <form name="saveScheldueForm" id="saveScheldueForm" method="GET">
+      <form name="saveScheldueForm" id="saveScheldueForm" method="POST">
 
         <div contenteditable="true" style="margin-top: 100px; margin-left: 100px">
           <H1>Nursery Timetable</H1>
@@ -213,11 +213,11 @@ include('../SendMsg.php');
             </THEAD>
             <TBODY>
               <TR>
-                <TD>8:00-9:30</TD>
+                <TD><input id="time" name="time" placeholder="8:00-9:30" class="form-control here" type="text"></TD>
                 <TD>
                   <div class="subject">  <input id="subject" name="subject" placeholder="Math" class="form-control here" type="text"></div>
-                  <input type="button" name="saveSchedule" value="Save" id="saveSchedule">
-                  <div class="room">A120</div>
+                 
+                  <div class="room"><input id="room" name="room" placeholder="A120" class="form-control here" type="text"></div>
                 </TD>
                 <TD>
                   <div class="subject">Art</div>
@@ -339,7 +339,7 @@ include('../SendMsg.php');
 
         </div>
       
-
+<input type="button" name="saveSchedule" value="Save" id="saveSchedule" style="margin-left: 200px; background-color: blue ">
       </form>
     </div>
 

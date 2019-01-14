@@ -4,9 +4,6 @@ session_start();
 $message = 'hello world'; 
 
 
-if(isset($_POST['saveScheldue']))
-{
-   
     $time = $_POST["time"];
     $room = $_POST["room"];
     $subject = $_POST["subject"];
@@ -36,7 +33,7 @@ if(isset($_POST['saveScheldue']))
                                           text: 'There was an error while upadting your data!',
                                         })</script>");  }
 
-        }
+        
 
 
 ?>

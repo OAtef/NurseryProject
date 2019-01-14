@@ -65,13 +65,13 @@ $(document).ready(function() {
      
     
      url: "saveSchedule.php",
-     data: $('#saveScheldueForm1').serialize(), // takes all data in the form in a string
+     data: $('#saveScheldueForm').serialize(), // takes all data in the form in a string
      type: "POST",
 
      success: function(data) {
     
-      alert("Success");
-      $("TimeTable1").html(data);
+      alert("success");
+      //$("TimeTable1").html(data);
 
      },error: function(data) {
    
