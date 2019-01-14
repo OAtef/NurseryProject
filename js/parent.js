@@ -29,10 +29,15 @@ $(document).ready(function() {
         rr = obj.relativeRelation;
 
         if(rr == null){
-          EditProfile();
+          $('#relativeRelation').prop("disabled", false);
+          $('#neigherhoodName').prop("disabled", false);
+          $('#city').prop("disabled", false);
+          $('#StreetName').prop("disabled", false);
+          $('#buildno').prop("disabled", false);
+          $("#update").css("display", "block");
+          $("#uploadImg").css("display", "block");
           $("#imageParent").prop("required", true);
         }
-
         
       }
     },
@@ -91,17 +96,31 @@ $(document).ready(function() {
     $("#ProfilePage").on('submit', (function(e) {
       e.preventDefault();
 
-      rr =  $('#relativeRelation').val();
-
       imageValidation("imageParent");
 
       var data = new FormData(this);
-      var national = $('#nationalid').val();
-      data.append("Nid", national);
 
-      //  for (var pair of data.entries()) {
-      //    console.log(pair[0] + ', ' + pair[1]);
-      //  }
+      if(rr == null){
+
+        var fname = $('#firstname').val();
+        data.append("fname", fname);
+
+        var lname = $('#lastname').val();
+        data.append("lastname", lname);
+
+        var mobile = $('#mobilenumber').val();
+        data.append("mobile", mobile);
+
+        var oldpass = $('#oldpass').val();
+        data.append("oldpass", oldpass);
+
+        var newpass = $('#newpass').val();
+        data.append("newpass", newpass);
+
+        var gender = $('#genderr').val();
+        data.append("genderr", gender);
+
+      }
 
       $.ajax({
         url: "update.php",
@@ -111,6 +130,9 @@ $(document).ready(function() {
         cache: false,
         processData: false,
         success: function() {
+
+          rr =  $('#relativeRelation').val();
+
 					 Swal({
 		         type: 'success',
 		         title: 'Account Updated Successfully',
@@ -121,7 +143,6 @@ $(document).ready(function() {
           $('#lastname').prop("disabled", true);
           $('#genderr').prop("disabled", true);
           $('#relativeRelation').prop("disabled", true);
-          $('#parentemail').prop("disabled", true);
           $('#mobilenumber').prop("disabled", true);
           $('#oldpass').prop("disabled", true);
           $('#newpass').prop("disabled", true);
@@ -129,7 +150,6 @@ $(document).ready(function() {
           $('#city').prop("disabled", true);
           $('#StreetName').prop("disabled", true);
           $('#buildno').prop("disabled", true);
-          $('#nationalid').prop("disabled", true);
 
           $("#update").css("display", "none");
           $("#uploadImg").css("display", "none");
@@ -396,6 +416,35 @@ $(document).ready(function() {
     $("#ChildProfile").show();
   });
 
+  $("#edit").click(function(event) {
+    event.preventDefault();
+
+    if(rr == null){
+      Swal({
+        type: 'error',
+        title: 'You need to complete your information first',
+        showConfirmButton: true
+      });
+    }else{
+
+      $('#firstname').prop("disabled", false);
+      $('#lastname').prop("disabled", false);
+      $('#genderr').prop("disabled", false);
+      $('#relativeRelation').prop("disabled", false);
+      $('#mobilenumber').prop("disabled", false);
+      $('#oldpass').prop("disabled", false);
+      $('#newpass').prop("disabled", false);
+      $('#neigherhoodName').prop("disabled", false);
+      $('#city').prop("disabled", false);
+      $('#StreetName').prop("disabled", false);
+      $('#buildno').prop("disabled", false);
+  
+      $("#update").css("display", "block");
+      $("#uploadImg").css("display", "block");
+
+    }
+  });
+
   // ------------------------------------
   $("#pf").click(function() {
     $(".HideAll").hide();
@@ -468,29 +517,6 @@ function AddChild() {
 
 }
 
-function EditProfile() {
-  $('#firstname').prop("disabled", false);
-  $('#lastname').prop("disabled", false);
-  $('#genderr').prop("disabled", false);
-  $('#relativeRelation').prop("disabled", false);
-  $('#parentemail').prop("disabled", false);
-  $('#mobilenumber').prop("disabled", false);
-  $('#oldpass').prop("disabled", false);
-  $('#newpass').prop("disabled", false);
-  $('#neigherhoodName').prop("disabled", false);
-  $('#city').prop("disabled", false);
-  $('#StreetName').prop("disabled", false);
-  $('#buildno').prop("disabled", false);
-
-  // $('#update').show();
-  // $('#uploadImg').show();
-
-  $("#update").css("display", "block");
-  $("#uploadImg").css("display", "block");
-  
-
-}
-
 function todayDate() {
   var today = new Date();
   var day = today.getDate();
@@ -532,26 +558,21 @@ function child_BDate_min() {
 }
 
 function imageValidation(file = '') {
-  
-  var fileInput =  document.getElementById(file);
-  fileSize = fileInput.files[0].size;
- if (fileSize > 16777215) { // 16 MB
-   Swal({
-     type: 'error',
-     title: 'Picture size is huge',
-     showConfirmButton: true
-   });
 
-   return false;
- } else {
-    var extension = $('#'+file).val().split('.').pop().toLowerCase();
-    if(extension != 'jpg' && extension != '' && extension != 'png' && extension != 'gif' && extension != 'jpeg'){
+  if(('#'+file).val() != ''){
+    var fileInput =  document.getElementById(file);
+    fileSize = fileInput.files[0].size;
+
+    if (fileSize > 16777215) { // 16 MB
       Swal({
         type: 'error',
-        title: 'Image Extension is Invalid -- valid Extensions (JPG , PNG , GIF , JPEG)',
+        title: 'Picture size is huge',
         showConfirmButton: true
       });
-      return false;
-    }
+
+    return false;
+  } 
  }
 }
+  
+

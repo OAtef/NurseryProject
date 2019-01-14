@@ -212,8 +212,8 @@ include('php/server.php');
 
 
 	<div id="section1" class="tab">
-		<button class="tablinks" id="btn1" onclick="openCity(event, 'section21')">Nutrition</button>
-		<button class="tablinks" id="btn2" onclick="openCity(event, 'section22')">Activites</button>
+		<button class="tablinks" id="btn1" onclick="nutrition_activites(event, 'section21')">Nutrition</button>
+		<button class="tablinks" id="btn2" onclick="nutrition_activites(event, 'section22')">Activites</button>
 	</div>
 
 	<div id="section21" class="container-fluid tabcontent">
@@ -226,10 +226,10 @@ include('php/server.php');
 			<div class="row">
 				<div class="col-sm-4">
 					<p class="text-center"><strong>Breakfast</strong></p><br>
-					<a href="#demo" data-toggle="collapse">
-						<img src="img\breakfast.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+					<a href="#demo1" data-toggle="collapse">
+						<img src="img\breakfast.jpg" class="img-circle person" alt="Breakfast" width="255" height="255">
 					</a>
-					<div id="demo" class="collapse">
+					<div id="demo1" class="collapse">
 						<p>Low Sugar / Wholewheat Cereals with Milk Porridge</p>
 						<p>Wholemeal Bread/Toast/English Muffins Seasonal Fresh Fruit</p>
 						<p>Whole Milk or Water</p>
@@ -238,7 +238,7 @@ include('php/server.php');
 				<div class="col-sm-4">
 					<p class="text-center"><strong>Lunch</strong></p><br>
 					<a href="#demo2" data-toggle="collapse">
-						<img src="img\Lunch.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+						<img src="img\Lunch.jpg" class="img-circle person" alt="Lunch" width="255" height="255">
 					</a>
 					<div id="demo2" class="collapse">
 						<ul style="list-style-type:none">
@@ -257,7 +257,7 @@ include('php/server.php');
 				<div class="col-sm-4">
 					<p class="text-center"><strong>Dinner</strong></p><br>
 					<a href="#demo3" data-toggle="collapse">
-						<img src="img\Dinner.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+						<img src="img\Dinner.jpg" class="img-circle person" alt="Dinner" width="255" height="255">
 					</a>
 					<div id="demo3" class="collapse">
 						<ul style="list-style-type:none">
@@ -282,59 +282,49 @@ include('php/server.php');
 		<div class="container text-center">
 			<h3>ACTIVITES</h3>
 			<p><em>"We Care"</em></p>
-			<p>Child may also describe a relationship with a parent (such as sons and daughters of any age)[3] or,
-				metaphorically, an authority figure, or signify group membership in a clan, tribe,
-				or religion; it can also signify being strongly affected by a specific time, place,
-				or circumstance, as in "a child of nature" or "a child of the Sixties"</p>
+			<p>Activities Helps children to develop good teamwork skills. Teamwork skills are an important life skills, 
+				improving our confidence and employability, and making it easier to make and keep good friends.</p>
 			<br>
 			<div class="row">
 				<div class="col-sm-4">
-					<p class="text-center"><strong>Breakfast</strong></p><br>
-					<a href="#demo" data-toggle="collapse">
-						<img src="img\breakfast.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+					<p class="text-center"><strong>Free Play</strong></p><br>
+					<a href="#demo4" data-toggle="collapse">
+						<img src="img\freeplay.jpg" class="img-circle person" alt="Free Play" width="255" height="255">
 					</a>
-					<div id="demo" class="collapse">
-						<p>Low Sugar / Wholewheat Cereals with Milk Porridge</p>
-						<p>Wholemeal Bread/Toast/English Muffins Seasonal Fresh Fruit</p>
-						<p>Whole Milk or Water</p>
+					<div id="demo4" class="collapse">
+						<p> Why Free Play? </p>
+						<p>Helps children learn to think independently and teaches them how to entertain themselves 
+							and allows children to develop conflict resolution skills and learn to take turns. 
+							Develops social skills and collaborative play skills. </p>
 					</div>
 				</div>
 				<div class="col-sm-4">
-					<p class="text-center"><strong>Lunch</strong></p><br>
-					<a href="#demo2" data-toggle="collapse">
-						<img src="img\Lunch.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+					<p class="text-center"><strong>Music</strong></p><br>
+					<a href="#demo5" data-toggle="collapse">
+						<img src="img\music.jpg" class="img-circle person" alt="Music" width="255" height="255">
 					</a>
-					<div id="demo2" class="collapse">
+					<div id="demo5" class="collapse">
 						<ul style="list-style-type:none">
-							<li>Vegetarian Moussaka with Garlic Bread</li>
-							<li>Homemade Ocean Fish Pie with Mixed Vegetables</li>
-							<li>Winter Vegetable Pie with Broccoli </li>
-							<li>Beef,Vegetable &amp; Bean Casserole with Couscous</li>
-							<li>Roast Quorn with Yorkshire Pudding Seasonal Vegetables and Vegetarian Gravy</li>
-							<li>Apple &amp; Chicken Curry with Rice</li>
-							<li>Lentil Curry &amp; Rice</li>
-							<li>Rosemary Lamb &amp; Vegetable Hot Pot</li>
-							<li>Quorn Hot Pot with Winter Vegetables</li>
+							<li> Why Music? </li>
+							<li> It develops the musical ear and encourages self-discipline.</li>
+							<li> also, it encourages self-discipline and facilitates brain development </li>
+							<li> and finally, it develops a range of concrete abilities including problem-solving, 
+								the understanding of symbols, physical coordination, emotional 
+								communication, and judgment.</li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-sm-4">
-					<p class="text-center"><strong>Dinner</strong></p><br>
-					<a href="#demo3" data-toggle="collapse">
-						<img src="img\Dinner.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+					<p class="text-center"><strong>Physical Activites</strong></p><br>
+					<a href="#demo6" data-toggle="collapse">
+						<img src="img\sport.jpg" class="img-circle person" alt="Sport" width="255" height="255">
 					</a>
-					<div id="demo3" class="collapse">
+					<div id="demo6" class="collapse">
 						<ul style="list-style-type:none">
-							<li>Chicken or Quorn Ratatouille &amp; Couscous</li>
-							<li>Winter Fruit Smoothie</li>
-							<li>Salmon &amp; Chive Filled Potato Boats</li>
-							<li>Apricot Biscuits</li>
-							<li>Chicken or Quorn Ratatouille &amp; Couscous</li>
-							<li>Fruit Shortbread</li>
-							<li>Salmon &amp; Chive Filled Potato Boats</li>
-							<li>Mandarin Sponge Fingers </li>
-							<li>Chicken or Quorn Ratatouille &amp; Couscous</li>
-							<li>Melon Pots</li>
+							<li>Why Physical Activites?</li>
+							<li>The physical benefits of outdoor kids is building muscle, gaining acute flexibility, 
+								losing weight, and general endurance.</li>
+							<li>The social benefits of outdoor sports are extremely obvious and, well, beneficial.</li>
 						</ul>
 					</div>
 				</div>

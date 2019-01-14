@@ -94,7 +94,7 @@
             <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar" id="ParentImgContainer">
             <div id="uploadImg" style="display: none">
               <h6>Upload a different photo...</h6>
-              <input type="file" class="text-center center-block file-upload" name="imageParent" id="imageParent">
+              <input type="file" accept="image/*" class="text-center center-block file-upload" name="imageParent" id="imageParent">
             </div>
           </div>
         </div>
@@ -106,7 +106,7 @@
                   <h4>Your Profile</h4>
                   <div class="form-group row">
                     <div class="offset-4 col-8">
-                      <button name="edit" id="edit" class="btn btn-primary"  onclick="EditProfile()">Edit My Profile</button>
+                      <button name="edit" id="edit" class="btn btn-primary">Edit My Profile</button>
                     </div>
                   </div>
                   <hr>
@@ -159,7 +159,7 @@
                       </div>
                     </div>
                     <hr>
-                    <h4>Only if you wish to change your password </h4>
+                    <label> If you to change your password enter your: </label>
                     <hr>
                     <div class="form-group row">
                       <label for="oldpass" class="col-4 col-form-label"> old Password</label>

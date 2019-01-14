@@ -10,7 +10,6 @@ $pass = $_SESSION['password'];
     $mobileNum = $_POST["mobile"];
     $password_old = $_POST["oldpass"];
     $password_new = $_POST["newpass"];
-    $natinalID = $_POST["Nid"];
     $relativeRelation = $_POST["relativeRelation"];
 
     $city = $_POST["city"];
@@ -33,7 +32,7 @@ $pass = $_SESSION['password'];
 
             if($address != null){
                 $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum',
-                users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation',
+                users.password='$password_new', parent.relativeRelation='$relativeRelation',
                 address.city='$city', address.neigherhoodName='$neigherhoodName', address.StreetName='$StreetName', address.buildingNo='$buildno'
                 WHERE users.email='$email' and users.ID = parent.userID and parent.addressID = address.addressID";
             }
@@ -57,12 +56,12 @@ $pass = $_SESSION['password'];
                     $addressIdd = $resultaddID['addressID'];
 
                     $query = "UPDATE users,parent SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum',
-                        users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation', parent.addressID='$addressIdd'
+                        users.password='$password_new', parent.relativeRelation='$relativeRelation', parent.addressID='$addressIdd'
                          WHERE users.email='$email' and users.ID = parent.userID";
                 }
                 else{
                     $query = "UPDATE users,parent SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum',
-                        users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation', parent.addressID='$addressID'
+                        users.password='$password_new', parent.relativeRelation='$relativeRelation', parent.addressID='$addressID'
                          WHERE users.email='$email' and users.ID = parent.userID";
                 }
             }
@@ -70,7 +69,7 @@ $pass = $_SESSION['password'];
         }else{
             if($address != null){ // means there is pre. address record
                 $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum',
-                users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation', parent.img='$img',
+                users.password='$password_new', parent.relativeRelation='$relativeRelation', parent.img='$img',
                  address.city='$city', address.neigherhoodName='$neigherhoodName', address.StreetName='$StreetName', address.buildingNo='$buildno'
                 WHERE users.email='$email' and users.ID = parent.userID and parent.addressID = address.addressID";
             }
@@ -94,12 +93,12 @@ $pass = $_SESSION['password'];
                     $addressIdd = $resultaddID['addressID'];
 
                     $query = "UPDATE users,parent SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum', parent.img='$img',
-                        users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation', parent.addressID='$addressIdd'
+                        users.password='$password_new', parent.relativeRelation='$relativeRelation', parent.addressID='$addressIdd'
                          WHERE users.email='$email' and users.ID = parent.userID";
                 }
                 else{
                     $query = "UPDATE users,parent SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum', parent.img='$img',
-                        users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation', parent.addressID='$addressID'
+                        users.password='$password_new', parent.relativeRelation='$relativeRelation', parent.addressID='$addressID'
                          WHERE users.email='$email' and users.ID = parent.userID";
                 }
             }
@@ -114,7 +113,7 @@ $pass = $_SESSION['password'];
 
                 if($address != null){
                     $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum',
-                    users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation',
+                    users.password='$password_new', parent.relativeRelation='$relativeRelation',
                      address.city='$city', address.neigherhoodName='$neigherhoodName', address.StreetName='$StreetName', address.buildingNo='$buildno'
                     WHERE users.email='$email' and users.ID = parent.userID and parent.addressID = address.addressID";
                 }
@@ -130,14 +129,14 @@ $pass = $_SESSION['password'];
                     $addressID = $resultaddressID['addressID'];
     
                     $query = "UPDATE users,parent SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum',
-                    users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation', parent.addressID='$addressID'
+                    users.password='$password_new', parent.relativeRelation='$relativeRelation', parent.addressID='$addressID'
                     WHERE users.email='$email' and users.ID = parent.userID";
                 }
     
             }else{
                 if($address != null){
                     $query = "UPDATE users,parent,address SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum',
-                    users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation', parent.img='$img',
+                    users.password='$password_new', parent.relativeRelation='$relativeRelation', parent.img='$img',
                      address.city='$city', address.neigherhoodName='$neigherhoodName', address.StreetName='$StreetName', address.buildingNo='$buildno'
                     WHERE users.email='$email' and users.ID = parent.userID and parent.addressID = address.addressID";
                 }
@@ -152,7 +151,7 @@ $pass = $_SESSION['password'];
                     $addressID = $resultaddressID['addressID'];
     
                     $query = "UPDATE users,parent SET users.firstname='$firstname', users.lastname='$lastname', users.mobilenumber='$mobileNum',
-                    users.password='$password_new', users.nationalID='$natinalID', parent.relativeRelation='$relativeRelation', parent.img='$img', parent.addressID='$addressID'
+                    users.password='$password_new', parent.relativeRelation='$relativeRelation', parent.img='$img', parent.addressID='$addressID'
                     WHERE users.email='$email' and users.ID = parent.userID";
                 }
                 
