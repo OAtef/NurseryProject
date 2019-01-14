@@ -9,26 +9,30 @@ $message = 'hello world';
    
      $subject=array();
     
+for($i=0;$i<3;$i++){
+    
+    if($i!=0)
+    {
+        $roomname = "room"."$i"; //To make it automated for any data in the table 
+        $timename = "time"."$i";  
+        $subjectname = "subject"."$i"; 
+        ////////////////////////////
+        $time[$i] = $_POST[$timename]; 
+        $room[$i] = $_POST[$roomname];
+        $subject[$i] = $_POST[$subjectname];
+        
+    }
 
-// $sql="SELECT * FROM scheldue";
-// $result1= mysqli_query($db,$sql);
-// $count=mysqli_num_rows($result1);
-
-// // echo "<script type='text/javascript'>alert('$count');</script>";
-
-$time[0] = $_POST["time"];
-   $room[0] = $_POST["room"];
-   $subject[0] = $_POST["subject"];
-
-   $time[1] = $_POST["time1"];
-   $room[1] = $_POST["room1"];
-   $subject[1] = $_POST["subject"];
-
-
-for($i=1;$i<3;$i++){
+    else if ($i==0){ //only in the 0 condition because we need to write in S_post time without .$i
+        $time[$i] = $_POST["time"];
+    $room[$i] = $_POST["room"];
+    $subject[$i] = $_POST["subject"];
+}
+    
   
+$count=$i+1 ;  //count for IDs
 
-$query = "UPDATE scheldue  SET scheldue.subject='$subject[0]', scheldue.room='$room[0]', scheldue.time='$time[0]' where scheldue.id='$i'" ; 
+$query = "UPDATE scheldue  SET scheldue.subject='$subject[$i]', scheldue.room='$room[$i]', scheldue.time='$time[0]' where scheldue.id='$count'" ; 
 $results = mysqli_query($db, $query);
 }
 
