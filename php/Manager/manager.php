@@ -1,5 +1,5 @@
 <?php
-include('../SendMsg.php');
+session_start();
 ?>
 <html>
 
@@ -22,7 +22,7 @@ include('../SendMsg.php');
 <body>
 
   <?php
-  include('../alerts.php');
+  // include('../alerts.php');
   ?>
 
   <nav class="navbar navbar-inverse">
@@ -37,7 +37,8 @@ include('../SendMsg.php');
         <li><a id="Pic-btn"><span class=""></span> Pic</a></li>
 
         <li class='dropdown'>
-          <a class='dropdown-toggle' data-toggle='dropdown' href='#'>Name
+          <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+            <?php echo $_SESSION['Name']; ?>
             <span class='caret'></span></a>
           <ul class='dropdown-menu'>
             <li><a href='../logout.php'>Logout</a></li>
@@ -52,6 +53,7 @@ include('../SendMsg.php');
     <a href="#" id="pf" class="buttom">Profile (nurse info)</a>
     <a href="#" id="vm">View Msg</a>
     <a href="#" id="sm">Send Msg</a>
+    <a href="#" id="VNI">New Interviews </a>
     <a href="#" id="VI">View Interviews </a>
     <a href="#" id="VP">View Parents </a>
     <a href="#" id="CL">Children List </a>
@@ -77,34 +79,36 @@ include('../SendMsg.php');
     <div class="container HideAll" id="Smsg" style="display: none">
       <div class="row">
         <div class="col-md-6 col-md-offset-3" id="form_container">
-          <h2>Send Email</h2>
-          <p>
-            Please send your message below.
-          </p>
+          <h2>Send Message</h2>
+          <p>Please send your message below.</p>
           <form role="form" method="post" id="reused_form">
-
             <div class="row">
               <div class="col-sm-12 form-group">
-                <label for="email">
-                  Email:</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="SendingEmail" name="email" required>
               </div>
             </div>
             <div class="row">
               <div class="col-sm-12 form-group">
-                <label for="message">
-                  Message:</label>
+                <label for="message">Message:</label>
                 <textarea class="form-control" type="textarea" name="message" id="message" maxlength="6000" rows="7"></textarea>
               </div>
             </div>
-            <div class="row">
-              <div class="col-sm-12 form-group">
-                <button type="submit" class="btn btn-lg btn-default pull-right" name="Send_Msg">Send &rarr;</button>
-              </div>
-            </div>
           </form>
+          <div class="row">
+            <div class="col-sm-12 form-group">
+              <button class="btn btn-lg btn-default pull-right" name="Send_Msg" id="Send_Msg">Send &rarr;</button>
+            </div>
+          </div>
+          <div id="SmsgResults">
+          </div>
         </div>
       </div>
+    </div>
+
+    <!-- View New Interviews -->
+    <div class="container HideAll" id="ViewNewInterview" style="margin-left: 100px; display: none">
+
     </div>
 
     <!-- View Interviews -->

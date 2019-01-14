@@ -3,21 +3,27 @@ include('db.php');
 session_start();
 
 $alerts = array();
+$CurrentDate = date("Y-m-d");
 
-if (isset($_POST['Send_Msg'])) {
+$ToEmail = $_POST['Mail'];
+$Message = $_POST['Message'];
+
+// echo $ToEmail. " ".$Message;
+
+if ($ToEmail) {
 
   $FromEmail = $_SESSION['email'];
   $FromID = 0;
-  $ToEmail = mysqli_real_escape_string($db, $_POST['email']);
+  // $ToEmail = mysqli_real_escape_string($db, $_POST['email']);
   $ToID = 0;
-  $Message = mysqli_real_escape_string($db, $_POST['message']);
+  // $Message = mysqli_real_escape_string($db, $_POST['message']);
 
   if (empty($Message)) {
-    array_push($alerts, "<script>Swal({
+    echo "<script>Swal({
                         type: 'error',
                         title: 'Error in sending message!!',
                         text: 'Please enter a message to send it',
-                      })</script>");
+                      })</script>";
   }else {
 
     $GetFromIDQuery = "SELECT ID FROM users WHERE email='$FromEmail'";
@@ -27,11 +33,11 @@ if (isset($_POST['Send_Msg'])) {
       $FromID = $result['ID'];
     }
     else {
-      array_push($alerts, "<script>Swal({
+      echo "<script>Swal({
                           type: 'error',
                           title: 'Error in sending message!!',
                           text: 'Problem getting your ID from database!',
-                        })</script>");
+                        })</script>";
     }
 
     $GetToIDQuery = "SELECT ID FROM users WHERE email LIKE '$ToEmail'";
@@ -41,33 +47,33 @@ if (isset($_POST['Send_Msg'])) {
       $ToID = $result['ID'];
     }
     else {
-      array_push($alerts, "<script>Swal({
+      echo "<script>Swal({
                           type: 'error',
                           title: 'Error in sending message!!',
                           text: 'There is no manager with this email!',
-                        })</script>");
+                        })</script>";
     }
 
     if (count($alerts) == 0) {
 
-      $SendMsgQuery = "INSERT INTO commentsto (ToID, FromID, msg, date) VALUES ('$ToID', '$FromID', '$Message', '2018-12-04')";
+      $SendMsgQuery = "INSERT INTO commentsto (ToID, FromID, msg, date) VALUES ('$ToID', '$FromID', '$Message', '$CurrentDate')";
       $results = mysqli_query($db, $SendMsgQuery);
 
       if (mysqli_affected_rows($db) == 1) {
 
-        array_push($alerts, "<script>Swal({
+        echo "<script>Swal({
                             type: 'success',
                             title: 'Message Sent successfully',
                             toast: true,
                             position: 'top-right',
                             showConfirmButton: true
-                          })</script>");
+                          })</script>";
       }else {
-        array_push($alerts, "<script>Swal({
+        echo "<script>Swal({
                             type: 'error',
                             title: 'Error in sending message!!',
                             text: 'There was an error while inserting message in database!',
-                          })</script>");
+                          })</script>";
       }
     }
   }

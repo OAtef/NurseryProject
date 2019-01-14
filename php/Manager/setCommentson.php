@@ -6,6 +6,8 @@ $email = $_SESSION['email'];
 $comment = $_POST['Comment'];
 $childID = $_POST['ChildID'];
 
+// echo $email." ".$comment." ".$childID;
+
 if ($comment) {
 
   $GetNurseIDQuery = "SELECT ID FROM users WHERE email = '$email'";
@@ -16,26 +18,55 @@ if ($comment) {
 
     $nurseID = $NurseIDdata['ID'];
 
-    $CommentsonQuery = "INSERT INTO commentson (nurseID, child id, comment, behaviour) VALUES ('$nurseID', '$childID', '$comment', 'good')";
-    $CommentsonResult = mysqli_query($db, $CommentsonQuery)
+    $CommentsonSearchQuery = "SELECT * FROM commentson WHERE childID = '$childID'";
+    $CommentsonSearchResult = mysqli_query($db, $CommentsonSearchQuery);
 
-    if ($CommentsonResult) {
+    if ($CommentsonSearchResult) {
 
-      echo "<script>Swal({
-                          type: 'success',
-                          title: 'Interview Approved',
-                          toast: true,
-                          position: 'top-right',
-                          showConfirmButton: false,
-                          timer: 2000
-                        })</script>";
+      $CommentsonQuery = "UPDATE commentson SET comment='$comment' WHERE childID='$childID'";
+      $CommentsonResult = mysqli_query($db, $CommentsonQuery);
+
+      if ($CommentsonResult) {
+
+        echo "<script>Swal({
+                            type: 'success',
+                            title: 'Comment Added',
+                            toast: true,
+                            position: 'top-right',
+                            showConfirmButton: false,
+                            timer: 2000
+                          })</script>";
+      }else {
+
+        echo "<script>Swal({
+                            type: 'error',
+                            title: 'Problem with updating comment on child',
+                            showConfirmButton: true
+                          })</script>";
+      }
     }else {
 
-      echo "<script>Swal({
-                          type: 'error',
-                          title: 'Problem with inserting comment on child',
-                          showConfirmButton: true
-                        })</script>";
+      $CommentsonQuery = "INSERT INTO commentson (nurseID, childID, comment) VALUES ('$nurseID', '$childID', '$comment')";
+      $CommentsonResult = mysqli_query($db, $CommentsonQuery);
+
+      if ($CommentsonResult) {
+
+        echo "<script>Swal({
+                            type: 'success',
+                            title: 'Comment Added',
+                            toast: true,
+                            position: 'top-right',
+                            showConfirmButton: false,
+                            timer: 2000
+                          })</script>";
+      }else {
+
+        echo "<script>Swal({
+                            type: 'error',
+                            title: 'Problem with inserting comment on child',
+                            showConfirmButton: true
+                          })</script>";
+      }
     }
   }else {
     echo "<script>Swal({

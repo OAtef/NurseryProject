@@ -59,10 +59,11 @@ if (isset($_POST['signup_user'])) {
         $result = mysqli_query($db, $signupquery);
         if ($result) {
 
-          $query = "SELECT ID FROM users WHERE users.email='$email'";
-          $result_ID = mysqli_query($db, $query);
-          $resultid = mysqli_fetch_array($result_ID);
-          $parent_ID = $resultid['ID'];
+          $query = "SELECT * FROM users WHERE users.email='$email'";
+          $QueryResult = mysqli_query($db, $query);
+          $results = mysqli_fetch_array($QueryResult);
+          $parent_ID = $results['ID'];
+          $_SESSION['Name'] = $results['firstname']." ".$results['lastname'];
 
           $parentquery = "INSERT INTO parent (userID) VALUES('$parent_ID')";
           mysqli_query($db, $parentquery);
@@ -108,11 +109,12 @@ if (isset($_POST['login_user'])) {
         $results = mysqli_query($db, $signinquery);
         if (mysqli_num_rows($results) == 1) {
 
-            $type = mysqli_query($db, "SELECT type FROM users WHERE users.email='$email'");
-            $result = mysqli_fetch_array($type);
+            // $type = mysqli_query($db, "SELECT type FROM users WHERE users.email='$email'");
+            $result = mysqli_fetch_array($results);
 
             $_SESSION['email'] = $email;
             $_SESSION['password'] = $password;
+            $_SESSION['Name'] = $result['firstname']." ".$result['lastname'];
 
             if($result['type'] == 1){ // parent
               $_SESSION['userType'] = 1;
