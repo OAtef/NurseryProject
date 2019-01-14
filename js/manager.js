@@ -14,7 +14,7 @@ $(document).ready(function() {
     $("#Vmsg").show();
 
     $.ajax({
-      url: "viewMsg.php",
+      url: "../viewMsg.php",
       type: "POST",
       success: function(msgData) {
         $("#Vmsg").html(msgData);

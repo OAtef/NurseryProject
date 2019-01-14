@@ -24,7 +24,7 @@
           <a class="navbar-brand" href="#"><span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span></a>
         </div>
         <ul class="nav navbar-nav">
-          <li class="active"><a href="../../welcomePage.php">Home</a></li>
+          <li class="active"><a href="../../welcomePage.php" id="home">Home</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a id="Pic-btn"><span class=""></span> Pic</a></li>
@@ -106,14 +106,14 @@
                   <h4>Your Profile</h4>
                   <div class="form-group row">
                     <div class="offset-4 col-8">
-                      <button name="edit" id="edit" class="btn btn-primary">Edit My Profile</button>
+                      <button name="edit" id="edit" class="btn btn-primary"  onclick="EditProfile()">Edit My Profile</button>
                     </div>
                   </div>
                   <hr>
                 </div>
               </div>
               <div class="row" >
-              <div id="errormsg"></div>
+              <!-- <div id="errormsg"></div> -->
                 <div class="col-md-12">
                     <div class="form-group row">
                       <label for="firstname" class="col-4 col-form-label">First Name</label>
@@ -143,7 +143,7 @@
                     <div class="form-group row">
                       <label for="nationalid" class="col-4 col-form-label">National ID</label>
                       <div class="col-8">
-                        <input id="nationalid" name="Nid" placeholder="National ID" class="form-control here" type="text" required="required" disabled>
+                        <input id="nationalid" name="Nid" placeholder="National ID" class="form-control here" type="number" min="0" required="required" disabled>
                       </div>
                     </div>
                     <div class="form-group row">
@@ -155,9 +155,12 @@
                     <div class="form-group row">
                       <label for="mobilenumber" class="col-4 col-form-label">Mobile Number</label>
                       <div class="col-8">
-                        <input id="mobilenumber" name="mobile" placeholder="Mobile Number" class="form-control here" type="text" required="required" disabled>
+                        <input id="mobilenumber" name="mobile" placeholder="Mobile Number" class="form-control here" type="number" min="0" required="required" disabled>
                       </div>
                     </div>
+                    <hr>
+                    <h4>Only if you wish to change your password </h4>
+                    <hr>
                     <div class="form-group row">
                       <label for="oldpass" class="col-4 col-form-label"> old Password</label>
                       <div class="col-8">
@@ -194,7 +197,7 @@
                     <div class="form-group row">
                       <label for="buildno" class="col-4 col-form-label">Building Number</label>
                       <div class="col-8">
-                        <input id="buildno" name="buildno" placeholder="Building Number" class="form-control here" type="text" required="required" disabled>
+                        <input id="buildno" name="buildno" placeholder="Building Number" class="form-control here" type="number" min="0" required="required" disabled>
                       </div>
                     </div>
                     <div class="form-group row">
@@ -289,6 +292,8 @@
                       <div class="form-group row">
                           <button type="submit" id="changeChildData" name="changeChildData" class="btn btn-primary" style="display: none"> Confirm Change </button>
                           <button id="intakebtn" name="intakebtn" class="btn btn-primary" style="display: none"> Print Intake Report </button>
+                          <button id="deleChild" name="deleChild" class="btn btn-danger" style="display: none; margin-left:414px;"> Request Delete Child </button>
+
                       </div>
                     </div>
                   </div>

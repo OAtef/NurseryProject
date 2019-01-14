@@ -1,111 +1,19 @@
-function todayDate() {
-  var today = new Date();
-  var day = today.getDate();
-  var month = today.getMonth() + 1; //January is 0!
-  var year = today.getFullYear();
+var rr = null;
 
-  if (day < 10) {
-    day = '0' + day
-  }
-
-  if (month < 10) {
-    month = '0' + month
-  }
-
-  today = year + '-' + month + '-' + day;
-
-  var child = document.getElementById("child_bdate");
-  child.setAttribute("max", today);
-  //var interview = document.getElementById("interview_Date");
-  //interview.setAttribute("min", today);
-
-}
-
-function child_BDate_min() {
-  var childBDate = new Date();
-  var day = childBDate.getDate();
-  var month = childBDate.getMonth() + 1; //January is 0!
-  var year = childBDate.getFullYear();
-
-  if (day < 10) {
-    day = '0' + day
-  }
-
-  if (month < 10) {
-    month = '0' + month
-  }
-
-  childBDate = (year - 6) + '-' + month + '-' + day;
-
-  var input = document.getElementById("child_bdate");
-  input.setAttribute("min", childBDate);
-}
-
-// function interview_Date_max(){
-// 	var interDatee = new Date();
-// 	var day = interDatee.getDate();
-// 	var month = interDatee.getMonth()+2; //January is 0!
-// 	var year = interDatee.getFullYear();
-
-// 	if(day<10) {
-// 		day = '0'+day
-// 	}
-
-// 	if(month<10) {
-// 		month = '0'+month
-// 	}
-
-// 	if(month > 12){
-// 		month ='0'+1
-// 		year++
-// 	}
-
-// 	interDatee = year + '-' + month + '-' + day;
-
-// 	var input = document.getElementById("interview_Date");
-// 	input.setAttribute("max", interDatee);
-// }
-
-function imageValidation(file = '') {
-  if (fileSize > 16777215) { // 16 MB
-    // alert msg (picture size is huge)
-    // alert("picture size is huge");
-
-    Swal({
-      type: 'error',
-      title: 'Picture size is huge',
-      showConfirmButton: true
-    });
-
-    return false;
-  } else {
-    var extension = $('#imageParent').val().split('.').pop().toLowerCase();
-    console.log(extension);
-    if (extension != 'jpg' && extension != 'png' && extension != 'gif' && extension != 'jpeg') {
-      // alert msg (invalid Image Extention )
-      // alert("invalid Image Extention -- Image type is invalid");
-
-      Swal({
-        type: 'error',
-        title: 'invalid Image Extention -- Image type is invalid',
-        showConfirmButton: true
-      });
-
-      return false;
-    }
-  }
-}
 $(document).ready(function() {
 
   $("#hide-child-info").hide();
-
+  var childid = null;
+  
   $.ajax({
     url: "fetch.php",
     type: "POST",
-    dataType: "json",
-    success: function(data) {
+    dataType: "JSON",
+    success: function(data) {  
+      
       for (var i = 0; i < data.length; i++) {
         var obj = data[i];
+
         $("#firstname").val(obj.firstname);
         $("#lastname").val(obj.lastname);
         $("#relativeRelation").val(obj.relativeRelation);
@@ -117,6 +25,15 @@ $(document).ready(function() {
         $("#StreetName").val(obj.StreetName);
         $("#buildno").val(obj.buildingNo);
         $("#genderr").val(obj.gender);
+
+        rr = obj.relativeRelation;
+
+        if(rr == null){
+          EditProfile();
+          $("#imageParent").prop("required", true);
+        }
+
+        
       }
     },
   });
@@ -144,13 +61,25 @@ $(document).ready(function() {
     },
   });
 
+  $("#home").click(function() {
+    if(rr == null){
+      Swal({
+        type: 'error',
+        title: 'You need to complete your information first',
+        showConfirmButton: true
+      });
+      return false;
+    }
+    
+  });
+
   $("#vm").click(function() {
 
     $(".HideAll").hide();
     $("#Vmsg").show();
 
     $.ajax({
-      url: "viewMsg.php",
+      url: "../viewMsg.php",
       type: "POST",
       success: function(msgData) {
         $("#Vmsg").html(msgData);
@@ -162,13 +91,17 @@ $(document).ready(function() {
     $("#ProfilePage").on('submit', (function(e) {
       e.preventDefault();
 
+      rr =  $('#relativeRelation').val();
+
+      imageValidation("imageParent");
+
       var data = new FormData(this);
       var national = $('#nationalid').val();
       data.append("Nid", national);
 
-      for (var pair of data.entries()) {
-        console.log(pair[0] + ', ' + pair[1]);
-      }
+      //  for (var pair of data.entries()) {
+      //    console.log(pair[0] + ', ' + pair[1]);
+      //  }
 
       $.ajax({
         url: "update.php",
@@ -177,15 +110,13 @@ $(document).ready(function() {
         contentType: false,
         cache: false,
         processData: false,
-        success: function(data) {
-          $("#errormsg").html(data);
-
-					Swal({
-		        type: 'success',
-		        title: 'Account Updated Successfully',
-		        showConfirmButton: true
-		      });
-
+        success: function() {
+					 Swal({
+		         type: 'success',
+		         title: 'Account Updated Successfully',
+		         showConfirmButton: true
+             });
+          
           $('#firstname').prop("disabled", true);
           $('#lastname').prop("disabled", true);
           $('#genderr').prop("disabled", true);
@@ -202,44 +133,24 @@ $(document).ready(function() {
 
           $("#update").css("display", "none");
           $("#uploadImg").css("display", "none");
-        }
+        },//error: function(data){
+          //console.log(data);
+          // $("#errormsg").html(data.responseText);
+         //}
       });
 
     }));
   });
 
-  $("#edit").click(function(event) {
-    event.preventDefault();
-
-    $('#firstname').prop("disabled", false);
-    $('#lastname').prop("disabled", false);
-    $('#genderr').prop("disabled", false);
-    $('#relativeRelation').prop("disabled", false);
-    $('#parentemail').prop("disabled", false);
-    $('#mobilenumber').prop("disabled", false);
-    $('#oldpass').prop("disabled", false);
-    $('#newpass').prop("disabled", false);
-    $('#neigherhoodName').prop("disabled", false);
-    $('#city').prop("disabled", false);
-    $('#StreetName').prop("disabled", false);
-    $('#buildno').prop("disabled", false);
-
-    // $('#update').show();
-    // $('#uploadImg').show();
-
-    $("#update").css("display", "block");
-    $("#uploadImg").css("display", "block");
-  });
-
   $("#editChild").click(function(event) {
     event.preventDefault();
 
-    var child_name = $("#childrenList").find(":selected").text();
+    childid = $("#childrenList").find(":selected").val();
 
     $.ajax({
       url: "fetchChild.php",
       data: {
-        name: child_name
+        ID: childid
       },
       type: "POST",
       dataType: "json",
@@ -248,7 +159,7 @@ $(document).ready(function() {
 
         $("#interview_state").css("display", "block");
 
-        if (obj.accepted == 0) {
+        if (obj.accepted == 0) { // pending
 
           $('#hide-rejected').show();
 
@@ -276,9 +187,10 @@ $(document).ready(function() {
 
           $("#changeChildData").css("display", "none");
           $("#intakebtn").css("display", "none");
+          $("#deleChild").css("display", "none");
           $("#uploadImgChild").css("display", "none");
 
-        } else if (obj.accepted == 1) {
+        } else if (obj.accepted == 1) { // accepted
 
           $('#hide-rejected').show();
 
@@ -300,10 +212,11 @@ $(document).ready(function() {
 
           $("#changeChildData").css("display", "inline-block");
           $("#intakebtn").css("display", "inline-block");
+          $("#deleChild").css("display", "inline-block");
           $("#uploadImgChild").css("display", "block");
 
 
-        } else if (obj.accepted == 2) {
+        } else if (obj.accepted == 2) { // rejected
 
           $('#hide-rejected').hide();
 
@@ -315,6 +228,7 @@ $(document).ready(function() {
 
           $("#changeChildData").css("display", "none");
           $("#intakebtn").css("display", "none");
+          $("#deleChild").css("display", "none");
           $("#uploadImgChild").css("display", "none");
 
         }
@@ -324,7 +238,7 @@ $(document).ready(function() {
     $.ajax({
       url: "fetchChildImg.php",
       data: {
-        name: child_name
+        ID: childid
       },
       type: "POST",
       success: function(data) {
@@ -336,8 +250,7 @@ $(document).ready(function() {
     });
 
     $("#hide-child-info").show();
-    document.childform.addNewChild.style.display = "none";
-    //document.getElementById("interview").style.display = "none";
+    $("#addNewChild").css("display", "none");
   });
 
   $("#intakebtn").click(function(event) {
@@ -345,6 +258,33 @@ $(document).ready(function() {
 
     window.open('intakeReport.php');
 
+  });
+
+  $("#deleChild").click(function(event) {
+    event.preventDefault();
+
+    $.ajax({
+      url: "reqDeleteChild.php",
+      type: "POST",
+      data: "child="+childID,
+      contentType: false,
+      cache: false,
+      processData: false,
+      success: function() {
+        Swal({
+          type: 'success',
+          title: 'Request of deletation is sent successfully',
+          showConfirmButton: true
+        });
+      },
+      error: function(){
+        Swal({
+          type: 'error',
+          title: 'Request is failed to be send',
+          showConfirmButton: true
+        });
+      }
+    });
   });
 
   $("#interviewbtn").click(function(event) {
@@ -356,9 +296,10 @@ $(document).ready(function() {
   });
 
   $("#addNewChild").click(function() {
-
     $("#childform").on('submit', (function(e) {
       e.preventDefault();
+
+      imageValidation("image");
 
       $.ajax({
         url: "insertChild.php",
@@ -368,12 +309,11 @@ $(document).ready(function() {
         cache: false,
         processData: false,
         success: function(data) {
-
-					Swal({
-		        type: 'success',
-		        title: 'Child Added Successfully',
-		        showConfirmButton: true
-		      });
+					 Swal({
+		         type: 'success',
+		         title: 'Child Added Successfully',
+		         showConfirmButton: true
+		       });
 
           $("#childrenList").empty();
 
@@ -393,13 +333,11 @@ $(document).ready(function() {
           $('#child_lname').prop("disabled", true);
           $('#gender').prop("disabled", true);
           $('#child_bdate').prop("disabled", true);
-          //document.childform.interview_Date.disabled=true;
 
           $("#hide-child-info").hide();
 
           $("#addNewChild").css("display", "none");
           $("#uploadImgChild").css("display", "none");
-          //document.getElementById("interview").style.display = "none";
         }
       });
     }));
@@ -408,6 +346,8 @@ $(document).ready(function() {
   $("#changeChildData").click(function() {
     $("#childform").on('submit', (function(e) {
       e.preventDefault();
+
+      imageValidation("image");
 
       var data = new FormData(this);
 
@@ -441,6 +381,7 @@ $(document).ready(function() {
 
           $("#changeChildData").css("display", "none");
           $("#intakebtn").css("display", "none");
+          $("#deleChild").css("display", "none");
           $("#uploadImgChild").css("display", "none");
         }
       });
@@ -450,7 +391,6 @@ $(document).ready(function() {
   $("#ch").click(function() {
     todayDate();
     child_BDate_min();
-    //interview_Date_max();
 
     $(".HideAll").hide();
     $("#ChildProfile").show();
@@ -468,29 +408,35 @@ $(document).ready(function() {
   });
 
   //---------------- Show IMG on HTML ------------------
-  var readURL = function(input) {
-    if (input.files && input.files[0]) {
+  $(".file-upload").on('change', function() {
+    if (this.files && this.files[0]) {
       var reader = new FileReader();
       reader.onload = function(e) {
         $('.avatar').attr('src', e.target.result);
       }
-      reader.readAsDataURL(input.files[0]);
+      reader.readAsDataURL(this.files[0]);
     }
-  }
-
-  $(".file-upload").on('change', function() {
-    readURL(this);
   });
 });
 
 function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-  document.getElementById("main").style.marginLeft = "150px";
+  if(rr == null){
+    Swal({
+      type: 'error',
+      title: 'You need to complete your information first',
+      showConfirmButton: true
+    });
+  }
+  else{
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "150px";
+  }
 }
 
 function closeNav() {
+
   document.getElementById("mySidenav").style.width = "0";
-  document.getElementById("main").style.marginLeft = "0";
+   document.getElementById("main").style.marginLeft = "0";
 }
 
 function AddChild() {
@@ -515,8 +461,97 @@ function AddChild() {
   $("#interview").css("display", "none");
   $("#changeChildData").css("display", "none");
   $("#intakebtn").css("display", "none");
+  $("#deleChild").css("display", "none");
   $("#interviewbtn").css("display", "none");
   $("#addNewChild").css("display", "block");
   $("#uploadImgChild").css("display", "block");
 
+}
+
+function EditProfile() {
+  $('#firstname').prop("disabled", false);
+  $('#lastname').prop("disabled", false);
+  $('#genderr').prop("disabled", false);
+  $('#relativeRelation').prop("disabled", false);
+  $('#parentemail').prop("disabled", false);
+  $('#mobilenumber').prop("disabled", false);
+  $('#oldpass').prop("disabled", false);
+  $('#newpass').prop("disabled", false);
+  $('#neigherhoodName').prop("disabled", false);
+  $('#city').prop("disabled", false);
+  $('#StreetName').prop("disabled", false);
+  $('#buildno').prop("disabled", false);
+
+  // $('#update').show();
+  // $('#uploadImg').show();
+
+  $("#update").css("display", "block");
+  $("#uploadImg").css("display", "block");
+  
+
+}
+
+function todayDate() {
+  var today = new Date();
+  var day = today.getDate();
+  var month = today.getMonth() + 1; //January is 0!
+  var year = today.getFullYear();
+
+  if (day < 10) {
+    day = '0' + day
+  }
+
+  if (month < 10) {
+    month = '0' + month
+  }
+
+  today = year + '-' + month + '-' + day;
+
+  var child = document.getElementById("child_bdate");
+  child.setAttribute("max", today);
+}
+
+function child_BDate_min() {
+  var childBDate = new Date();
+  var day = childBDate.getDate();
+  var month = childBDate.getMonth() + 1; //January is 0!
+  var year = childBDate.getFullYear();
+
+  if (day < 10) {
+    day = '0' + day
+  }
+
+  if (month < 10) {
+    month = '0' + month
+  }
+
+  childBDate = (year - 6) + '-' + month + '-' + day;
+
+  var input = document.getElementById("child_bdate");
+  input.setAttribute("min", childBDate);
+}
+
+function imageValidation(file = '') {
+  
+  var fileInput =  document.getElementById(file);
+  fileSize = fileInput.files[0].size;
+ if (fileSize > 16777215) { // 16 MB
+   Swal({
+     type: 'error',
+     title: 'Picture size is huge',
+     showConfirmButton: true
+   });
+
+   return false;
+ } else {
+    var extension = $('#'+file).val().split('.').pop().toLowerCase();
+    if(extension != 'jpg' && extension != '' && extension != 'png' && extension != 'gif' && extension != 'jpeg'){
+      Swal({
+        type: 'error',
+        title: 'Image Extension is Invalid -- valid Extensions (JPG , PNG , GIF , JPEG)',
+        showConfirmButton: true
+      });
+      return false;
+    }
+ }
 }

@@ -1,8 +1,7 @@
 <html>
-
     <head>
         <title> intake report </title>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
         <script>
   
@@ -60,18 +59,18 @@
                     type:"POST",
                     success: function(data){
                         if(data == 'data:image/jpeg;base64,')
-                            $("#childImg").attr('src', "../img/No_Image_Available.jpg");
+                            $("#childImg").attr('src', "../../img/No_Image_Available.jpg");
                         else
                             $("#childImg").attr('src', data);
                     },
                     
                 });
 
-				// window.print();
-				// history.pushState(null, null, location.href);
-				// window.onpopstate = function(){
-				// 	history.go(1);
-				// }
+				window.print();
+				history.pushState(null, null, location.href);
+				window.onpopstate = function(){
+					history.go(1);
+			    }
 			});
         </script>      
 
@@ -101,7 +100,11 @@
 
     #interview-paper{
         display: inline;
-        margin-left: 70% !important;
+        margin-left: 65% !important;
+    }
+    #note{
+        margin-left: 5%;
+        
     }
 
 </style>
@@ -111,7 +114,7 @@
         <div id="text">
         <div id="error"></div>
 
-                <img id="logo" src="../img/logo.jpg" >
+                <img id="logo" src="../../img/logo.jpg" >
                 <p id="interview-paper">  </p>
 
             <table>
@@ -156,9 +159,10 @@
                         <td colspan="2" id="cat"> </td>
                     </tr>
 
-                    <p id="note"> </p>
+                   
                 </tbody>
             </table>
+            <p id="note"> </p>
         </div>        
     </body>
 
