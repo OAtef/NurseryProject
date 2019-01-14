@@ -14,6 +14,7 @@ include('../SendMsg.php');
   <link rel="stylesheet" type="text/css" href="../../css/parent.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="../../css/table.css">
+  <link rel="stylesheet" type="text/css" href="../css/Schedule.css">
 </head>
 
 <body>
@@ -53,6 +54,7 @@ include('../SendMsg.php');
     <a href="#" id="sm">Send Msg</a>
     <a href="#" id="AE">Add Employee</a>
     <a href="#" id="VE">View Employee </a>
+    <a href="#" id="TT">Time Table </a>
     <!-- <a href="#" id="VP">View Parents </a> -->
   </div>
 
@@ -185,6 +187,153 @@ include('../SendMsg.php');
     <!-- View Employee -->
     <div class="container HideAll" id="ViewEmployee" style="margin-left: 100px; display: none">
 
+    </div>
+
+    <div class="container HideAll" id="TimeTable1" style="margin-left: 250px; display:none; ">
+      <form name="saveScheldueForm" id="saveScheldueForm" method="POST">
+
+        <div contenteditable="true" style="margin-top: 100px; margin-left: 100px">
+          <H1>Nursery Timetable</H1>
+          <TABLE class="myTimetable">
+            <THEAD>
+              <TR>
+                <TH></TH>
+                <TH>Monday</TH>
+                <TH>Tuesday</TH>
+                <TH>Wednesday</TH>
+                <TH>Thursday</TH>
+                <TH>Friday</TH>
+              </TR>
+            </THEAD>
+            <TBODY>
+              <TR>
+                <TD>8:00-9:30</TD>
+                <TD>
+                  <div class="subject"> <input id="subject" name="subject" placeholder="Math" class="form-control here" type="text"></div>
+                  <div class="room">A120</div>
+                </TD>
+                <TD>
+                  <div class="subject">Art</div>
+                  <div class="room">C1</div>
+                </TD>
+                <TD>
+                  <div class="subject">English</div>
+                  <div class="room">B21</div>
+                </TD>
+                <TD>
+                  <div class="subject">Maths</div>
+                  <div class="room">A120</div>
+                </TD>
+                <TD>
+                  <div class="subject">Geography</div>
+                  <div class="room">B101</div>
+                </TD>
+              </TR>
+              <TR>
+                <TD>9:30-11:00</TD>
+                <TD>
+                  <div class="subject">Science</div>
+                  <div class="room">Lab1</div>
+                </TD>
+                <TD>
+                  <div class="subject">History</div>
+                  <div class="room">B104</div>
+                </TD>
+                <TD>
+                  <div class="subject">Spanish</div>
+                  <div class="room">C17</div>
+                </TD>
+                <TD>
+                  <div class="subject">P.E.</div>
+                  <div class="room">A Gym</div>
+                </TD>
+                <TD>
+                  <div class="subject">Maths</div>
+                  <div class="room">A120</div>
+                </TD>
+              </TR>
+              <TR>
+                <TD colspan="6" class="break">Break</TD>
+              </TR>
+              <TR>
+                <TD>11:30-1:00</TD>
+                <TD>
+                  <div class="subject">I.T.</div>
+                  <div class="room">ICT 1</div>
+                </TD>
+                <TD>
+                  <div class="subject">English</div>
+                  <div class="room">B21</div>
+                </TD>
+                <TD>
+                  <div class="subject">Musique</div>
+                  <div class="room">C5</div>
+                </TD>
+                <TD>
+                  <div class="subject">English</div>
+                  <div class="room">B21</div>
+                </TD>
+                <TD>
+                  <div class="subject">PSHE</div>
+                  <div class="room">A24</div>
+                </TD>
+              </TR>
+              <TR>
+                <TD colspan="6" class="lunch">Lunch</TD>
+              </TR>
+              <TR>
+                <TD>1:30-3:00</TD>
+                <TD>
+                  <div class="subject">History</div>
+                  <div class="room">B104</div>
+                </TD>
+                <TD>
+                  <div class="subject">Drama</div>
+                  <div class="room">C17</div>
+                </TD>
+                <TD>
+                  <div class="subject">Maths</div>
+                  <div class="room">A120</div>
+                </TD>
+                <TD>
+                  <div class="subject">Geography</div>
+                  <div class="room">B101</div>
+                </TD>
+                <TD>
+                  <div class="subject">P.E.</div>
+                  <div class="room">A Gym</div>
+                </TD>
+              </TR>
+              <TR>
+                <TD>3:00-4:30</TD>
+                <TD>
+                  <div class="subject">Spanish</div>
+                  <div class="room">C17</div>
+                </TD>
+                <TD>
+                  <div class="subject">Science</div>
+                  <div class="room">Lab1</div>
+                </TD>
+                <TD>
+                  <div class="subject">English</div>
+                  <div class="room">B21</div>
+                </TD>
+                <TD>
+                  <div class="subject">Science</div>
+                  <div class="room">Lab1</div>
+                </TD>
+                <TD>
+                  <div class="subject">R.E</div>
+                  <div class="room">B18</div>
+                </TD>
+              </TR>
+            </TBODY>
+          </TABLE>
+
+        </div>
+        <input type="button" name="saveScheldue" value="Save" id="saveScheldue">
+
+      </form>
     </div>
 
   </div>

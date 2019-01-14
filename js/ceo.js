@@ -28,6 +28,11 @@ $(document).ready(function() {
     $("#AddEmployee").show();
   });
 
+  $("#TT").click(function(){
+    $(".HideAll").hide();
+    $("#TimeTable1").show();
+  });
+
   $("#VE").click(function() {
     $(".HideAll").hide();
     $("#ViewEmployee").show();
@@ -53,6 +58,21 @@ $(document).ready(function() {
       },
     });
   });
+
+  $("#saveScheldue").click(function() {
+   $.ajax({
+     url: "saveSchedule.php",
+     data: $('#saveScheldueForm').serialize(), // takes all data in the form in a string
+     type: "POST",
+     success: function(data) {
+
+
+     },error: function(data) {
+       console.log('xxx');
+
+     },
+   });
+ });
 });
 
 function openNav() {
