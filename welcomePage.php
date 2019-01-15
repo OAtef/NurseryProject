@@ -9,13 +9,21 @@ include('php/server.php');
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- style -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/welcomepage.css">
 	<link rel="stylesheet" type="text/css" href="css/modal.css">
+	<link rel="stylesheet" type="text/css" href="css/Footer-with-social-icons.css">
 	<!-- Javascript -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="js/sweetalert2/sweetalert2.all.min.js"></script>
+
+
+
+    
+
+    
 
 </head>
 
@@ -26,6 +34,7 @@ include('php/server.php');
 	  ?>
 
 	<!-- Navbar -->
+	<div class="content">
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -476,52 +485,70 @@ include('php/server.php');
 
 	<br>
 
-	<div class="col-sm-12" style="background-color:DodgerBlue; width:1289px">
+	<div class="col-sm-12" style="background-color:DodgerBlue; width:1920px">
 		<div class="col-sm-8">
 			<h2 style="color: white; text-align:center; font-size:60px ">Fees &amp; <br>Availability</h2>
 			<p style="text-align:center;color: white;font-size:30px  ">Where possible we look to offer flexible booking patterns and
 				a range of funding options,including the government's 30 hours funded childcare* provision.</p>
 		</div>
 		<div class="col-sm-2">
-			<img src="img\nursery-images-9.jpg" alt="" width="480" height="350" />
+			<img src="img\nursery-images-9.jpg" alt="" width="620" height="350" />
 		</div>
 	</div>
 
-	<!-- Footer -->
-	<footer class="container-fluid text-center">
-		<div class="col-sm-4">
-			<div class="col-sm-6">
-				<h4><span>More From</span> MIU Pre-School &amp; Day Nursery</h4>
-				<ul>
-					<li><a href="" target="" style="color:white">Careers at MIU Pre-School &amp; Day Nursery</a></li>
-				</ul>
-			</div>
-			<div class="col-sm-6">
-				<h4><span>More From</span> MIU Nursery</h4>
-				<ul style="color:white">
-					<li><a href="" target="" style="color:white">Careers at MIU Nursery</a></li>
-					<li><a href="" style="color:white">Parent Portal</a></li>
-				</ul>
-			</div>
+	
 
-		</div>
-
-		<div class="col-sm-8">
-			<ul class="col-sm-4" style="color:white">
-				<li class="social-links__item social-links__item--fb"><a href="https://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
-				<li class="social-links__item social-links__item--tw"><a href="https://twitter.com"><i class="fa fa-twitter"></i></a></li>
-				<li class="social-links__item social-links__item--yt"><a href="https://www.youtube.com"><i class="fa fa-youtube"></i></a></li>
-				<li class="social-links__item social-links__item--inst"><a href="https://www.instagram.com"><i class="fa fa-instagram"></i></a></li>
-			</ul>
-			<ul class="col-sm-4">
-				<li><a href="" style="color:white">Home</a></li>
-				<li><a href="" style="color:white">our-nursery</a></li>
-				<li><a href="" style="color:white">miu--preschool-and-day-nursery</a></li>
-			</ul>
-		</div>
-	</footer>
+</div>
+    <footer id="myFooter">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 myCols">
+                    <h5>Get started</h5>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Sign up</a></li>
+                        <li><a href="#">Downloads</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 myCols">
+                    <h5>About us</h5>
+                    <ul>
+                        <li><a href="#">Company Information</a></li>
+                        <li><a href="#">Contact us</a></li>
+                        <li><a href="#">Reviews</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 myCols">
+                    <h5>Support</h5>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Help desk</a></li>
+                        <li><a href="#">Forums</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 myCols">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="social-networks">
+            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+            <a href="#" class="facebook"><i class="fa fa-facebook-official"></i></a>
+            <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+        </div>
+        <div class="footer-copyright">
+            <p>© 2019 Copyright Mustafa </p>
+        </div>
+    </footer>
 	<script type="text/javascript" src="js\login.js"></script>
 	<script type="text/javascript" src="js\welcomepage.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 
 </html>

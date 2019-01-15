@@ -71,11 +71,12 @@ body {
 
 /* Footer */
 
-footer {	/* Add a gray background color and some padding to the footer */
-  background-image: url("../img/footer.jpg") ;
+	/* Add a gray background color and some padding to the footer */
+/*  footer {
+    background-image: url("../img/footer.jpg") ;
   padding: 25px;
   color: white;
-}
+}*/
 
 .well{
 	width: 350px;
