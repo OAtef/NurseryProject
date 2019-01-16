@@ -38,14 +38,21 @@ if(mysqli_num_rows($query_name_result)) {
 else{
   $query = "INSERT INTO children (first_name, last_name, Bdate, Gender, parentID, categoryNo, img)
   VALUES ('$firstname', '$lastname', '$bdate', '$gender', '$parent_ID', '$category', '$img')";
+  $result = mysqli_query($db, $query);
+  $child_id = mysql_insert_id($db);
 
-  mysqli_query($db, $query);
+  if (mysqli_affected_rows($db) == 1) {
 
-   if(mysqli_query($db, $sql)){
-     echo "Records added successfully.";
-   } else{
-     echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);
-   }
+    $queryInsert = "INSERT INTO interviews (parentID, childID) VALUES ('$parent_ID', '$child_id'";
+    mysqli_query($db, $queryInsert);
+
+  }
+
+  //  if(mysqli_query($db, $sql)){
+  //    echo "Records added successfully.";
+  //  } else{
+  //    echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);
+  //  }
 }
 
 

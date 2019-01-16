@@ -1,5 +1,5 @@
 <?php
-include('../SendMsg.php');
+session_start();
 ?>
 
 <html>
@@ -20,7 +20,7 @@ include('../SendMsg.php');
 <body>
 
   <?php
-  include('../alerts.php');
+  // include('../alerts.php');
   ?>
 
   <!-- top navigation -->
@@ -36,7 +36,8 @@ include('../SendMsg.php');
         <li><a id="Pic-btn"><span class=""></span> Pic</a></li>
 
         <li class='dropdown'>
-          <a class='dropdown-toggle' data-toggle='dropdown' href='#'>Name
+          <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+            <?php echo $_SESSION['Name']; ?>
             <span class='caret'></span></a>
           <ul class='dropdown-menu'>
             <li><a href='../logout.php'>Logout</a></li>
@@ -164,7 +165,7 @@ include('../SendMsg.php');
             <div class="row">
               <div class="col-sm-12 form-group">
                 <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+                <input type="email" class="form-control" id="SendingEmail" name="email" required>
               </div>
             </div>
             <div class="row">
@@ -173,12 +174,14 @@ include('../SendMsg.php');
                 <textarea class="form-control" type="textarea" name="message" id="message" maxlength="6000" rows="7"></textarea>
               </div>
             </div>
-            <div class="row">
-              <div class="col-sm-12 form-group">
-                <button type="submit" class="btn btn-lg btn-default pull-right" name="Send_Msg">Send &rarr;</button>
-              </div>
-            </div>
           </form>
+          <div class="row">
+            <div class="col-sm-12 form-group">
+              <button class="btn btn-lg btn-default pull-right" name="Send_Msg" id="Send_Msg">Send &rarr;</button>
+            </div>
+          </div>
+          <div id="SmsgResults">
+          </div>
         </div>
       </div>
     </div>

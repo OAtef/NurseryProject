@@ -5,9 +5,11 @@ include('../db.php');
 $interview = $_POST['newInterviewDate'];
 $childID = $_POST['ChildID'];
 
+// echo $interview . " " . $childID;
+
 if (!empty($interview)) {
 
-  $setInterviewDateQuery = "UPDATE children SET children.interviewdate='$interview' WHERE children.child_id='$childID'";
+  $setInterviewDateQuery = "UPDATE interviews SET day='$interview' WHERE childID='$childID'";
   $setInterviewDateResult = mysqli_query($db, $setInterviewDateQuery);
   if ($setInterviewDateResult) {
     echo "<script>Swal({

@@ -86,19 +86,10 @@ if (mysqli_num_rows($ChildrenResult) > 0) {
             ";
             if ($row['accepted'] == 1 || $row['accepted'] == 2) {
               echo "
-              <b>InterView Date: </b> ".$row['interviewdate']."
-              <hr>
               <b>Comments on Child: </b> ".$Commentson['comment']."
               <div id='EditorDivCommentson' style='margin-left: 50%'>
                 Type Comment: <input type='text' id='CommentSon-row".$Counter."' value='' />
                                 <input type='button' id='textEditor' value='Enter Comment' onclick='addCommentSon()' />
-              </div>";
-            }elseif ($row['accepted'] == 0) {
-              echo "
-              <b>InterView Date: </b> ".$row['interviewdate']."
-              <div id='EditorDivInterview' style='margin-left: 50%'>
-                Enter New Date: <input type='date' id='InterviewDate-row".$Counter."' value='' />
-                                <input type='button' id='textEditor' value='Change Birthday Date' onclick='changeInterviewDate()' />
               </div>";
             }
             echo "

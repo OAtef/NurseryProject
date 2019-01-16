@@ -1,5 +1,6 @@
 document.getElementById("btn1").click();
-function openCity(evt, cityName) {
+
+function nutrition_activites(evt, cityName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {

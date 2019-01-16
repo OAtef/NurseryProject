@@ -10,7 +10,7 @@ $(document).ready(function() {
     $("#Vmsg").show();
 
     $.ajax({
-      url: "viewMsg.php",
+      url: "../viewMsg.php",
       type: "POST",
       success: function(msgData) {
         $("#Vmsg").html(msgData);
@@ -72,6 +72,21 @@ $(document).ready(function() {
 
      },
    });
+ });
+
+ $("#Send_Msg").click(function() {
+
+   senderMail = $("#SendingEmail").val();
+   message = $("#message").val();
+
+   $.ajax({
+     url: "../SendMsg.php",
+     type: "POST",
+     data: {Mail: senderMail, Message: message},
+     success: function(msgData) {
+       $("#SmsgResults").html(msgData);
+     },
+   })
  });
 });
 

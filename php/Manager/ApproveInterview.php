@@ -19,7 +19,7 @@ if (isset($_POST['ChildIDApprove'])) {
     $nurseID = $NurseIDdata['ID'];
 
     $ApproveChildQuery = "UPDATE children SET accepted = 1, nurseID = '$nurseID' WHERE children.child_id = ".$ChildID;
-    $ApproveResult = mysqli_query($db, $ApproveChildQuery)
+    $ApproveResult = mysqli_query($db, $ApproveChildQuery);
 
     if (!$ApproveResult) {
 
