@@ -18,9 +18,11 @@ H1 {
 
 .myTimetable THEAD{
   color: #000000;
+ 
 }
 
-.myTimetable TBODY {
+.myTimetable TBODY 
+{
   /*background-color: #9ACD32;*/
 }
 

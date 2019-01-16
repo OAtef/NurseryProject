@@ -60,16 +60,22 @@ $(document).ready(function() {
   });
 
   $("#saveSchedule").click(function() {
+    
    $.ajax({
+     
+    
      url: "saveSchedule.php",
      data: $('#saveScheldueForm').serialize(), // takes all data in the form in a string
      type: "POST",
-     success: function(data) {
 
+     success: function(data) {
+    
+      alert("success");
+      //$("TimeTable1").html(data);
 
      },error: function(data) {
-       console.log('xxx');
-
+   
+       alert("fail");
      },
    });
  });
